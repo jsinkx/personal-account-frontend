@@ -31,6 +31,10 @@ yarn serve
 - Vite
 - Typescript
 - React 18
+- react-router-dom
+- react-helmet-async
+- styled-components
+- axios
 
 ## Config app
 

@@ -14,8 +14,13 @@
 		"precommit": "lint-staged"
 	},
 	"dependencies": {
+		"axios": "^1.6.7",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-helmet-async": "^2.0.4",
+		"react-router-dom": "^6.22.2",
+		"styled-components": "^6.1.8",
+		"styled-normalize": "^8.1.1",
 		"vite-plugin-svgr": "^4.2.0",
 		"vite-tsconfig-paths": "^4.3.1"
 	},
