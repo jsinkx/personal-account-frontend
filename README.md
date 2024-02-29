@@ -11,7 +11,7 @@
 4. Install all dependencies `package.json`
 
 ```sh
-cd traffic-accident-frontend
+cd personal-account-frontend
 yarn install
 ```
 
