@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import colors from '../../shared/colors'
+import Colors from '../../shared/colors'
 
 const GlobalStyleTags = createGlobalStyle`
 
@@ -18,7 +18,7 @@ html {
 
 		::selection {
 			color: white;
-			background-color: ${colors.BLUE_WISH};
+			background-color: ${Colors.BLUE_WISH};
 		}
 
 		a,

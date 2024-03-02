@@ -1,7 +1,6 @@
 {
 	"env": {
-		"browser": true,
-		"node": false
+		"browser": true
 	},
 	"settings": {
 		"react": {
@@ -15,7 +14,7 @@
 		},
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": ["tsconfig.json"]
+		"project": ["./tsconfig.json"]
 	},
 	"extends": [
 		"airbnb",
@@ -28,7 +27,6 @@
 		"plugin:import/warnings",
 		"plugin:import/typescript",
 		"plugin:prettier/recommended",
-		"react-app",
 		"prettier"
 	],
 	"plugins": ["import", "react", "prettier"],

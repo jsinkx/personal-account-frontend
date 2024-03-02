@@ -11,24 +11,28 @@ type MainLayoutProps = {
 	image?: string
 }
 
-const Helmet: React.FC<MainLayoutProps> = ({ title, description = '', keywords = [], image }) => {
-	const _title = `${(title && title.concat(' - ')) || ''}Личный кабинет WISH EDU`
-	const _description = description
-	const _image = image || ICON_LOGO_URL
+const Helmet: React.FC<MainLayoutProps> = ({
+	title: _title,
+	description = '',
+	keywords = [],
+	image: _image,
+}) => {
+	const title = `${(_title && _title.concat(' - ')) || ''}Личный кабинет WISH EDU`
+	const image = _image || ICON_LOGO_URL
 
 	return (
 		<ReactHelmet>
 			<title> {_title} </title>
-			<meta name="description" content={_description} />
+			<meta name="description" content={description} />
 			<meta name="keywords" content={[...DEFAULT_KEYWORDS, ...keywords].join(', ')} />
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content={title || _title} />
 			<meta property="og:url" content={CLIENT_URL} />
 			<meta property="og:site_name" content="Личный кабинет WISH EDU" />
-			<meta property="og:description" content={_description} />
-			<meta property="og:image" content={_image} />
-			<meta itemProp="image" content={_image} />
-			<link rel="image_src" href={_image} />
+			<meta property="og:description" content={description} />
+			<meta property="og:image" content={image} />
+			<meta itemProp="image" content={image} />
+			<link href={image} />
 			<link rel="canonical" href={CLIENT_URL} />
 		</ReactHelmet>
 	)
