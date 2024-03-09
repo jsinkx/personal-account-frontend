@@ -9,17 +9,13 @@
 		"node": ">=10",
 		"pnpm": ">=3"
 	},
-	"resolutions": {
-		"**/npm/**": "pnpm:*",
-		"**/yarn/**": "pnpm:*"
-	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"serve": "vite preview",
 		"lint": "eslint . --color",
 		"lint:fix": "eslint --fix",
-		"prepare": "husky",
+		"prepare": "husky && husky install",
 		"precommit": "lint-staged"
 	},
 	"dependencies": {
@@ -53,9 +49,9 @@
 		"eslint-plugin-import": "2.25.3",
 		"eslint-plugin-jsx-a11y": "6.5.1",
 		"eslint-plugin-prettier": "^5.1.3",
-		"eslint-plugin-react": "7.28.0",
+		"eslint-plugin-react": "7.34.0",
 		"eslint-plugin-react-hooks": "4.3.0",
-		"husky": "^9.0.11",
+		"husky": "^8.0.0",
 		"lint-staged": "^15.2.2",
 		"pinst": "^3.0.0",
 		"prettier": "^3.2.5",
@@ -66,7 +62,7 @@
 	},
 	"lint-staged": {
 		"*.{ts, tsx, .js, .jsx}": [
-			"yarn lint",
+			"pn lint",
 			"git add"
 		],
 		"*.json": "prettier --write"
