@@ -5,25 +5,24 @@
 ## Installation
 
 1. [`Node.js`](https://nodejs.org/)
-2. [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or
-   [`yarn`](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
+2. [`pnpm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 3. [`git`](https://git-scm.com/)
 4. Install all dependencies `package.json`
 
 ```sh
 cd personal-account-frontend
-yarn install
+pn i
 ```
 
 ## Dev mode
 
-`yarn dev`
+`pn dev`
 
 ## Production mode
 
 ```sh
-yarn build
-yarn serve
+pn build
+pn serve
 ```
 
 ## Stack
@@ -31,6 +30,7 @@ yarn serve
 - Vite
 - Typescript
 - React 18
+- million
 - react-router-dom
 - react-helmet-async
 - styled-components

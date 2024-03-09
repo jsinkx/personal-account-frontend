@@ -7,14 +7,15 @@
 			"version": "detect"
 		}
 	},
-	"ignorePatterns": ["vite.config.ts", "vite-env.d.ts"],
+	"ignorePatterns": ["*.mts", "vite-env.d.ts"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
 		},
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": ["./tsconfig.json"]
+		"project": ["./tsconfig.json"],
+		"warnOnUnsupportedTypeScriptVersion": false
 	},
 	"extends": [
 		"airbnb",
