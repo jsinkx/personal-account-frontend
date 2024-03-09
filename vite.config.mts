@@ -21,8 +21,12 @@ export default defineConfig({
 		chunkSizeWarningLimit: 1600,
 	},
 	server: {
-		port: 3000,
+		watch: {
+			usePolling: true,
+		},
+		host: true,
 		strictPort: true,
+		port: 3000,
 	},
 	preview: {
 		port: 3000,
