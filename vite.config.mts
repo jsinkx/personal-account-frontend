@@ -1,15 +1,17 @@
 import reactRefresh from '@vitejs/plugin-react-swc'
 
-import MillionLint from '@million/lint'
-
+// import MillionLint from '@million/lint'
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import eslint from 'vite-plugin-eslint'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
+import million from 'million/compiler'
+
 export default defineConfig({
 	base: './',
 	plugins: [
-		MillionLint.vite({ auto: true }),
+		million.vite({}),
+		// MillionLint.vite({ auto: true }),
 		eslint(),
 		reactRefresh(),
 		ViteMinifyPlugin({}),

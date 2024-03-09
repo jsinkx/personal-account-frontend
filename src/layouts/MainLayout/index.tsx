@@ -1,6 +1,7 @@
 import React from 'react'
 
-import Helmet from '../components/Helmet'
+import Header from '../../components/Header'
+import Helmet from '../../components/Helmet'
 
 type MainLayoutProps = {
 	title: string
@@ -12,9 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ title, description, children })
 	return (
 		<>
 			<Helmet title={title} description={description} />
-			<header>
-				<h1>Личный кабинет WISH EDU</h1>
-			</header>
+			<Header />
 			<main>{children}</main>
 		</>
 	)
