@@ -16,6 +16,10 @@ const MaintenanceServicePage = React.lazy(
 
 const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '../../pages/HomePage'))
 
+const RegistrationPage = React.lazy(
+	() => import(/* webpackChunkName: "RegistrationPage" */ '../../pages/RegistrationPage'),
+)
+
 const router = createBrowserRouter([
 	{
 		path: Paths.home,
@@ -30,6 +34,11 @@ const router = createBrowserRouter([
 	{
 		path: Paths.contact,
 		element: <NotFoundPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.registration,
+		element: <RegistrationPage />,
 		errorElement: <NotFoundPage />,
 	},
 	{

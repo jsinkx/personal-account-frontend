@@ -42,6 +42,7 @@ pn serve
 - million
 - react-router-dom
 - react-helmet-async
+- react-hook-form
 - styled-components
 - axios
 

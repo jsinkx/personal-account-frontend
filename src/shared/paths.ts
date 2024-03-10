@@ -3,7 +3,7 @@ const Paths = {
 	about: '/about',
 	contact: '/contact',
 	login: '/login',
-	register: '/register',
+	registration: '/registration',
 	maintenanceService: '/maintenance-service',
 	any: '*',
 	loading: '/loading', // TODO: remove
