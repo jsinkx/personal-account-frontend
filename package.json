@@ -62,7 +62,7 @@
 	},
 	"lint-staged": {
 		"*.{ts, tsx, .js, .jsx}": [
-			"pn lint",
+			"pnpm lint",
 			"git add"
 		],
 		"*.json": "prettier --write"
