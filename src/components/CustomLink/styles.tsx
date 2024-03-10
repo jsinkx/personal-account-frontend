@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export */
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-export const StyledCustomLink = styled(Link)`
+export const StyledCustomNavLink = styled(NavLink)`
 	color: ${Colors.INACTIVE_GREY_FONT};
 	text-decoration: none;
 	transition: all 0.3s ease;
@@ -13,7 +13,8 @@ export const StyledCustomLink = styled(Link)`
 
 	&:hover,
 	&:active,
-	&:focus {
+	&:focus,
+	&.active {
 		color: ${Colors.BLUE_WISH};
 	}
 `

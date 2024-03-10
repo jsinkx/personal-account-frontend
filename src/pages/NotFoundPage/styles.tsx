@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-import { StyledCustomLink as _StyledCustomLink } from '../../components/CustomLink/styles'
+import CustomNavLink from '../../components/CustomLink/CustomNavLink'
 
-export const StyledCustomLink = styled(_StyledCustomLink)`
+export const StyledCustomNavLink = styled(CustomNavLink)`
 	color: ${Colors.BLUE_WISH};
 
 	&:hover,

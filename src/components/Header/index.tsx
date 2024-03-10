@@ -2,12 +2,12 @@ import { For, block } from 'million/react'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { APP_VERSION, CDN_URL, ICON_LOGO_URL } from '../../shared/constants'
+import { APP_VERSION, ICON_LOGO_URL } from '../../shared/constants'
 import Paths from '../../shared/paths'
 
-import CustomLink from '../CustomLink/CustomLink'
+import CustomNavLink from '../CustomLink/CustomNavLink'
 
-import StyledHeader, { StyledNavLink } from './styles'
+import StyledHeader from './styles'
 
 type HeaderProps = React.ComponentPropsWithoutRef<'header'>
 
@@ -29,25 +29,41 @@ const NAVIGATION_ELEMENTS = [
 const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 	const location = useLocation()
 
+	const isAuth = false
+
 	return (
 		<StyledHeader {...props}>
-			<CustomLink className="header__logo" to={Paths.home}>
-				<img src={`${CDN_URL}${ICON_LOGO_URL}`} alt="W" />
+			<CustomNavLink className="header__logo" to={Paths.home}>
+				<img src={ICON_LOGO_URL} alt="W" />
 				<span className="header__logo--logo-name">WISH EDU</span>
 				{/* TODO: add checkbox in settings to turn on/off display version */}
+				{/* TODO: create theme switcher */}
 				<span className="header__logo-text--version">{APP_VERSION}</span>
-			</CustomLink>
+			</CustomNavLink>
 			<nav>
 				<ul>
 					<For each={NAVIGATION_ELEMENTS}>
 						{(element) => (
 							<li>
-								<StyledNavLink to={element.path} state={{ from: location.pathname }}>
+								<CustomNavLink to={element.path} state={{ from: location.pathname }}>
 									{element.title}
-								</StyledNavLink>
+								</CustomNavLink>
 							</li>
 						)}
 					</For>
+					{isAuth ? (
+						<li>
+							<CustomNavLink to={Paths.home} state={{ from: location.pathname }}>
+								{'{ login }'}
+							</CustomNavLink>
+						</li>
+					) : (
+						<li>
+							<CustomNavLink to={Paths.login} state={{ from: location.pathname }}>
+								Войти
+							</CustomNavLink>
+						</li>
+					)}
 				</ul>
 			</nav>
 		</StyledHeader>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { CDN_URL } from '../../shared/constants'
+import { CDN_STATIC_IMG } from '../../shared/constants'
 
 import getRandomInt from '../../utils/random-int'
 
@@ -20,10 +20,7 @@ const MaintenanceServicePage: React.FC = () => {
 			<StyledNotFoundPage>
 				<h1> Сервера находятся на техническом обслуживании. Приносим извинения. </h1>
 				<p> Мы устраняем проблемы и делаем наши сервисы лучше! Stay tune.</p>
-				<img
-					src={`${CDN_URL}/assets/static/images/${IMAGES_URL[getRandomInt(0, IMAGES_URL.length - 1)]}`}
-					alt="xP"
-				/>
+				<img src={`${CDN_STATIC_IMG}/${IMAGES_URL[getRandomInt(0, IMAGES_URL.length - 1)]}`} alt="xP" />
 			</StyledNotFoundPage>
 		</CleanLayout>
 	)

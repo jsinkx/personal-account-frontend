@@ -7,12 +7,20 @@ import StyledCleanLayout from './styles'
 type CleanLayoutProps = {
 	title: string
 	description: string
+	keywords?: string[]
+	image?: string
 	children: React.ReactNode
 }
-const CleanLayout: React.FC<CleanLayoutProps> = ({ title, description, children }) => {
+const CleanLayout: React.FC<CleanLayoutProps> = ({
+	title,
+	description,
+	keywords = [''],
+	image = '',
+	children,
+}) => {
 	return (
 		<StyledCleanLayout>
-			<Helmet title={title} description={description} />
+			<Helmet title={title} description={description} keywords={keywords} image={image} />
 			{children}
 		</StyledCleanLayout>
 	)

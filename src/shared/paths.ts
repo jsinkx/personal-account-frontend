@@ -2,9 +2,11 @@ const Paths = {
 	home: '/',
 	about: '/about',
 	contact: '/contact',
+	login: '/login',
+	register: '/register',
 	maintenanceService: '/maintenance-service',
-	loading: '/loading', // TODO: remove
 	any: '*',
+	loading: '/loading', // TODO: remove
 } as const
 
 export default Paths

@@ -17,7 +17,7 @@ const Helmet: React.FC<MainLayoutProps> = ({
 	keywords = [],
 	image: _image,
 }) => {
-	const title = `${(_title && _title.concat(' - ')) || ''}Личный кабинет WISH EDU`
+	const title = `${(_title && _title.concat(' - ')) || ''}WISH EDU`
 	const image = _image || ICON_LOGO_URL
 
 	return (
@@ -28,7 +28,7 @@ const Helmet: React.FC<MainLayoutProps> = ({
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content={title || _title} />
 			<meta property="og:url" content={CLIENT_URL} />
-			<meta property="og:site_name" content="Личный кабинет WISH EDU" />
+			<meta property="og:site_name" content="Экосистема WISH EDU" />
 			<meta property="og:description" content={description} />
 			<meta property="og:image" content={image} />
 			<meta itemProp="image" content={image} />

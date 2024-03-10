@@ -1,21 +1,6 @@
-import { NavLink } from 'react-router-dom'
-
 import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
-
-export const StyledNavLink = styled(NavLink)`
-	color: ${Colors.INACTIVE_GREY_FONT};
-	text-decoration: none;
-	transition: all 0.3s ease;
-	user-select: none;
-
-	&:hover,
-	&:active,
-	&:focus {
-		color: ${Colors.BLUE_WISH};
-	}
-`
 
 const StyledHeader = styled.header`
 	padding: 15px;
@@ -48,6 +33,7 @@ const StyledHeader = styled.header`
 
 		.header__logo-text--version {
 			margin-left: 10px;
+			color: ${Colors.INACTIVE_GREY_FONT};
 			font-size: 1.2em;
 			font-family: Consolas;
 		}
@@ -72,7 +58,7 @@ const StyledHeader = styled.header`
 			li {
 				margin-left: 40px;
 				font-size: 1.2em;
-				font-weight: bold;
+				font-weight: 300;
 				font-family: Roboto;
 				text-transform: uppercase;
 			}

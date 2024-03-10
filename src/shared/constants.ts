@@ -6,8 +6,8 @@ import { version } from '../../package.json'
 export const API_URL = import.meta.env.VITE_API_URL
 export const CDN_URL = import.meta.env.VITE_CDN_URL
 
-export const CDN_IMG = `${CDN_URL}/assets/static/images`
-export const ICON_LOGO_URL = '/assets/static/images/wish-edu-blue-round-box-logo.webp'
+export const CDN_STATIC_IMG = `${CDN_URL}/assets/static/images`
+export const ICON_LOGO_URL = `${CDN_STATIC_IMG}/wish-edu-blue-round-box-logo.webp`
 
 // Other
 
