@@ -9,9 +9,11 @@
 3. [`git`](https://git-scm.com/)
 4. Install all dependencies `package.json`
 
+**Warning**: before use `pn` command, need to read alias (check `.bashrc`)
+
 ```sh
 cd personal-account-frontend
-source .bashrc && pn i
+source .bashrc && pn i $ --shamefully-flatten
 ```
 
 ## Dev mode
