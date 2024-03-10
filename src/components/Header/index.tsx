@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { APP_VERSION, ICON_LOGO_URL } from '../../shared/constants'
 import Paths from '../../shared/paths'
 
-import CustomNavLink from '../CustomLink/CustomNavLink'
+import CustomNavLink from '../CustomLink'
 
 import StyledHeader from './styles'
 
@@ -38,6 +38,7 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 				<span className="header__logo--logo-name">WISH EDU</span>
 				{/* TODO: add checkbox in settings to turn on/off display version */}
 				{/* TODO: create theme switcher */}
+				{/* TODO: make header fixed ? */}
 				<span className="header__logo-text--version">{APP_VERSION}</span>
 			</CustomNavLink>
 			<nav>

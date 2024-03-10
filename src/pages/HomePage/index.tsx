@@ -7,9 +7,7 @@ import Paths from '../../shared/paths'
 
 import MainLayout from '../../layouts/MainLayout'
 
-import Button from '../../components/Button'
-
-import { StyledHomePageNoAuth } from './styles'
+import { StyledButton, StyledHomePageNoAuth } from './styles'
 
 const HomePage: React.FC = () => {
 	const navigate = useNavigate()
@@ -34,9 +32,14 @@ const HomePage: React.FC = () => {
 							Инновационное решение для академии ВИШ, собственная платформа обучения для студентов. Это не просто
 							СДО, это — WISH EDU!
 						</p>
-						<Button textColor={Colors.WHITE} color={Colors.BLUE_WISH} onClick={handleClickNavigate}>
+						<StyledButton
+							onClick={handleClickNavigate}
+							width="250px"
+							textColor={Colors.WHITE}
+							color={Colors.BLUE_WISH}
+						>
 							Получить доступ
-						</Button>
+						</StyledButton>
 					</section>
 					<section>
 						<img src={`${CDN_STATIC_IMG}/greetings-pic.webp`} alt="🔗" />

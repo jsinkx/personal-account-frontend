@@ -36,6 +36,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 	width: ${({ $width }) => $width};
 	margin: 0;
 	padding: 10px 20px;
+	text-align: center;
 	font-weight: bold;
 	border-radius: 20px;
 	cursor: pointer;

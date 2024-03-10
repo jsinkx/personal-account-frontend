@@ -22,7 +22,7 @@ const Helmet: React.FC<MainLayoutProps> = ({
 
 	return (
 		<ReactHelmet>
-			<title> {_title} </title>
+			<title> {title} </title>
 			<meta name="description" content={description} />
 			<meta name="keywords" content={[...DEFAULT_KEYWORDS, ...keywords].join(', ')} />
 			<meta property="og:type" content="website" />

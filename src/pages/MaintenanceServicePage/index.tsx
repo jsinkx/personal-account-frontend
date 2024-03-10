@@ -16,10 +16,11 @@ const MaintenanceServicePage: React.FC = () => {
 	]
 
 	return (
-		<CleanLayout title="Техобслуживание" description="Мы устраняем все проблемы и делаем наши сервисы лучше">
+		<CleanLayout title="Тех.обслуживание" description="Мы устраняем все проблемы и делаем наши сервисы лучше">
 			<StyledNotFoundPage>
 				<h1> Сервера находятся на техническом обслуживании. Приносим извинения. </h1>
 				<p> Мы устраняем проблемы и делаем наши сервисы лучше! Stay tune.</p>
+				{/* TODO: Use local pictures, instead from CDN */}
 				<img src={`${CDN_STATIC_IMG}/${IMAGES_URL[getRandomInt(0, IMAGES_URL.length - 1)]}`} alt="xP" />
 			</StyledNotFoundPage>
 		</CleanLayout>
