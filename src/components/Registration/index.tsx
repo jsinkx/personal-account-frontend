@@ -1,14 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/order
+import checkFieldsValidity from '../../utils/react-hook-form/check-fields-validity'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
-import { FirstStepInputs, SecondStepInputs } from './types'
+import { FirstStepInputs, FirstStepKeys, SecondStepInputs, SecondStepKeys } from './types'
+
+import Colors from '../../shared/colors'
+import Paths from '../../shared/paths'
 
 import Button from '../Button'
+import CustomNavLink from '../CustomLink'
+import IconButton from '../IconButton'
+import ArrowBackIcon from '../Icons/ArrowIBackIcon'
+import Logo from '../Logo'
 
 import FirstStepRegistration from './FirstStepRegistration'
 import SecondStepRegistration from './SecondStepRegistration'
@@ -16,23 +21,16 @@ import StyledRegistration, { StyledStep } from './styles'
 
 type RegistrationProps = React.ComponentPropsWithoutRef<'div'>
 
-// {
-//     "login": str,  # [a-z0-9_]{4,32}
-//     "password": str,  # ((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,20})
-//     "email": str,  # ^(.+)@(.+)\.(.+)$
-//     "first_name": str,  # [А-Я]{1}[а-я ]{1,255}
-//     "last_name": str,  # [А-Я]{1}[а-я ]{1,255}
-//     "patronymic": str,  # [А-Я]{1}[а-я ]{1,255}
-//     "birthday": str  # (19|20)\d\d-((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])-30|(0[13578]|1[02])-31)
-// }
-
 type FormRegisterValues = FirstStepInputs & SecondStepInputs
 
 const MAX_STEPS = 2
 
 const Registration: React.FC<RegistrationProps> = ({ ...props }) => {
+	const navigate = useNavigate()
+
 	const {
 		register,
+		watch,
 		handleSubmit,
 		formState: { isValid, errors },
 	} = useForm<FormRegisterValues>({
@@ -45,78 +43,100 @@ const Registration: React.FC<RegistrationProps> = ({ ...props }) => {
 			firstName: '',
 			lastName: '',
 			patronymic: '',
-			birthday: '',
 		},
 	})
 	const [currentStep, setCurrentStep] = useState(1)
 
-	// const checkValidity = async () => {
-	// 	let isValid = false
-
-	// 	switch (currentStep) {
-	// 		case 1:
-	// 			isValid = await trigger(['login', 'email', 'password', 'passwordConfirm'])
-	// 			break
-	// 		case 2:
-	// 			isValid = await trigger(['firstName', 'lastName'])
-	// 			break
-	// 		default:
-	// 			isValid = false
-	// 	}
-
-	// 	return isValid
-	// }
-
-	// const [agreeIsChecked, setAgreeIsChecked] = useState(false)
+	const [agreeIsChecked, setAgreeIsChecked] = useState(false)
 
 	const isLastStep = currentStep === MAX_STEPS
 
+	// Help functions
+
 	const onSubmit: SubmitHandler<FormRegisterValues> = (data) => console.log(data)
+
+	const checkValidity = (step: number) => {
+		const errorFields = Object.keys(errors)
+
+		switch (step) {
+			case 1:
+				const firstStepFields: FirstStepKeys = ['login', 'email', 'password', 'passwordConfirm']
+
+				return checkFieldsValidity(firstStepFields, errorFields, watch)
+			case 2:
+				const secondStepFields: SecondStepKeys = ['firstName', 'lastName', 'patronymic']
+
+				return checkFieldsValidity(secondStepFields, errorFields, watch)
+			default:
+				return false
+		}
+	}
+
+	// Handlers
 
 	const handleClickBackStep: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault()
 		currentStep > 1 && setCurrentStep((p) => p - 1)
 	}
 
-	const handleClickNextStep: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-		event.preventDefault()
+	const handleClickNextStep: React.MouseEventHandler<HTMLButtonElement> = () =>
 		!isLastStep && setCurrentStep((p) => p + 1)
-	}
 
-	console.log('Errors', errors)
+	console.log(errors)
 
 	return (
 		<StyledRegistration {...props}>
-			<h2> Регистрация </h2>
+			<CustomNavLink className="header__logo" to={Paths.home}>
+				<Logo />
+			</CustomNavLink>
+			<nav className="registration__navigation">
+				<Button
+					onClick={() => navigate(Paths.login)}
+					variant="contained"
+					className="registration__navigation__button"
+				>
+					Войти
+				</Button>
+				<Button disabled variant="text" className="registration__navigation__button">
+					Регистрация
+				</Button>
+			</nav>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="registration__step-info">
-					<Button
+					<IconButton
 						disabled={!(currentStep > 1)}
 						onClick={handleClickBackStep}
-						variant="text"
-						className="registration__buttons--back-button"
+						className="registration__step-info--back-button"
 					>
-						{'<'}
-					</Button>
+						<ArrowBackIcon size="100px" color={Colors.BLUE_WISH} />
+					</IconButton>
 					<span>
 						Шаг {currentStep} из {MAX_STEPS}
 					</span>
 				</div>
 				{/* On unmount we lose our register, so we need to use display hidden */}
 				{/* TODO: FIX: dont use inline styles in reason that cant be adaptive for small screens styles */}
-				{/* TODO: error showing */}
 				<StyledStep $isActive={currentStep === 1}>
-					<FirstStepRegistration register={register} />
+					<FirstStepRegistration register={register} watch={watch} errors={errors} />
 				</StyledStep>
 				<StyledStep $isActive={currentStep === 2}>
-					<SecondStepRegistration register={register} />
+					<SecondStepRegistration register={register} errors={errors} />
 				</StyledStep>
-				{/* TODO: disable button, if fields on current step are not valid */}
-				{/* TODO: FIX: all buttons with any tipe in form submit */}
+				{currentStep === MAX_STEPS && (
+					<div className="registration--agree">
+						{/* TODO: Create checkbox component */}
+						<input type="checkbox" checked={agreeIsChecked} onChange={() => setAgreeIsChecked((p) => !p)} />
+						Согласны с
+						<CustomNavLink to={Paths.termsAndConditions} className="registration--agree__navlink">
+							правилами и условиями
+						</CustomNavLink>
+					</div>
+				)}
+
 				<Button
-					disabled={currentStep === MAX_STEPS && !isValid}
-					type={isLastStep ? 'submit' : 'button'}
 					onClick={handleClickNextStep}
+					disabled={currentStep === MAX_STEPS ? !isValid || !agreeIsChecked : !checkValidity(currentStep)}
+					type={isLastStep ? 'submit' : 'button'}
 					width="100%"
 					height="45px"
 				>

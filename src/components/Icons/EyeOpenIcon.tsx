@@ -1,11 +1,10 @@
 import React from 'react'
 
+import IconProps from './types'
+
 import Colors from '../../shared/colors'
 
-type EyeOpenIconProps = {
-	size?: string
-	color?: string
-} & React.ComponentPropsWithoutRef<'svg'>
+type EyeOpenIconProps = IconProps & React.ComponentPropsWithoutRef<'svg'>
 
 const EyeOpenIcon: React.FC<EyeOpenIconProps> = ({ size = '20px', color = Colors.BLACK, ...props }) => {
 	return (

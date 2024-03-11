@@ -4,23 +4,11 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-import IconButton from '../IconButton'
-
 type StyledInputWrapperProps = {
 	$inputHeight: string
 	$inputWidth: string
 	$disabled: boolean
 }
-
-export const StyledIconButton = styled(IconButton)`
-	border: none;
-	background: transparent;
-
-	&:hover {
-		border: none;
-		background: transparent;
-	}
-`
 
 const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 	display: flex;

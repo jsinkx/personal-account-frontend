@@ -1,11 +1,10 @@
 import React from 'react'
 
+import IconProps from './types'
+
 import Colors from '../../shared/colors'
 
-type EyeCloseIconProps = {
-	size?: string
-	color?: string
-} & React.ComponentPropsWithoutRef<'svg'>
+type EyeCloseIconProps = IconProps & React.ComponentPropsWithoutRef<'svg'>
 
 const EyeCloseIcon: React.FC<EyeCloseIconProps> = ({ size = '20px', color = Colors.BLACK, ...props }) => {
 	return (

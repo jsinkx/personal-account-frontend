@@ -19,6 +19,9 @@ const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '../
 const RegistrationPage = React.lazy(
 	() => import(/* webpackChunkName: "RegistrationPage" */ '../../pages/RegistrationPage'),
 )
+const TermsAndConditionsPage = React.lazy(
+	() => import(/* webpackChunkName: "TermsAndConditionsPage" */ '../../pages/TermsAndConditionsPage'),
+)
 
 const router = createBrowserRouter([
 	{
@@ -42,13 +45,18 @@ const router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 	},
 	{
-		path: Paths.maintenanceService,
-		element: <MaintenanceServicePage />,
+		path: Paths.termsAndConditions,
+		element: <TermsAndConditionsPage />,
 		errorElement: <NotFoundPage />,
 	},
 	{
 		path: Paths.any,
 		element: <NotFoundPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.maintenanceService,
+		element: <MaintenanceServicePage />,
 		errorElement: <NotFoundPage />,
 	},
 	{

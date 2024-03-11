@@ -10,7 +10,6 @@ export type ButtonProps = {
 	height?: string
 	textColor?: string
 	color?: string
-	children: React.ReactNode
 	disabled?: boolean
 } & React.ComponentPropsWithRef<'button'>
 

@@ -5,9 +5,12 @@ export type FirstStepInputs = {
 	passwordConfirm: string
 }
 
+export type FirstStepKeys = (keyof FirstStepInputs)[]
+
 export type SecondStepInputs = {
 	firstName: string
 	lastName: string
 	patronymic: string
-	birthday: string
 }
+
+export type SecondStepKeys = (keyof SecondStepInputs)[]

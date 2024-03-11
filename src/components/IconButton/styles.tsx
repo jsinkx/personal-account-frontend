@@ -4,12 +4,18 @@ import Button from '../Button'
 
 const StyledIconButton = styled(Button)`
 	padding: 3px;
-	background-color: initial;
-	box-sizing: border-box;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	background: transparent;
 	transition: 0.2s all ease-in-out;
+	box-sizing: border-box;
 
 	&:hover {
-		background-color: #00000038;
+		opacity: 0.5;
+		border: none;
+		background: transparent;
 	}
 `
 

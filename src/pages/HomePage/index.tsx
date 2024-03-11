@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
 
 	const isAuth = false
 
-	const handleClickNavigate = () => navigate(Paths.login)
+	const handleClickNavigate = () => navigate(Paths.registration)
 
 	return (
 		<MainLayout title="Главная" description="Добро пожаловать на главную страницу!">

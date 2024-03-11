@@ -2,10 +2,10 @@ import { For, block } from 'million/react'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { APP_VERSION, ICON_LOGO_URL } from '../../shared/constants'
 import Paths from '../../shared/paths'
 
 import CustomNavLink from '../CustomLink'
+import Logo from '../Logo'
 
 import StyledHeader from './styles'
 
@@ -34,12 +34,7 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 	return (
 		<StyledHeader {...props}>
 			<CustomNavLink className="header__logo" to={Paths.home}>
-				<img src={ICON_LOGO_URL} alt="W" />
-				<span className="header__logo--logo-name">WISH EDU</span>
-				{/* TODO: add checkbox in settings to turn on/off display version */}
-				{/* TODO: create theme switcher */}
-				{/* TODO: make header fixed ? */}
-				<span className="header__logo-text--version">{APP_VERSION}</span>
+				<Logo />
 			</CustomNavLink>
 			<nav>
 				<ul>

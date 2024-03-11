@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledLoadingPage = styled.div`
+const StyledLoadingPage = styled.main`
 	text-align: center;
 
 	h1 {

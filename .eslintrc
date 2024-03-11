@@ -60,6 +60,8 @@
 		"no-fallthrough": 1,
 		"no-extra-boolean-cast": 1,
 		"no-mixed-operators": "off",
+		"no-case-declarations": "off",
+		"@typescript-eslint/no-unused-expressions": "off",
 		"react/no-deprecated": 0,
 		"react/no-unescaped-entities": "warn",
 		"react/no-string-refs": "warn",
