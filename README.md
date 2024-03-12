@@ -13,7 +13,8 @@
 
 ```sh
 cd personal-account-frontend
-source .bashrc && pn i $ --shamefully-flatten
+source .bashrc
+pn i $ --shamefully-flatten
 ```
 
 ## Dev mode

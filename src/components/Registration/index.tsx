@@ -9,6 +9,10 @@ import { FirstStepInputs, FirstStepKeys, SecondStepInputs, SecondStepKeys } from
 import Colors from '../../shared/colors'
 import Paths from '../../shared/paths'
 
+import { fetchAuthRegistration } from '../../redux/slices/auth/slice'
+
+import useAppDispatch from '../../hooks/useAppDispatch'
+
 import Button from '../Button'
 import CustomNavLink from '../CustomLink'
 import IconButton from '../IconButton'
@@ -26,6 +30,7 @@ type FormRegisterValues = FirstStepInputs & SecondStepInputs
 const MAX_STEPS = 2
 
 const Registration: React.FC<RegistrationProps> = ({ ...props }) => {
+	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
 	const {
@@ -53,7 +58,20 @@ const Registration: React.FC<RegistrationProps> = ({ ...props }) => {
 
 	// Help functions
 
-	const onSubmit: SubmitHandler<FormRegisterValues> = (data) => console.log(data)
+	// TODO: FIX: Stop event preventDefault for all buttons inside form
+
+	const onSubmit: SubmitHandler<FormRegisterValues> = (data) => {
+		const registrationBody = {
+			login: data.login,
+			password: data.password,
+			email: data.email,
+			first_name: data.firstName,
+			last_name: data.lastName,
+			patronymic: data.patronymic,
+		}
+
+		dispatch(fetchAuthRegistration(registrationBody))
+	}
 
 	const checkValidity = (step: number) => {
 		const errorFields = Object.keys(errors)
@@ -81,8 +99,6 @@ const Registration: React.FC<RegistrationProps> = ({ ...props }) => {
 
 	const handleClickNextStep: React.MouseEventHandler<HTMLButtonElement> = () =>
 		!isLastStep && setCurrentStep((p) => p + 1)
-
-	console.log(errors)
 
 	return (
 		<StyledRegistration {...props}>
