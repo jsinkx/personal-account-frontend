@@ -1,29 +1,28 @@
+import { block } from 'million/react'
 import React from 'react'
 import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { FirstStepInputs, SecondStepInputs } from './types'
 
-import Error from '../Error'
+import { StyledErrorInStep, StyledInput } from './styles'
 
-import { StyledInput } from './styles'
-
-type SecondStepRegistrationProps = {
+type RegistrationSecondStepProps = {
 	register: UseFormRegister<FirstStepInputs & SecondStepInputs>
 	errors: FieldErrors<FirstStepInputs & SecondStepInputs>
 }
 
-const SecondStepRegistration: React.FC<SecondStepRegistrationProps> = ({ register, errors }) => {
-	const ONLY_LETTERS_PATTERN = /^[A-Za-z]+$/i
+const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ register, errors }) => {
+	const ONLY_LETTERS_PATTERN = /^[А-Яа-я]+$/i
 
 	return (
 		<>
-			{errors.firstName?.message && <Error> {errors.firstName.message} </Error>}
+			{errors.firstName?.message && <StyledErrorInStep> {errors.firstName.message} </StyledErrorInStep>}
 			<StyledInput
 				{...register('firstName', {
 					required: 'Введите имя',
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Имя должно содержать только буквы',
+						message: 'Имя должно содержать только русские буквы',
 					},
 				})}
 				placeholder="Имя"
@@ -31,25 +30,25 @@ const SecondStepRegistration: React.FC<SecondStepRegistrationProps> = ({ registe
 				height="45px"
 			/>
 
-			{errors.lastName?.message && <Error> {errors.lastName.message} </Error>}
+			{errors.lastName?.message && <StyledErrorInStep> {errors.lastName.message} </StyledErrorInStep>}
 			<StyledInput
 				{...register('lastName', {
 					required: 'Введите фамилию',
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Фамилия должна содержать только буквы',
+						message: 'Фамилия должна содержать только русские буквы',
 					},
 				})}
 				placeholder="Фамилия"
 				autoComplete="lastName"
 				height="45px"
 			/>
-			{errors.patronymic?.message && <Error> {errors.patronymic.message} </Error>}
+			{errors.patronymic?.message && <StyledErrorInStep> {errors.patronymic.message} </StyledErrorInStep>}
 			<StyledInput
 				{...register('patronymic', {
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Отчество должно содержать только буквы',
+						message: 'Отчество должно содержать только русские буквы',
 					},
 				})}
 				placeholder="Отчество"
@@ -58,6 +57,6 @@ const SecondStepRegistration: React.FC<SecondStepRegistrationProps> = ({ registe
 			/>
 		</>
 	)
-}
+})
 
-export default SecondStepRegistration
+export default RegistrationSecondStep

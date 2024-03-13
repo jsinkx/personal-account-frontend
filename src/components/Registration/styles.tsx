@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
+import Error from '../Error'
 // import Colors from '../../shared/colors'
 import Input from '../Input'
 
@@ -17,6 +18,13 @@ export const StyledStep = styled.div<StyledStepProps>`
 	${({ $isActive }) => !$isActive && 'display: none;'}
 `
 
+export const StyledErrorInStep = styled(Error)`
+	margin-bottom: -2px;
+	border-bottom: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+`
+
 const StyledRegistration = styled.div`
 	width: 400px;
 	display: flex;
@@ -28,6 +36,10 @@ const StyledRegistration = styled.div`
 	background-color: rgba(255, 255, 255, 0.8);
 	border-radius: 10px;
 	box-sizing: border-box;
+
+	form {
+		width: 300px;
+	}
 
 	.registration__navigation {
 		margin-top: 10px;
@@ -114,6 +126,11 @@ const StyledRegistration = styled.div`
 				opacity: 0.55;
 			}
 		}
+	}
+
+	.registration--error {
+		width: 100%;
+		margin-bottom: 10px;
 	}
 `
 

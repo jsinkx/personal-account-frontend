@@ -10,7 +10,11 @@ const StyledError = styled.div`
 	border: 1px solid ${Colors.LIGHT_ERROR_RED_BORDER};
 	border-radius: 5px;
 	box-sizing: border-box;
-	user-select: none;
+
+	&::selection {
+		color: ${Colors.BLACK};
+		background-color: ${Colors.LIGHT_ERROR_RED_BORDER};
+	}
 `
 
 export default StyledError

@@ -45,6 +45,11 @@ const router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 	},
 	{
+		path: Paths.profile.static,
+		element: <HomePage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
 		path: Paths.termsAndConditions,
 		element: <TermsAndConditionsPage />,
 		errorElement: <NotFoundPage />,

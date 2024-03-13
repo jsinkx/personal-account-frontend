@@ -24,6 +24,8 @@ export type User = {
 	roles: UserRole[]
 }
 
+// Registration
+
 export type AuthRegistrationRequest = {
 	login: string
 	password: string
@@ -35,6 +37,24 @@ export type AuthRegistrationRequest = {
 
 export type AuthRegistrationResponse = User & { token: string }
 
+// Login
+
+export type AuthLoginRequest =
+	| {
+			password: string
+			login: string
+	  }
+	| {
+			password: string
+			email: string
+	  }
+
+export type AuthLoginResponse = User & { token: string }
+
+// Me
+
+export type AuthMeResponse = User & { token: string }
+
 export type AuthError = {
 	errorMessage: string
 }
@@ -44,5 +64,4 @@ export type AuthResponse = User & { token: string }
 export type AuthState = {
 	data: AuthResponse | null
 	status: Status
-	error: AuthError | null
 }

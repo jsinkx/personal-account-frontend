@@ -37,13 +37,14 @@ pn serve
 
 ## Stack
 
-- Vite
-- Typescript
-- React 18
+- vite
+- typescript
+- react 18
 - million
 - react-router-dom
 - react-helmet-async
 - react-hook-form
+- redux toolkit
 - styled-components
 - axios
 
