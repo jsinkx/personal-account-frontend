@@ -39,15 +39,10 @@ export type AuthRegistrationResponse = User & { token: string }
 
 // Login
 
-export type AuthLoginRequest =
-	| {
-			password: string
-			login: string
-	  }
-	| {
-			password: string
-			email: string
-	  }
+export type AuthLoginRequest = {
+	login: string
+	password: string
+}
 
 export type AuthLoginResponse = User & { token: string }
 

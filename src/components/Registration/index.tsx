@@ -135,6 +135,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 		handleDirtySubmit(onSubmit)()
 	}
 
+	// TODO: FIX: take useEffect out in page part
 	useEffect(() => {
 		if (isAuth) {
 			navigate(Paths.profile.dynamic(authData.id))

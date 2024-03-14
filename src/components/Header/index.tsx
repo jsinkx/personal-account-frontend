@@ -1,9 +1,16 @@
 import { For, block } from 'million/react'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
 import Paths from '../../shared/paths'
 
+import { selectAuthData } from '../../redux/slices/auth/selectors'
+import { logout } from '../../redux/slices/auth/slice'
+
+import useAppSelector from '../../hooks/useAppSelector'
+
+import Button from '../Button'
 import CustomNavLink from '../CustomLink'
 import Logo from '../Logo'
 
@@ -27,9 +34,18 @@ const NAVIGATION_ELEMENTS = [
 ]
 
 const Header: React.FC<HeaderProps> = block(({ ...props }) => {
+	const dispatch = useDispatch()
 	const location = useLocation()
 
-	const isAuth = false
+	const authData = useAppSelector(selectAuthData)
+
+	const isAuth = !!authData
+
+	const handleClickLogout = () => {
+		dispatch(logout())
+
+		window.localStorage.removeItem('token')
+	}
 
 	return (
 		<StyledHeader {...props}>
@@ -48,11 +64,18 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 						)}
 					</For>
 					{isAuth ? (
-						<li>
-							<CustomNavLink to={Paths.home} state={{ from: location.pathname }}>
-								{'{ login }'}
-							</CustomNavLink>
-						</li>
+						<>
+							<li>
+								<CustomNavLink to={Paths.profile.dynamic(authData.id)} state={{ from: location.pathname }}>
+									Профиль
+								</CustomNavLink>
+							</li>
+							<li>
+								<Button className="header__navigation__logout" variant="text" onClick={handleClickLogout}>
+									Выйти
+								</Button>
+							</li>
+						</>
 					) : (
 						<li>
 							<CustomNavLink to={Paths.login} state={{ from: location.pathname }}>

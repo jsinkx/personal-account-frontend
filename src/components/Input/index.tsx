@@ -29,6 +29,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 			<EyeOpenIcon size={EYE_ICON_SIZE} color={EYE_ICON_COLOR} />
 		)
 
+		const handleClickIconButton: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+			event.preventDefault()
+			setIsShowPassword((p) => !p)
+		}
+
 		return (
 			<StyledInputWrapper
 				$inputHeight={height}
@@ -43,7 +48,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				*/}
 				<input type={!isShowPassword ? type : 'text'} disabled={disabled} ref={ref} {...props} />
 				{type === 'password' ? (
-					<IconButton size={EYE_ICON_SIZE} onClick={() => setIsShowPassword((p) => !p)}>
+					<IconButton size={EYE_ICON_SIZE} onClick={handleClickIconButton}>
 						{SwitchEyeIcon}
 					</IconButton>
 				) : null}

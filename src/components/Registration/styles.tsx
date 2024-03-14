@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Colors from '../../shared/colors'
 
 import Error from '../Error'
-// import Colors from '../../shared/colors'
 import Input from '../Input'
 
 export const StyledInput = styled(Input)`
@@ -49,40 +48,9 @@ const StyledRegistration = styled.div`
 		.registration__navigation__button {
 			margin-inline: 10px;
 		}
-	}
 
-	.header__logo {
-		margin-bottom: 20px;
-		display: flex;
-		align-items: center;
-		user-select: none;
-		color: black;
-		transition: all 0.3s ease;
-
-		img {
-			width: 60px;
-			height: 60px;
-			user-select: none;
-		}
-
-		&:hover,
-		:active,
-		:focus {
-			color: ${Colors.BLUE_WISH};
-		}
-
-		.header__logo--logo-name {
-			margin-left: 10px;
-			font-size: 2em;
-			font-family: Roboto;
-			font-weight: bold;
-		}
-
-		.header__logo-text--version {
-			margin-left: 10px;
-			color: ${Colors.INACTIVE_GREY_FONT};
-			font-size: 1.2em;
-			font-family: Consolas;
+		.registration__navigation__button--active {
+			opacity: 1;
 		}
 	}
 

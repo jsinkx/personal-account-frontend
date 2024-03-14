@@ -10,14 +10,10 @@ const RegistrationNavigation: React.FC = () => {
 
 	return (
 		<nav className="registration__navigation">
-			<Button
-				onClick={() => navigate(Paths.login)}
-				variant="contained"
-				className="registration__navigation__button"
-			>
+			<Button onClick={() => navigate(Paths.login)} variant="text" className="registration__navigation__button">
 				Войти
 			</Button>
-			<Button disabled variant="text" className="registration__navigation__button">
+			<Button disabled variant="contained" className="registration__navigation__button--active">
 				Регистрация
 			</Button>
 		</nav>

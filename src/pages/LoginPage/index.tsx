@@ -3,9 +3,9 @@ import React, { useEffect } from 'react'
 import CleanLayout from '../../layouts/CleanLayout'
 
 import BubblesBackground from './BubblesBackground'
-import StyledRegistrationPage, { StyledRegistration } from './styles'
+import StyledLoginPage, { StyledLogin } from './styles'
 
-const RegistrationPage: React.FC = () => {
+const LoginPage: React.FC = () => {
 	// TODO: If form had not null values, use unloadCallBack, also
 	// TODO: Save typed values in inputs while session alive
 	useEffect(() => {
@@ -21,13 +21,13 @@ const RegistrationPage: React.FC = () => {
 	}, [])
 
 	return (
-		<CleanLayout title="Регистрация" description="Создание учетной записи в экосистеме WISH EDU">
-			<StyledRegistrationPage>
+		<CleanLayout title="Авторизация" description="Вход в учетную запись экосистемы WISH EDU">
+			<StyledLoginPage>
 				<BubblesBackground />
-				<StyledRegistration />
-			</StyledRegistrationPage>
+				<StyledLogin />
+			</StyledLoginPage>
 		</CleanLayout>
 	)
 }
 
-export default RegistrationPage
+export default LoginPage

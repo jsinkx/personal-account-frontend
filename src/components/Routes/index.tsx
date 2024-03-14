@@ -19,6 +19,9 @@ const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '../
 const RegistrationPage = React.lazy(
 	() => import(/* webpackChunkName: "RegistrationPage" */ '../../pages/RegistrationPage'),
 )
+
+const LoginPage = React.lazy(() => import(/* webpackChunkName: "LoginPage" */ '../../pages/LoginPage'))
+
 const TermsAndConditionsPage = React.lazy(
 	() => import(/* webpackChunkName: "TermsAndConditionsPage" */ '../../pages/TermsAndConditionsPage'),
 )
@@ -42,6 +45,11 @@ const router = createBrowserRouter([
 	{
 		path: Paths.registration,
 		element: <RegistrationPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.login,
+		element: <LoginPage />,
 		errorElement: <NotFoundPage />,
 	},
 	{

@@ -12,7 +12,7 @@ type RegistrationSecondStepProps = {
 }
 
 const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ register, errors }) => {
-	const ONLY_LETTERS_PATTERN = /^[А-Яа-я]+$/i
+	const ONLY_LETTERS_PATTERN = /^[А-ЯЁа-яё]+$/i
 
 	return (
 		<>

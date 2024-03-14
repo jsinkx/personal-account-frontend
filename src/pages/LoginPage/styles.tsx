@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-import Registration from '../../components/Registration'
+import Login from '../../components/Login'
 
 export const StyledBubblesBackground = styled.div`
 	@keyframes move {
@@ -169,10 +169,10 @@ export const StyledBubblesBackground = styled.div`
 	}
 `
 
-export const StyledRegistration = styled(Registration)`
+export const StyledLogin = styled(Login)`
 	margin: 18vh auto;
 `
 
-const StyledRegistrationPage = styled.main``
+const StyledLoginPage = styled.main``
 
-export default StyledRegistrationPage
+export default StyledLoginPage

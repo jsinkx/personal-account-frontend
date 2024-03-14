@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Colors from '../../shared/colors'
+
 const StyledHeader = styled.header`
 	padding: 15px;
 	display: flex;
@@ -28,6 +30,11 @@ const StyledHeader = styled.header`
 				font-weight: bold;
 				font-family: Roboto;
 				text-transform: uppercase;
+			}
+
+			.header__navigation__logout {
+				padding: 0;
+				color: ${Colors.RED};
 			}
 		}
 	}
