@@ -22,6 +22,8 @@ const RegistrationPage = React.lazy(
 
 const LoginPage = React.lazy(() => import(/* webpackChunkName: "LoginPage" */ '../../pages/LoginPage'))
 
+const ProfilePage = React.lazy(() => import(/* webpackChunkName: "ProfilePage" */ '../../pages/ProfilePage'))
+
 const TermsAndConditionsPage = React.lazy(
 	() => import(/* webpackChunkName: "TermsAndConditionsPage" */ '../../pages/TermsAndConditionsPage'),
 )
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: Paths.profile.static,
-		element: <HomePage />,
+		element: <ProfilePage />,
 		errorElement: <NotFoundPage />,
 	},
 	{

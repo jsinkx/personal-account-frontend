@@ -35,6 +35,7 @@ const StyledHeader = styled.header`
 			.header__navigation__logout {
 				padding: 0;
 				color: ${Colors.RED};
+				text-transform: uppercase;
 			}
 		}
 	}

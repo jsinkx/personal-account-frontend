@@ -5,19 +5,12 @@ import Colors from '../../shared/colors'
 import { CDN_STATIC_IMG } from '../../shared/constants'
 import Paths from '../../shared/paths'
 
-import { selectAuthData } from '../../redux/slices/auth/selectors'
-
-import useAppSelector from '../../hooks/useAppSelector'
-
 import MainLayout from '../../layouts/MainLayout'
 
 import { StyledButton, StyledHomePageNoAuth } from './styles'
 
 const HomePage: React.FC = () => {
 	const navigate = useNavigate()
-
-	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-	const authData = useAppSelector(selectAuthData)
 
 	const isAuth = false // !!authData
 
