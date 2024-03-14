@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const StyledNotFoundPage = styled.main`
 	text-align: center;
+	user-select: none;
 
 	h1 {
 		margin-top: 20vh;

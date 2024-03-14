@@ -10,9 +10,8 @@ export type ButtonProps = {
 	height?: string
 	textColor?: string
 	color?: string
-	children: React.ReactNode
 	disabled?: boolean
-} & React.ComponentPropsWithoutRef<'button'>
+} & React.ComponentPropsWithRef<'button'>
 
 const Button: React.FC<ButtonProps> = ({
 	children,
@@ -20,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
 	width = 'auto',
 	height = 'auto',
 	textColor = Colors.WHITE,
-	color = Colors.BLACK,
+	color = Colors.BLUE_WISH,
 	disabled,
 	...props
 }) => {

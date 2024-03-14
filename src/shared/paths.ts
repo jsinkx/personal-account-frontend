@@ -2,10 +2,17 @@ const Paths = {
 	home: '/',
 	about: '/about',
 	contact: '/contact',
+	termsAndConditions: '/terms&conditions',
+	registration: '/registration',
 	login: '/login',
-	register: '/register',
-	maintenanceService: '/maintenance-service',
+	profile: {
+		static: '/profile/:id',
+		dynamic(id: number) {
+			return `/profile/${id}`
+		},
+	},
 	any: '*',
+	maintenanceService: '/maintenance-service', // TODO: take it out in index.html on backend server
 	loading: '/loading', // TODO: remove
 } as const
 

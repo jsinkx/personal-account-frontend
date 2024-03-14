@@ -7,7 +7,7 @@
 			"version": "detect"
 		}
 	},
-	"ignorePatterns": ["*.mts", "vite-env.d.ts"],
+	"ignorePatterns": ["*.config.*", "vite-env.d.ts"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -35,6 +35,7 @@
 	"rules": {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-throw-literal": "off",
 		"arrow-parens": "off",
 		"arrow-body-style": "off",
 		"function-paren-newline": "off",
@@ -60,6 +61,10 @@
 		"no-fallthrough": 1,
 		"no-extra-boolean-cast": 1,
 		"no-mixed-operators": "off",
+		"no-case-declarations": "off",
+		"no-restricted-globals": "off",
+		"no-control-regex": "off",
+		"@typescript-eslint/no-unused-expressions": "off",
 		"react/no-deprecated": 0,
 		"react/no-unescaped-entities": "warn",
 		"react/no-string-refs": "warn",
