@@ -1,4 +1,4 @@
-import { For, block } from 'million/react'
+import { For } from 'million/react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -33,7 +33,7 @@ const NAVIGATION_ELEMENTS = [
 	},
 ]
 
-const Header: React.FC<HeaderProps> = block(({ ...props }) => {
+const Header: React.FC<HeaderProps> = ({ ...props }) => {
 	const dispatch = useDispatch()
 	const location = useLocation()
 
@@ -45,6 +45,7 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 		dispatch(logout())
 
 		window.localStorage.removeItem('token')
+		window.sessionStorage.removeItem('token')
 	}
 
 	return (
@@ -52,6 +53,8 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 			<CustomNavLink className="header__logo" to={Paths.home}>
 				<Logo />
 			</CustomNavLink>
+			{/* TODO: add checkbox in settings to turn on/off display version */}
+			{/* TODO: create theme switcher */}
 			<nav>
 				<ul>
 					<For each={NAVIGATION_ELEMENTS}>
@@ -87,6 +90,6 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 			</nav>
 		</StyledHeader>
 	)
-})
+}
 
 export default Header

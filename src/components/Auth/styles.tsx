@@ -24,7 +24,7 @@ export const StyledErrorInStep = styled(Error)`
 	border-bottom-right-radius: 0;
 `
 
-const StyledRegistration = styled.div`
+const StyledAuth = styled.div`
 	width: 400px;
 	display: flex;
 	padding-block: 30px;
@@ -40,16 +40,16 @@ const StyledRegistration = styled.div`
 		width: 300px;
 	}
 
-	.registration__navigation {
+	.auth__navigation {
 		margin-top: 10px;
 		margin-bottom: 20px;
 		display: flex;
 
-		.registration__navigation__button {
+		.auth__navigation__button {
 			margin-inline: 10px;
 		}
 
-		.registration__navigation__button--active {
+		.auth__navigation__button--active {
 			opacity: 1;
 		}
 	}
@@ -59,7 +59,7 @@ const StyledRegistration = styled.div`
 		user-select: none;
 	}
 
-	.registration__step-info {
+	.auth__step-info {
 		width: 100%;
 		margin-bottom: 15px;
 		display: flex;
@@ -67,7 +67,7 @@ const StyledRegistration = styled.div`
 		font-size: 0.9em;
 		user-select: none;
 
-		.registration__step-info--back-button {
+		.auth__step-info--back-button {
 			margin-left: -5px;
 			margin-right: 5px;
 			padding: 1px;
@@ -75,18 +75,32 @@ const StyledRegistration = styled.div`
 		}
 	}
 
-	.registration--agree {
+	.auth__parameters {
 		margin-bottom: 20px;
 		display: flex;
+		flex-direction: column;
 		justify-content: left;
+		text-align: left;
 		user-select: none;
 
-		input {
-			margin-right: 5px;
-			cursor: pointer;
+		.auth--is-agree,
+		.auth--is-save-user {
+			display: flex;
+			text-align: left;
+			margin-bottom: 10px;
+			user-select: none;
+
+			input {
+				margin-right: 5px;
+				cursor: pointer;
+			}
 		}
 
-		.registration--agree__navlink {
+		.auth--is-save-user {
+			margin-bottom: 0;
+		}
+
+		.auth--is-agree__navlink {
 			margin-left: 5px;
 			color: ${Colors.BLUE_WISH};
 
@@ -96,10 +110,10 @@ const StyledRegistration = styled.div`
 		}
 	}
 
-	.registration--error {
+	.auth--error {
 		width: 100%;
 		margin-bottom: 10px;
 	}
 `
 
-export default StyledRegistration
+export default StyledAuth

@@ -4,7 +4,7 @@ import type { FieldErrors, UseFormRegister, UseFormWatch } from 'react-hook-form
 
 import { FirstStepInputs, SecondStepInputs } from './types'
 
-import { StyledErrorInStep, StyledInput } from './styles'
+import { StyledErrorInStep, StyledInput } from '../styles'
 
 type RegistrationFirstStepProps = {
 	register: UseFormRegister<FirstStepInputs & SecondStepInputs>
@@ -15,15 +15,24 @@ type RegistrationFirstStepProps = {
 const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(({ register, watch, errors }) => {
 	const passwordMatchValidation = (value: string) => value === watch('password') || 'Пароли не совпадают'
 
+	const LOGIN_PATTERN = /[a-z0-9_]/
+	const PASSWORD_PATTERN = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/
+
 	const EMAIL_PATTERN =
-		/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 	// TODO: Add availability check for login from server with debounce
 	return (
 		<>
 			{errors.login?.message && <StyledErrorInStep> {errors.login.message} </StyledErrorInStep>}
 			<StyledInput
-				{...register('login', { required: 'Введите логин' })}
+				{...register('login', {
+					required: 'Введите логин',
+					pattern: {
+						value: LOGIN_PATTERN,
+						message: 'Логин должен содержать только латинские буквы и цифры',
+					},
+				})}
 				placeholder="Логин"
 				autoComplete="login"
 				height="45px"
@@ -44,7 +53,13 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(({ reg
 			/>
 			{errors.password?.message && <StyledErrorInStep> {errors.password.message} </StyledErrorInStep>}
 			<StyledInput
-				{...register('password', { required: 'Введите пароль' })}
+				{...register('password', {
+					required: 'Введите пароль',
+					pattern: {
+						value: PASSWORD_PATTERN,
+						message: 'Пароль может содержать латинские буквы, цифры и спецсимволы',
+					},
+				})}
 				type="password"
 				placeholder="Пароль"
 				autoComplete="new-password"

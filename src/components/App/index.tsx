@@ -12,7 +12,9 @@ const App: React.FC = () => {
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		localStorage.getItem('token') && dispatch(fetchAuthMe())
+		const token = localStorage.getItem('token') || sessionStorage.getItem('token')
+
+		token && dispatch(fetchAuthMe())
 	}, [dispatch])
 
 	return (

@@ -13,7 +13,6 @@ const Paths = {
 	},
 	any: '*',
 	maintenanceService: '/maintenance-service', // TODO: take it out in index.html on backend server
-	loading: '/loading', // TODO: remove
 } as const
 
 export default Paths

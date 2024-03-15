@@ -4,7 +4,7 @@ import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { FirstStepInputs, SecondStepInputs } from './types'
 
-import { StyledErrorInStep, StyledInput } from './styles'
+import { StyledErrorInStep, StyledInput } from '../styles'
 
 type RegistrationSecondStepProps = {
 	register: UseFormRegister<FirstStepInputs & SecondStepInputs>
@@ -12,8 +12,7 @@ type RegistrationSecondStepProps = {
 }
 
 const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ register, errors }) => {
-	const ONLY_LETTERS_PATTERN = /^[А-ЯЁа-яё]+$/i
-
+	const ONLY_LETTERS_PATTERN = /[А-ЯЁ]{1}[а-яё]/
 	return (
 		<>
 			{errors.firstName?.message && <StyledErrorInStep> {errors.firstName.message} </StyledErrorInStep>}
@@ -22,7 +21,7 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ r
 					required: 'Введите имя',
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Имя должно содержать только русские буквы',
+						message: 'Имя должно содержать только русские буквы и начинаться с заглавной буквы',
 					},
 				})}
 				placeholder="Имя"
@@ -36,7 +35,7 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ r
 					required: 'Введите фамилию',
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Фамилия должна содержать только русские буквы',
+						message: 'Фамилия должна содержать только русские буквы и начинаться с заглавной буквы',
 					},
 				})}
 				placeholder="Фамилия"
@@ -48,7 +47,7 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(({ r
 				{...register('patronymic', {
 					pattern: {
 						value: ONLY_LETTERS_PATTERN,
-						message: 'Отчество должно содержать только русские буквы',
+						message: 'Отчество должно содержать только русские буквы и начинаться с заглавной буквы',
 					},
 				})}
 				placeholder="Отчество"

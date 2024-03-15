@@ -19,12 +19,9 @@ const Logo: React.FC<LogoProps> = ({
 		<StyledLogo>
 			{displayLogoIcon && <img src={ICON_LOGO_URL} alt="W" />}
 			{displayLogoText && <span className="header__logo--logo-name">WISH EDU</span>}
-			{/* TODO: add checkbox in settings to turn on/off display version */}
-			{/* TODO: create theme switcher */}
-			{/* TODO: make header fixed ? */}
 			{displayVersion && <span className="header__logo-text--version">{APP_VERSION}</span>}
 		</StyledLogo>
 	)
 }
 
-export default Logo
+export default React.memo(Logo)

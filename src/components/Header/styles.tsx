@@ -7,8 +7,11 @@ const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: ${Colors.WHITE};
 	box-sizing: border-box;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+	position: sticky;
+	top: 0;
 
 	.header__logo {
 		margin-left: 60px;
