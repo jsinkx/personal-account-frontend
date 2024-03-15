@@ -16,6 +16,18 @@ const MaintenanceServicePage = React.lazy(
 
 const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '../../pages/HomePage'))
 
+const RegistrationPage = React.lazy(
+	() => import(/* webpackChunkName: "RegistrationPage" */ '../../pages/RegistrationPage'),
+)
+
+const LoginPage = React.lazy(() => import(/* webpackChunkName: "LoginPage" */ '../../pages/LoginPage'))
+
+const ProfilePage = React.lazy(() => import(/* webpackChunkName: "ProfilePage" */ '../../pages/ProfilePage'))
+
+const TermsAndConditionsPage = React.lazy(
+	() => import(/* webpackChunkName: "TermsAndConditionsPage" */ '../../pages/TermsAndConditionsPage'),
+)
+
 const router = createBrowserRouter([
 	{
 		path: Paths.home,
@@ -33,13 +45,33 @@ const router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 	},
 	{
-		path: Paths.maintenanceService,
-		element: <MaintenanceServicePage />,
+		path: Paths.registration,
+		element: <RegistrationPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.login,
+		element: <LoginPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.profile.static,
+		element: <ProfilePage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.termsAndConditions,
+		element: <TermsAndConditionsPage />,
 		errorElement: <NotFoundPage />,
 	},
 	{
 		path: Paths.any,
 		element: <NotFoundPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.maintenanceService,
+		element: <MaintenanceServicePage />,
 		errorElement: <NotFoundPage />,
 	},
 	{

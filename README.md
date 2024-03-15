@@ -9,9 +9,12 @@
 3. [`git`](https://git-scm.com/)
 4. Install all dependencies `package.json`
 
+**Warning**: before use `pn` command, need to read alias (check `.bashrc`)
+
 ```sh
 cd personal-account-frontend
-source .bashrc && pn i
+source .bashrc
+pn i $ --shamefully-flatten
 ```
 
 ## Dev mode
@@ -34,12 +37,14 @@ pn serve
 
 ## Stack
 
-- Vite
-- Typescript
-- React 18
+- vite
+- typescript
+- react 18
 - million
 - react-router-dom
 - react-helmet-async
+- react-hook-form
+- redux toolkit
 - styled-components
 - axios
 

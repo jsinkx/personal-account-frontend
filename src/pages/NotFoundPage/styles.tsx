@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-import CustomNavLink from '../../components/CustomLink/CustomNavLink'
+import CustomNavLink from '../../components/CustomLink'
 
 export const StyledCustomNavLink = styled(CustomNavLink)`
 	color: ${Colors.BLUE_WISH};
@@ -10,6 +10,7 @@ export const StyledCustomNavLink = styled(CustomNavLink)`
 	&:hover,
 	&:active,
 	&:focus {
+		opacity: 0.77;
 	}
 `
 
@@ -30,6 +31,20 @@ const StyledNotFoundPage = styled.main`
 
 	p {
 		font-size: 1.8em;
+	}
+
+	@media (max-width: 400px) {
+		img {
+			width: 200px;
+		}
+
+		h1 {
+			font-size: 1.8em;
+		}
+
+		p {
+			font-size: 1.4em;
+		}
 	}
 `
 

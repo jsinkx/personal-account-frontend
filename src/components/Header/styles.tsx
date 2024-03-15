@@ -12,37 +12,6 @@ const StyledHeader = styled.header`
 
 	.header__logo {
 		margin-left: 60px;
-		display: flex;
-		align-items: center;
-		user-select: none;
-		color: black;
-		transition: all 0.3s ease;
-
-		&:hover,
-		:active,
-		:focus {
-			color: ${Colors.BLUE_WISH};
-		}
-
-		.header__logo--logo-name {
-			margin-left: 10px;
-			font-size: 2em;
-			font-family: Roboto;
-			font-weight: bold;
-		}
-
-		.header__logo-text--version {
-			margin-left: 10px;
-			color: ${Colors.INACTIVE_GREY_FONT};
-			font-size: 1.2em;
-			font-family: Consolas;
-		}
-	}
-
-	img {
-		width: 60px;
-		height: 60px;
-		user-select: none;
 	}
 
 	nav {
@@ -58,8 +27,14 @@ const StyledHeader = styled.header`
 			li {
 				margin-left: 40px;
 				font-size: 1.2em;
-				font-weight: 300;
+				font-weight: bold;
 				font-family: Roboto;
+				text-transform: uppercase;
+			}
+
+			.header__navigation__logout {
+				padding: 0;
+				color: ${Colors.RED};
 				text-transform: uppercase;
 			}
 		}

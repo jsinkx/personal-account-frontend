@@ -3,6 +3,12 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
+import Button from '../../components/Button'
+
+export const StyledButton = styled(Button)`
+	font-size: 1.2em;
+`
+
 export const StyledHomePageNoAuth = styled.div`
 	width: 100%;
 	margin-top: 100px;

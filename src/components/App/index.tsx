@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
+
+import { fetchAuthMe } from '../../redux/slices/auth/slice'
+
+import useAppDispatch from '../../hooks/useAppDispatch'
 
 import GlobalStyles from '../GlobalStyles'
 import Routes from '../Routes'
 
 const App: React.FC = () => {
+	const dispatch = useAppDispatch()
+
+	useEffect(() => {
+		localStorage.getItem('token') && dispatch(fetchAuthMe())
+	}, [dispatch])
+
 	return (
 		<div className="app">
 			<HelmetProvider>
