@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
+import { LOGIN_MISSED_VALUE_MESSAGE } from '../../../shared/messages/login-messages'
+import { UNKNOWN_ERROR_MESSAGE } from '../../../shared/messages/main-messages'
 import Paths from '../../../shared/paths'
 import Status from '../../../shared/status'
 
@@ -67,7 +69,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 
 			navigate(Paths.profile.dynamic(data.id))
 		} catch (_err) {
-			const err = isErrorWithMessage(_err) ? _err.errorMessage : 'Произошла неизвестная ошибка'
+			const err = isErrorWithMessage(_err) ? _err.errorMessage : UNKNOWN_ERROR_MESSAGE
 
 			setError(err)
 		}
@@ -84,7 +86,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 			<form onSubmit={handleSubmit}>
 				<StyledInput
 					{...register('login', {
-						required: 'Введите логин или почту',
+						required: LOGIN_MISSED_VALUE_MESSAGE,
 					})}
 					placeholder="Логин или почта"
 					autoComplete="login"
@@ -99,7 +101,11 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 				/>
 				{error !== null && <Error className="login--error">{error}</Error>}
 				<div className="auth__parameters">
-					<AuthSaveUser saveUserIsChecked={saveUserIsChecked} setSaveUserIsChecked={setSaveUserIsChecked} />
+					<AuthSaveUser
+						saveUserIsChecked={saveUserIsChecked}
+						setSaveUserIsChecked={setSaveUserIsChecked}
+						disabled={status === Status.LOADING}
+					/>
 				</div>
 				<Button disabled={isDisabledButton} type="submit" width="100%" height="45px">
 					Войти

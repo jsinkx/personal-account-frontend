@@ -1,12 +1,13 @@
 // eslint-disable-next-line import/order
-import checkFieldsValidity from '../../../utils/react-hook-form/check-fields-validity'
+import isValidFields from '../../../utils/react-hook-form/is-valid-fields'
 import { block } from 'million/react'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { FirstStepInputs, FirstStepKeys, SecondStepInputs, SecondStepKeys } from './types'
+import type { FirstStepKeys, FormRegistrationValues, SecondStepKeys } from './types'
 
+import { UNKNOWN_ERROR_MESSAGE } from '../../../shared/messages/main-messages'
 import Paths from '../../../shared/paths'
 import Status from '../../../shared/status'
 
@@ -31,8 +32,6 @@ import StepInfo from './StepInfo'
 
 type RegistrationProps = React.ComponentPropsWithoutRef<'div'>
 
-type FormRegisterValues = FirstStepInputs & SecondStepInputs
-
 const MAX_STEPS = 2
 
 const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
@@ -51,9 +50,12 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 	const {
 		register,
 		watch,
+		getValues,
+		// getFieldState,
+		trigger,
 		handleSubmit: handleDirtySubmit,
 		formState: { isValid, errors },
-	} = useForm<FormRegisterValues>({
+	} = useForm<FormRegistrationValues>({
 		mode: 'onChange',
 		defaultValues: {
 			login: '',
@@ -62,22 +64,24 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 			passwordConfirm: '',
 			firstName: '',
 			lastName: '',
-			patronymic: '',
 		},
 	})
 
-	const checkValidity = (step: number) => {
+	const isValidFieldsOnStep = (step: number) => {
 		const errorFields = Object.keys(errors)
+
+		// FIX: Function watch is reason in a lot of rerenders
+		// getValues doesn't do extra renders, but also doesn't detect input changes sometimes
 
 		switch (step) {
 			case 1:
 				const firstStepFields: FirstStepKeys = ['login', 'email', 'password', 'passwordConfirm']
 
-				return checkFieldsValidity(firstStepFields, errorFields, watch)
+				return isValidFields(firstStepFields, errorFields, watch)
 			case 2:
 				const secondStepFields: SecondStepKeys = ['firstName', 'lastName', 'patronymic']
 
-				return checkFieldsValidity(secondStepFields, errorFields, watch)
+				return isValidFields(secondStepFields, errorFields, watch)
 			default:
 				return false
 		}
@@ -86,11 +90,9 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 	const isDisabledButton =
 		status === Status.LOADING || currentStep === MAX_STEPS
 			? !isValid || !agreeIsChecked
-			: !checkValidity(currentStep)
+			: !isValidFieldsOnStep(currentStep)
 
-	// FIX: NEED FAST PERFORMANCE BUG FIX, BAD RENDER ON CHANGE VALUES !!!
-
-	const onSubmit: SubmitHandler<FormRegisterValues> = async (values) => {
+	const onSubmit: SubmitHandler<FormRegistrationValues> = async (values) => {
 		const { login, password, email, patronymic } = values
 		const registrationBody = {
 			login,
@@ -111,13 +113,16 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 
 			navigate(Paths.profile.dynamic(data.id))
 		} catch (_err) {
-			const err = isErrorWithMessage(_err) ? _err.errorMessage : 'Произошла неизвестная ошибка'
+			const err = isErrorWithMessage(_err) ? _err.errorMessage : UNKNOWN_ERROR_MESSAGE
 
 			setError(err)
 		}
 	}
 
 	// Handlers
+
+	// We can call handleChangeThrottledInput onChange in inputs instead of auto call
+	const handleChangeThrottledInput: React.ChangeEventHandler<HTMLInputElement> = () => {} // checkValidity()
 
 	const handleClickStepBack: React.MouseEventHandler<HTMLButtonElement> = () =>
 		currentStep > 1 && setCurrentStep((p) => p - 1)
@@ -140,17 +145,37 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 				{/* On unmount we lose our register, so we need to use display hidden */}
 				<StepInfo maxSteps={MAX_STEPS} currentStep={currentStep} handleClickStepBack={handleClickStepBack} />
 				<StyledStep $isActive={currentStep === 1}>
-					<FirstStepRegistration register={register} watch={watch} errors={errors} />
+					<FirstStepRegistration
+						watch={watch}
+						register={register}
+						errors={errors}
+						getFieldState={trigger}
+						getValues={getValues}
+						handleCheckValidity={handleChangeThrottledInput}
+					/>
 				</StyledStep>
 				<StyledStep $isActive={currentStep === 2}>
-					<SecondStepRegistration register={register} errors={errors} />
+					<SecondStepRegistration
+						register={register}
+						errors={errors}
+						handleCheckValidity={handleChangeThrottledInput}
+					/>
 				</StyledStep>
 				{currentStep === MAX_STEPS && (
 					<div className="auth__parameters">
-						<AuthServiceAgree agreeIsChecked={agreeIsChecked} setAgreeIsChecked={setAgreeIsChecked} />
-						<AuthSaveUser saveUserIsChecked={saveUserIsChecked} setSaveUserIsChecked={setSaveUserIsChecked} />
+						<AuthServiceAgree
+							agreeIsChecked={agreeIsChecked}
+							setAgreeIsChecked={setAgreeIsChecked}
+							disabled={status === Status.LOADING}
+						/>
+						<AuthSaveUser
+							saveUserIsChecked={saveUserIsChecked}
+							setSaveUserIsChecked={setSaveUserIsChecked}
+							disabled={status === Status.LOADING}
+						/>
 					</div>
 				)}
+
 				{error !== null && <Error className="auth--error">{error}</Error>}
 				<Button
 					onClick={!isLastStep ? handleClickNextStep : undefined}

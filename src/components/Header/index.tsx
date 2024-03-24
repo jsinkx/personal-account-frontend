@@ -1,4 +1,4 @@
-import { For } from 'million/react'
+import { For, block } from 'million/react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -33,7 +33,7 @@ const NAVIGATION_ELEMENTS = [
 	},
 ]
 
-const Header: React.FC<HeaderProps> = ({ ...props }) => {
+const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 	const dispatch = useDispatch()
 	const location = useLocation()
 
@@ -90,6 +90,6 @@ const Header: React.FC<HeaderProps> = ({ ...props }) => {
 			</nav>
 		</StyledHeader>
 	)
-}
+})
 
 export default Header

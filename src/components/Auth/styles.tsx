@@ -110,6 +110,16 @@ const StyledAuth = styled.div`
 		}
 	}
 
+	.auth__login__availability-message {
+		margin-left: 5px;
+		margin-bottom: 2px;
+		text-align: left;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		user-select: none;
+	}
+
 	.auth--error {
 		width: 100%;
 		margin-bottom: 10px;

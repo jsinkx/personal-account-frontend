@@ -32,8 +32,6 @@ const RegistrationPage: React.FC = () => {
 	const authData = useAppSelector(selectAuthData)
 	const isAuth = !!authData
 
-	// TODO: If form had not null values, use unloadCallBack (check from sessionStorage)
-
 	useEffect(() => {
 		if (isAuth) {
 			navigate(Paths.profile.dynamic(authData.id))
