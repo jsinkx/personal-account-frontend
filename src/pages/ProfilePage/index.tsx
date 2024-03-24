@@ -24,8 +24,6 @@ const Profile: React.FC = () => {
 	if (status === Status.LOADED) {
 		const profile = authData!
 
-		console.log(profile)
-
 		return (
 			<MainLayout
 				title={`${profile.first_name} ${profile.last_name}`}

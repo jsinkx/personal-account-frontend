@@ -45,6 +45,7 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 		dispatch(logout())
 
 		window.localStorage.removeItem('token')
+		window.sessionStorage.removeItem('token')
 	}
 
 	return (
@@ -52,6 +53,8 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 			<CustomNavLink className="header__logo" to={Paths.home}>
 				<Logo />
 			</CustomNavLink>
+			{/* TODO: add checkbox in settings to turn on/off display version */}
+			{/* TODO: create theme switcher */}
 			<nav>
 				<ul>
 					<For each={NAVIGATION_ELEMENTS}>

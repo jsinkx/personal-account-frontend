@@ -2,8 +2,6 @@ import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
 
-import Registration from '../../components/Registration'
-
 export const StyledBubblesBackground = styled.div`
 	@keyframes move {
 		100% {
@@ -169,10 +167,22 @@ export const StyledBubblesBackground = styled.div`
 	}
 `
 
-export const StyledRegistration = styled(Registration)`
-	margin: 18vh auto;
+const StyledAuthPage = styled.main`
+	display: flex;
+	justify-content: center;
+
+	section {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		margin: 18vh auto;
+
+		.auth__section__logo {
+			display: inline-block;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+	}
 `
 
-const StyledRegistrationPage = styled.main``
-
-export default StyledRegistrationPage
+export default StyledAuthPage

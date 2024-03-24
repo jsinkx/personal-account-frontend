@@ -21,7 +21,6 @@ const HomePage: React.FC = () => {
 	return (
 		<MainLayout title="Главная" description="Добро пожаловать на главную страницу!">
 			{/* TODO: Create bottom side with sections, which navigate to WISH EDU services */}
-			{/* TODO: Create auth home page, split to sub components */}
 			{/* TODO: Create slider for right section with images */}
 			{/* TODO: Added animations for images */}
 			{isAuth ? null : (

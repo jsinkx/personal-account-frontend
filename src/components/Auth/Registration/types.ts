@@ -14,3 +14,5 @@ export type SecondStepInputs = {
 }
 
 export type SecondStepKeys = (keyof SecondStepInputs)[]
+
+export type FormRegistrationValues = FirstStepInputs & SecondStepInputs
