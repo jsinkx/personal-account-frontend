@@ -9,7 +9,8 @@
 3. [`git`](https://git-scm.com/)
 4. Install all dependencies `package.json`
 
-**Warning**: before use `pn` command, need to read alias (check `.bashrc`), also instead `pn` can called `pnpm`
+**Warning**: before use `pn` command, need to read alias (check `.bashrc`), also instead `pn` can called
+`pnpm`
 
 ```sh
 cd personal-account-frontend
@@ -46,6 +47,7 @@ pn serve
 - react-hook-form
 - redux toolkit
 - styled-components
+- MUI
 - axios
 
 ## Config app

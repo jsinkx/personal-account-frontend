@@ -1,7 +1,7 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
 
-import Paths from '../../shared/paths'
+import moment from 'moment'
+
 import Status from '../../shared/status'
 
 import { selectAuthData, selectAuthStatus } from '../../redux/slices/auth/selectors'
@@ -10,19 +10,25 @@ import useAppSelector from '../../hooks/useAppSelector'
 
 import MainLayout from '../../layouts/MainLayout'
 
-import Avatar from '../../components/Avatar'
+import Error from '../../components/Error'
 import Loading from '../../components/Loading'
 
+import ProfileCard from './ProfileCard'
+import ProfilePortfolio from './ProfilePortfolio'
 import StyledProfile from './styles'
 
+const IS_ONLINE = true
+
 const Profile: React.FC = () => {
-	const authData = useAppSelector(selectAuthData)
+	const authData = useAppSelector(selectAuthData) // TODO: request to get info profile by id/login/customId
 	const status = useAppSelector(selectAuthStatus)
 
-	if (status === Status.ERROR) return <Navigate to={Paths.any} />
+	if (status === Status.ERROR) return <Error> Указанный профиль не найден!</Error>
 	if (status === Status.LOADING) return <Loading />
 	if (status === Status.LOADED) {
 		const profile = authData!
+
+		// If requested user id === current user id, its our profile, can edit
 
 		return (
 			<MainLayout
@@ -32,10 +38,25 @@ const Profile: React.FC = () => {
 				<StyledProfile $color={profile.background_color}>
 					<section>
 						<div className="profile__background"> </div>
-						<Avatar firstName={profile.first_name} lastName={profile.last_name} className="profile__avatar" />
-						<h3>
-							{profile.first_name} {profile.last_name}
-						</h3>
+						<div className="profile__info">
+							<ProfileCard
+								isOnline={IS_ONLINE}
+								avatar={profile.avatar}
+								firstName={profile.first_name}
+								lastName={profile.last_name}
+								color={profile.background_color}
+								login={profile.login}
+								description={profile.description}
+								lastOnlineDate={moment().toString()}
+								email={profile.email}
+								birthday={profile.birthday}
+								createdAt={profile.created_at}
+							/>
+							<section className="profile__info__content">
+								{/* TODO: Add switcher with route change /portfolio or /edit */}
+								<ProfilePortfolio />
+							</section>
+						</div>
 					</section>
 				</StyledProfile>
 			</MainLayout>

@@ -38,16 +38,6 @@ const RegistrationPage: React.FC = () => {
 		}
 	}, [authData?.id, isAuth, navigate])
 
-	useEffect(() => {
-		const unloadCallback = (event: BeforeUnloadEvent) => {
-			event.preventDefault()
-		}
-
-		window.addEventListener('beforeunload', unloadCallback)
-
-		return () => window.removeEventListener('beforeunload', unloadCallback)
-	}, [])
-
 	return (
 		<CleanLayout title={title} description={description}>
 			<StyledAuthPage>

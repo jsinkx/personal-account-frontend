@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 	const {
 		register,
 		handleSubmit: handleDirtySubmit,
-		formState: { errors, isValid },
+		formState: { isValid },
 	} = useForm<FormLoginValues>({
 		mode: 'onChange',
 		defaultValues: {
@@ -77,7 +77,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 
 	const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault()
-		!errors && handleDirtySubmit(onSubmit)()
+		handleDirtySubmit(onSubmit)()
 	}
 
 	return (

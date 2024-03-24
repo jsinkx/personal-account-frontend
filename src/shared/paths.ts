@@ -11,6 +11,7 @@ const Paths = {
 			return `/profile/${id}`
 		},
 	},
+	settings: '/settings',
 	any: '*',
 	maintenanceService: '/maintenance-service', // TODO: take it out in index.html on backend server
 } as const
