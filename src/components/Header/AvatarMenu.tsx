@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import Logout from '@mui/icons-material/Logout'
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
+import Settings from '@mui/icons-material/Settings'
+import { ListItemIcon } from '@mui/material'
 import Menu from '@mui/material/Menu/Menu'
 
 import Paths from '../../shared/paths'
@@ -35,6 +40,12 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 	}
 
 	const handleClickProfile = () => {
+		handleClose()
+
+		navigate(Paths.profile.dynamic(id))
+	}
+
+	const handleClickEditProfile = () => {
 		handleClose()
 
 		navigate(Paths.profile.dynamic(id))
@@ -78,9 +89,30 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 				open={open}
 				onClose={handleClose}
 			>
-				<StyledMenuItem onClick={handleClickProfile}> Профиль </StyledMenuItem>
-				<StyledMenuItem onClick={handleClickSettings}> Настройки </StyledMenuItem>
-				<StyledMenuItem onClick={handleClickLogout}>Выйти</StyledMenuItem>
+				<StyledMenuItem onClick={handleClickProfile}>
+					<ListItemIcon>
+						<AccountCircleOutlinedIcon fontSize="small" />
+					</ListItemIcon>
+					Профиль
+				</StyledMenuItem>
+				<StyledMenuItem onClick={handleClickEditProfile}>
+					<ListItemIcon>
+						<Settings fontSize="small" />
+					</ListItemIcon>
+					Редактировать
+				</StyledMenuItem>
+				<StyledMenuItem onClick={handleClickSettings}>
+					<ListItemIcon>
+						<ModeEditOutlinedIcon fontSize="small" />
+					</ListItemIcon>
+					Настройки
+				</StyledMenuItem>
+				<StyledMenuItem onClick={handleClickLogout}>
+					<ListItemIcon>
+						<Logout fontSize="small" />
+					</ListItemIcon>
+					Выйти
+				</StyledMenuItem>
 			</Menu>
 		</>
 	)

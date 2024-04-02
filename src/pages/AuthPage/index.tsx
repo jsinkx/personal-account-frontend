@@ -11,7 +11,7 @@ import CleanLayout from '../../layouts/CleanLayout'
 
 import Login from '../../components/Auth/Login'
 import Registration from '../../components/Auth/Registration'
-import CustomNavLink from '../../components/CustomLink'
+import { CustomNavLink } from '../../components/CustomLink'
 import Logo from '../../components/Logo'
 
 import BubblesBackground from './BubblesBackground'

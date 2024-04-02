@@ -6,8 +6,8 @@ const GlobalStyleTags = createGlobalStyle`
 
 html {
 	height: 100%;
-	color: black;
-	background-color: white;
+	color: ${Colors.BLACK};
+	background-color: ${Colors.WHITE_BACKGROUND_COLOR};
 
 	body {
 		margin: 0;
@@ -17,7 +17,7 @@ html {
 		-moz-osx-font-smoothing: grayscale;
 
 		::selection {
-			color: white;
+			color: ${Colors.WHITE};
 			background-color: ${Colors.BLUE_WISH};
 		}
 

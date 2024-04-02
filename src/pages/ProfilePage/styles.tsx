@@ -19,94 +19,115 @@ const StyledProfile = styled.div<StyledProfileProps>`
 			background-color: ${({ $color }) => $color};
 		}
 
-		.profile__info {
+		.profile {
 			display: flex;
 
 			.profile-card {
-				width: 260px;
+				min-width: 260px;
+				max-width: 260px;
 				min-height: 370px;
 				margin-top: -110px;
 				margin-left: 80px;
-				padding-bottom: 20px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				background-color: ${Colors.WHITE};
-				border: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
-				border-radius: 5px;
+				border-radius: 25px;
+				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
 
-				h3 {
-					font-size: 2em;
-					font-weight: 400;
+				.profile-card__avatar,
+				.profile-card__avatar img {
+					border-top-right-radius: 25px;
+					border-top-left-radius: 25px;
+					pointer-events: none;
 				}
 
-				.profile-card__avatar {
-					margin-top: 20px;
-				}
+				.profile-card__info {
+					margin: 20px;
+					margin-top: 0;
 
-				.profile-card__name {
-					margin-block: 10px;
-					font-size: 1.1em;
-				}
-
-				.profile-card__login {
-					margin: 0;
-					color: ${Colors.INACTIVE_GREY_FONT};
-					font-size: 0.9em;
-					font-family: Consolas;
-				}
-
-				.profile-card__last-online,
-				.profile-card__connections {
-					user-select: none;
-				}
-
-				.profile-card__last-online {
-					width: 90%;
-					font-size: 0.95em;
-				}
-
-				.profile-card__description {
-					width: 240px;
-					max-height: 90px;
-					overflow-y: hidden;
-				}
-
-				.profile-card__connections {
-					width: 100%;
-					margin: 0;
-					margin-left: 10px;
-					padding: 0;
-
-					li {
-						margin-bottom: 3px;
+					h3 {
+						margin-bottom: 0;
 						display: flex;
 						align-items: center;
-						text-align: center;
-						list-style: none;
-						font-size: 0.95em;
+						font-size: 1.3em;
+						font-weight: bold;
 
-						.profile-card__connections__connect--icon {
-							margin-right: 5px;
+						.profile-card__info__status {
+							width: 12px;
+							height: 12px;
+							margin-top: 2px;
+							margin-left: 5px;
+							border-radius: 50%;
+							background-color: ${Colors.GREEN_ONLINE};
 						}
 					}
 
-					.profile-card__connections__connect__email {
-						display: inline-flex;
+					.profile-card__info__name {
+						margin-block: 10px;
+						font-size: 1.1em;
+					}
+
+					.profile-card__info__last-online,
+					.profile-card__info__connections {
+						width: 100%;
 						user-select: none;
+					}
 
-						span {
-							cursor: pointer;
+					.profile-card__info__last-online {
+						width: 90%;
+						font-size: 0.95em;
+					}
 
-							&:hover {
-								opacity: 0.6;
+					.profile-card__info__description {
+						max-width: 229px;
+						margin-top: 15px;
+						color: #6e7082;
+						max-height: 90px;
+						overflow-y: hidden;
+					}
+
+					.profile-card__info__connections {
+						width: 100%;
+						margin: 0;
+						margin-top: 20px;
+						padding: 0;
+
+						li {
+							height: 20px;
+							margin-bottom: 20px;
+							display: flex;
+							align-items: center;
+							text-align: center;
+							list-style: none;
+							font-size: 0.95em;
+
+							span {
+								height: 20px;
+								margin-left: 5px;
+								display: flex;
+								justify-content: center;
+								text-align: center;
+							}
+						}
+
+						.profile-card__info__connections__connect__email {
+							display: inline-flex;
+							user-select: none;
+
+							span {
+								cursor: pointer;
+
+								&:hover {
+									opacity: 0.6;
+								}
 							}
 						}
 					}
 				}
 			}
 
-			.profile__info__content {
+			.profile__content {
 				width: 1200px;
 				min-height: 370px;
 				margin-left: 170px;
@@ -125,6 +146,27 @@ const StyledProfile = styled.div<StyledProfileProps>`
 					color: ${Colors.INACTIVE_GREY_FONT};
 					user-select: none;
 				}
+
+				@media (max-width: 1440px) {
+					margin-left: 20px;
+					margin-right: 55px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 842px) {
+		.profile {
+			flex-direction: column;
+
+			.profile-card {
+				margin-inline: auto !important;
+				margin-bottom: 30px;
+			}
+
+			.profile__content {
+				width: 90% !important;
+				margin-inline: auto !important;
 			}
 		}
 	}

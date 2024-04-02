@@ -51,9 +51,33 @@ const StyledHeader = styled.header`
 			}
 		}
 
+		.header__notifications {
+			margin-left: 0;
+		}
+
 		.header__avatar__menu {
+			margin-left: 15px;
 			cursor: pointer;
 			font-weight: normal;
+		}
+	}
+
+	.menu-notifications {
+		width: 300px;
+		display: flex;
+		justify-content: center;
+
+		ul {
+			margin: 0;
+
+			li {
+				width: 100%;
+				border-top: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
+				border-bottom: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
+
+				p {
+				}
+			}
 		}
 	}
 
@@ -74,7 +98,6 @@ const StyledHeader = styled.header`
 			margin-left: 2 0px;
 		}
 
-		/* TODO: Burger menu */
 		nav {
 			ul {
 				li {

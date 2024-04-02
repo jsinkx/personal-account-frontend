@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import AvatarMUI from '@mui/material/Avatar'
 
 import Colors from '../../shared/colors'
+
+import StyledAvatarFullSize from './styles'
 
 type AvatarProps = {
 	src?: string
@@ -11,7 +13,11 @@ type AvatarProps = {
 	lastName: string
 	size?: string
 	isOnline?: boolean
+	fullSize?: boolean
 } & React.ComponentProps<typeof AvatarMUI>
+
+const nameSign = (firstName: string, lastName: string) =>
+	`${firstName[0]!.toUpperCase()}${lastName[0]!.toUpperCase()}`
 
 const Avatar: React.FC<AvatarProps> = ({
 	src = '',
@@ -20,11 +26,22 @@ const Avatar: React.FC<AvatarProps> = ({
 	lastName,
 	size = '50px',
 	isOnline,
+	fullSize,
+	className = '',
+	style,
 	...props
 }) => {
-	const nameSign = `${firstName[0]!.toUpperCase()}${lastName[0]!.toUpperCase()}`
+	const [isErrorSrc, setIsErrorSrc] = useState(false)
 
-	return (
+	const handleErrorImg = () => {
+		setIsErrorSrc(true)
+	}
+
+	return fullSize ? (
+		<StyledAvatarFullSize $size={size} $color={color} className={className} style={style}>
+			{!isErrorSrc ? <img src={src} alt={firstName} onError={handleErrorImg} /> : nameSign(firstName, lastName)}
+		</StyledAvatarFullSize>
+	) : (
 		<div>
 			<AvatarMUI
 				sx={{
@@ -36,9 +53,10 @@ const Avatar: React.FC<AvatarProps> = ({
 					zIndex: '1',
 				}}
 				src={src}
+				className={className}
 				{...props}
 			>
-				{!src && nameSign}
+				{!src && nameSign(firstName, lastName)}
 			</AvatarMUI>
 			{isOnline !== undefined && (
 				<div

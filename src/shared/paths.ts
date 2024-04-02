@@ -1,8 +1,10 @@
 const Paths = {
 	home: '/',
 	about: '/about',
-	contact: '/contact',
+	contacts: '/contacts',
 	termsAndConditions: '/terms&conditions',
+	vacancy: '/vacancy',
+	apiDocumentation: '/api-documentation',
 	registration: '/registration',
 	login: '/login',
 	profile: {

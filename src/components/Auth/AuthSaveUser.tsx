@@ -15,7 +15,7 @@ const AuthSaveUser: React.FC<AuthSaveUserProps> = ({ saveUserIsChecked, setSaveU
 				onChange={() => setSaveUserIsChecked((p) => !p)}
 				disabled={disabled}
 			/>
-			Запомнить пользователя
+			Не запоминать пользователя ?
 		</span>
 	)
 }

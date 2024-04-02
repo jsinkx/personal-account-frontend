@@ -36,7 +36,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 	const status = useAppSelector(selectAuthStatus)
 
 	const [error, setError] = useState<null | string>(null)
-	const [saveUserIsChecked, setSaveUserIsChecked] = useState(false)
+	const [dontSaveUser, setDontSaveUser] = useState(false)
 
 	const {
 		register,
@@ -63,9 +63,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 			const data = await dispatch(fetchAuthLogin(loginBody)).unwrap()
 
 			if ('token' in data)
-				saveUserIsChecked
-					? localStorage.setItem('token', data.token)
-					: sessionStorage.setItem('token', data.token)
+				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
 			navigate(Paths.profile.dynamic(data.id))
 		} catch (_err) {
@@ -77,6 +75,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 
 	const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault()
+
 		handleDirtySubmit(onSubmit)()
 	}
 
@@ -96,14 +95,14 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 					{...register('password', { required: true })}
 					type="password"
 					placeholder="Пароль"
-					autoComplete="new-password"
+					autoComplete="password"
 					height="45px"
 				/>
-				{error !== null && <Error className="login--error">{error}</Error>}
+				{error !== null && <Error className="auth--error">{error}</Error>}
 				<div className="auth__parameters">
 					<AuthSaveUser
-						saveUserIsChecked={saveUserIsChecked}
-						setSaveUserIsChecked={setSaveUserIsChecked}
+						saveUserIsChecked={dontSaveUser}
+						setSaveUserIsChecked={setDontSaveUser}
 						disabled={status === Status.LOADING}
 					/>
 				</div>

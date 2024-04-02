@@ -36,7 +36,7 @@ const router: Router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 	},
 	{
-		path: Paths.contact,
+		path: Paths.contacts,
 		element: <NotFoundPage />,
 		errorElement: <NotFoundPage />,
 	},

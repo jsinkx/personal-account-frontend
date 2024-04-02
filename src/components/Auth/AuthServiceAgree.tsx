@@ -2,7 +2,7 @@ import React from 'react'
 
 import Paths from '../../shared/paths'
 
-import CustomNavLink from '../CustomLink'
+import { CustomNavLink } from '../CustomLink'
 
 type AuthServiceAgreeProps = {
 	agreeIsChecked: boolean

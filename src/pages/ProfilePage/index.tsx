@@ -38,7 +38,7 @@ const Profile: React.FC = () => {
 				<StyledProfile $color={profile.background_color}>
 					<section>
 						<div className="profile__background"> </div>
-						<div className="profile__info">
+						<div className="profile">
 							<ProfileCard
 								isOnline={IS_ONLINE}
 								avatar={profile.avatar}
@@ -49,10 +49,9 @@ const Profile: React.FC = () => {
 								description={profile.description}
 								lastOnlineDate={moment().toString()}
 								email={profile.email}
-								birthday={profile.birthday}
 								createdAt={profile.created_at}
 							/>
-							<section className="profile__info__content">
+							<section className="profile__content">
 								{/* TODO: Add switcher with route change /portfolio or /edit */}
 								<ProfilePortfolio />
 							</section>
