@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
-import { IconButton, Menu, MenuItem } from '@mui/material'
+import { Badge, IconButton, Menu, MenuItem } from '@mui/material'
 
 type NotificationsProps = {}
 
@@ -19,7 +19,9 @@ const Notifications: React.FC<NotificationsProps> = () => {
 	return (
 		<>
 			<IconButton onClick={handleClick}>
-				<NotificationsNoneOutlinedIcon />
+				<Badge badgeContent={3} color="error">
+					<NotificationsNoneOutlinedIcon />
+				</Badge>
 			</IconButton>
 			<Menu
 				id="fade-menu"

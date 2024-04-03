@@ -16,6 +16,7 @@ import useAppDispatch from '../../../hooks/useAppDispatch'
 import useAppSelector from '../../../hooks/useAppSelector'
 
 import Button from '../../Button'
+import { CustomLink } from '../../CustomLink'
 import Error from '../../Error'
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
@@ -100,6 +101,9 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 				/>
 				{error !== null && <Error className="auth--error">{error}</Error>}
 				<div className="auth__parameters">
+					<CustomLink to={Paths.forgotPassword} className="auth--forgot-password">
+						Забыли пароль ?
+					</CustomLink>
 					<AuthSaveUser
 						saveUserIsChecked={dontSaveUser}
 						setSaveUserIsChecked={setDontSaveUser}

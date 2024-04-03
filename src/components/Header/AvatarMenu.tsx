@@ -6,7 +6,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import Logout from '@mui/icons-material/Logout'
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import Settings from '@mui/icons-material/Settings'
-import { ListItemIcon } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon } from '@mui/material'
 import Menu from '@mui/material/Menu/Menu'
 
 import Paths from '../../shared/paths'
@@ -30,9 +30,15 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 	const navigate = useNavigate()
 
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+	const [isOpenDialog, setIsOpenDialog] = useState(false)
+
 	const open = Boolean(anchorEl)
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget)
+	}
+
+	const handleCloseDialog = () => {
+		setIsOpenDialog(false)
 	}
 
 	const handleClose = () => {
@@ -57,13 +63,15 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 		navigate(Paths.profile.dynamic(id))
 	}
 
-	const handleClickLogout = () => {
-		handleClose()
-
+	const handleLogout = () => {
 		dispatch(logout())
 
 		window.localStorage.removeItem('token')
 		window.sessionStorage.removeItem('token')
+	}
+
+	const handleClickLogout = () => {
+		setIsOpenDialog(true)
 	}
 
 	return (
@@ -79,6 +87,7 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 				firstName={firstName}
 				lastName={lastName}
 				size="45px"
+				className="header__avatar__menu__button"
 			/>
 			<Menu
 				id="fade-menu"
@@ -97,13 +106,13 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 				</StyledMenuItem>
 				<StyledMenuItem onClick={handleClickEditProfile}>
 					<ListItemIcon>
-						<Settings fontSize="small" />
+						<ModeEditOutlinedIcon fontSize="small" />
 					</ListItemIcon>
 					Редактировать
 				</StyledMenuItem>
 				<StyledMenuItem onClick={handleClickSettings}>
 					<ListItemIcon>
-						<ModeEditOutlinedIcon fontSize="small" />
+						<Settings fontSize="small" />
 					</ListItemIcon>
 					Настройки
 				</StyledMenuItem>
@@ -114,6 +123,23 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 					Выйти
 				</StyledMenuItem>
 			</Menu>
+			<Dialog
+				open={isOpenDialog}
+				onClose={handleCloseDialog}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+				sx={{
+					userSelect: 'none',
+				}}
+			>
+				<DialogTitle id="alert-dialog-title">Вы действительно хотите выйти ?</DialogTitle>
+				<DialogActions>
+					<Button onClick={handleLogout} autoFocus>
+						Да
+					</Button>
+					<Button onClick={handleCloseDialog}>Нет</Button>
+				</DialogActions>
+			</Dialog>
 		</>
 	)
 }

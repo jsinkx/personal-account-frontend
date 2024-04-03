@@ -1,3 +1,6 @@
+/* eslint-disable import/order */
+
+/* eslint-disable import/no-unresolved */
 import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
@@ -85,6 +88,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						color: #6e7082;
 						max-height: 90px;
 						overflow-y: hidden;
+						user-select: none;
 					}
 
 					.profile-card__info__connections {
@@ -130,24 +134,21 @@ const StyledProfile = styled.div<StyledProfileProps>`
 			.profile__content {
 				width: 1200px;
 				min-height: 370px;
-				margin-left: 170px;
+				margin-top: -110px;
+				margin-left: 120px;
 				margin-right: 100px;
 				padding-bottom: 20px;
-				display: flex;
-				justify-content: center;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
 				background-color: ${Colors.WHITE};
-				border: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
-				border-radius: 5px;
+				border-radius: 25px;
+				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
 
-				h3 {
-					color: ${Colors.INACTIVE_GREY_FONT};
-					user-select: none;
+				.profile__content__main-box {
+					margin-top: 30px;
+					margin-left: 30px;
 				}
 
 				@media (max-width: 1440px) {
+					margin-top: 0;
 					margin-left: 20px;
 					margin-right: 55px;
 				}

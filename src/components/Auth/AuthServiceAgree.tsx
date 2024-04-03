@@ -2,7 +2,7 @@ import React from 'react'
 
 import Paths from '../../shared/paths'
 
-import { CustomNavLink } from '../CustomLink'
+import { CustomLink } from '../CustomLink'
 
 type AuthServiceAgreeProps = {
 	agreeIsChecked: boolean
@@ -24,9 +24,9 @@ const AuthServiceAgree: React.FC<AuthServiceAgreeProps> = ({
 				disabled={disabled}
 			/>
 			Согласны с
-			<CustomNavLink to={Paths.termsAndConditions} target="_blank" className="auth--is-agree__navlink">
+			<CustomLink to={Paths.termsAndConditions} target="_blank" className="auth--is-agree__navlink">
 				правилами и условиями
-			</CustomNavLink>
+			</CustomLink>
 		</span>
 	)
 }

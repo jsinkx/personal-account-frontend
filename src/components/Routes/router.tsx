@@ -25,6 +25,7 @@ const TermsAndConditionsPage = React.lazy(
 )
 
 const router: Router = createBrowserRouter([
+	// Main
 	{
 		path: Paths.home,
 		element: <HomePage />,
@@ -41,26 +42,6 @@ const router: Router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 	},
 	{
-		path: Paths.registration,
-		element: <AuthPage />,
-		errorElement: <NotFoundPage />,
-	},
-	{
-		path: Paths.login,
-		element: <AuthPage />,
-		errorElement: <NotFoundPage />,
-	},
-	{
-		path: Paths.profile.static,
-		element: <ProfilePage />,
-		errorElement: <NotFoundPage />,
-	},
-	{
-		path: Paths.settings,
-		element: <ProfilePage />,
-		errorElement: <NotFoundPage />,
-	},
-	{
 		path: Paths.termsAndConditions,
 		element: <TermsAndConditionsPage />,
 		errorElement: <NotFoundPage />,
@@ -73,6 +54,47 @@ const router: Router = createBrowserRouter([
 	{
 		path: Paths.maintenanceService,
 		element: <MaintenanceServicePage />,
+		errorElement: <NotFoundPage />,
+	},
+	// Auth
+	{
+		path: Paths.registration,
+		element: <AuthPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.login,
+		element: <AuthPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: Paths.forgotPassword,
+		element: <AuthPage />,
+		errorElement: <NotFoundPage />,
+	},
+	// Profile
+	{
+		path: Paths.profile.static,
+		element: <ProfilePage />,
+		errorElement: <NotFoundPage />,
+		children: [
+			{
+				path: Paths.profile.children.aboutMe,
+				element: <h1> Обо мне</h1>,
+			},
+			{
+				path: Paths.profile.children.wall,
+				element: <h1> Стена </h1>,
+			},
+			{
+				path: Paths.profile.children.portfolio,
+				element: <h1> Портфолио </h1>,
+			},
+		],
+	},
+	{
+		path: Paths.settings,
+		element: <ProfilePage />,
 		errorElement: <NotFoundPage />,
 	},
 ])

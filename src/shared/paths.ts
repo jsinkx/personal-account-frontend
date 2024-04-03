@@ -7,10 +7,16 @@ const Paths = {
 	apiDocumentation: '/api-documentation',
 	registration: '/registration',
 	login: '/login',
+	forgotPassword: '/forgot-password',
 	profile: {
 		static: '/profile/:id',
 		dynamic(id: number) {
 			return `/profile/${id}`
+		},
+		children: {
+			aboutMe: '',
+			wall: 'wall',
+			portfolio: 'portfolio',
 		},
 	},
 	settings: '/settings',

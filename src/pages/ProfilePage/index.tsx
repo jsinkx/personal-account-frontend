@@ -52,8 +52,7 @@ const Profile: React.FC = () => {
 								createdAt={profile.created_at}
 							/>
 							<section className="profile__content">
-								{/* TODO: Add switcher with route change /portfolio or /edit */}
-								<ProfilePortfolio />
+								<ProfilePortfolio color={profile.background_color} />
 							</section>
 						</div>
 					</section>

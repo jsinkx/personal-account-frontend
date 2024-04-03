@@ -56,9 +56,12 @@ const StyledHeader = styled.header`
 		}
 
 		.header__avatar__menu {
-			margin-left: 15px;
-			cursor: pointer;
+			margin-left: 20px;
 			font-weight: normal;
+
+			.header__avatar__menu__button {
+				cursor: pointer;
+			}
 		}
 	}
 

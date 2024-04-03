@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'
 import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined'
-import { Divider } from '@mui/material'
+import { Divider, Snackbar } from '@mui/material'
 
 import moment from 'moment'
 
@@ -40,8 +40,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	email,
 	createdAt,
 }) => {
+	const [isOpenSnackbarCopy, setIsOpenSnackbarCopy] = useState(false)
+
 	const handleClickCopyEmail: React.MouseEventHandler<HTMLSpanElement> = () => {
 		navigator.clipboard.writeText(email)
+		setIsOpenSnackbarCopy(true)
 	}
 
 	return (
@@ -102,6 +105,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 					</li>
 				</ul>
 			</section>
+			<Snackbar
+				open={isOpenSnackbarCopy}
+				onClose={() => setIsOpenSnackbarCopy(false)}
+				message="Скопировано"
+				autoHideDuration={1.1 * 1000}
+			/>
 		</div>
 	)
 }
