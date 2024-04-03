@@ -13,13 +13,13 @@ const StyledFooter = styled.footer`
 	background-color: ${Colors.WHITE};
 	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
-	font-family: 'Segoe UI';
+	font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
 	user-select: none;
 	flex: 0 0 auto;
 
 	p {
 		color: ${Colors.INACTIVE_GREY_FONT};
-		font-family: 'Segoe UI';
 		font-weight: 500;
 	}
 
@@ -31,7 +31,6 @@ const StyledFooter = styled.footer`
 			align-items: center;
 			list-style: none;
 			box-sizing: border-box;
-			font-family: 'Segoe UI';
 
 			li {
 				margin-left: 40px;
