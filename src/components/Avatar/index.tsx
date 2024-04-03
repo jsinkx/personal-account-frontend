@@ -49,7 +49,8 @@ const Avatar: React.FC<AvatarProps> = ({
 					height: size,
 					fontSize: `calc(${size} / 2)`,
 					backgroundColor: color,
-					fontFamily: 'Segoe UI',
+					fontFamily: `'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+					sans-serif;`,
 					zIndex: '1',
 				}}
 				src={src}

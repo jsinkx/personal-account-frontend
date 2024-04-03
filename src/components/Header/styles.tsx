@@ -6,7 +6,8 @@ import Colors from '../../shared/colors'
 
 export const StyledMenuItem = styled(MenuItem)`
 	font-weight: 400 !important;
-	font-family: 'Segoe UI' !important;
+	font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif !important;
 `
 
 const StyledHeader = styled.header`
@@ -35,7 +36,8 @@ const StyledHeader = styled.header`
 			align-items: center;
 			list-style: none;
 			box-sizing: border-box;
-			font-family: 'Segoe UI';
+			font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+				sans-serif;
 
 			li {
 				margin-left: 40px;
