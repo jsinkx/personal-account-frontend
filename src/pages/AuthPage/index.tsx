@@ -11,7 +11,7 @@ import CleanLayout from '../../layouts/CleanLayout'
 
 import Login from '../../components/Auth/Login'
 import Registration from '../../components/Auth/Registration'
-import CustomNavLink from '../../components/CustomLink'
+import { CustomNavLink } from '../../components/CustomLink'
 import Logo from '../../components/Logo'
 
 import BubblesBackground from './BubblesBackground'
@@ -37,16 +37,6 @@ const RegistrationPage: React.FC = () => {
 			navigate(Paths.profile.dynamic(authData.id))
 		}
 	}, [authData?.id, isAuth, navigate])
-
-	useEffect(() => {
-		const unloadCallback = (event: BeforeUnloadEvent) => {
-			event.preventDefault()
-		}
-
-		window.addEventListener('beforeunload', unloadCallback)
-
-		return () => window.removeEventListener('beforeunload', unloadCallback)
-	}, [])
 
 	return (
 		<CleanLayout title={title} description={description}>

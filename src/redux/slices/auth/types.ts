@@ -17,11 +17,14 @@ export type User = {
 	first_name: string
 	last_name: string
 	created_at: string
+	description: string
 	background_color: string
-	patronymic: string
 	birthday: string
+	patronymic: string
+	avatar: string
 	groups: UserGroup[]
 	roles: UserRole[]
+	permissions: unknown[]
 }
 
 // Registration

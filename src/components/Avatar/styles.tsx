@@ -1,33 +1,28 @@
 import styled from 'styled-components'
 
-type StyledAvatarProps = {
+type StyledAvatarFullSizeProps = {
+	$size: string
 	$color: string
 }
 
-const StyledAvatar = styled.div<StyledAvatarProps>`
-	width: 50px;
-	height: 50px;
+const StyledAvatarFullSize = styled.div<StyledAvatarFullSizeProps>`
+	width: 100%;
+	height: ${({ $size }) => $size};
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	text-align: center;
-	border-radius: 50%;
+	align-items: center;
+	font-size: ${({ $size }) => `calc(${$size} / 2)`};
+	color: white;
 	background-color: ${({ $color }) => $color};
-	box-sizing: border-box;
 	user-select: none;
 
 	img {
 		width: 100%;
-		height: auto;
-		border-radius: 50%;
-	}
-
-	span {
-		margin-top: -4px;
-		font-size: 20px;
-		font-weight: 400;
-		color: white;
+		height: 100%;
+		user-select: none;
+		background-size: cover;
 	}
 `
 
-export default StyledAvatar
+export default StyledAvatarFullSize

@@ -1,23 +1,80 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import randomColor from '../../utils/random-color'
+import AvatarMUI from '@mui/material/Avatar'
 
-import StyledAvatar from './styles'
+import Colors from '../../shared/colors'
+
+import StyledAvatarFullSize from './styles'
 
 type AvatarProps = {
 	src?: string
 	color?: string
 	firstName: string
 	lastName: string
-} & React.ComponentPropsWithoutRef<'div'>
+	size?: string
+	isOnline?: boolean
+	fullSize?: boolean
+} & React.ComponentProps<typeof AvatarMUI>
 
-const Avatar: React.FC<AvatarProps> = ({ src, color, firstName, lastName, ...props }) => {
-	const nameSign = `${firstName[0]!.toUpperCase()}${lastName[0]!.toUpperCase()}`
+const nameSign = (firstName: string, lastName: string) =>
+	`${firstName[0]!.toUpperCase()}${lastName[0]!.toUpperCase()}`
 
-	return (
-		<StyledAvatar $color={color || randomColor()} {...props}>
-			{src ? <img src={src} alt={nameSign} /> : <span>{nameSign}</span>}
-		</StyledAvatar>
+const Avatar: React.FC<AvatarProps> = ({
+	src = '',
+	color,
+	firstName,
+	lastName,
+	size = '50px',
+	isOnline,
+	fullSize,
+	className = '',
+	style,
+	...props
+}) => {
+	const [isErrorSrc, setIsErrorSrc] = useState(false)
+
+	const handleErrorImg = () => {
+		setIsErrorSrc(true)
+	}
+
+	return fullSize ? (
+		<StyledAvatarFullSize $size={size} $color={color} className={className} style={style}>
+			{!isErrorSrc ? <img src={src} alt={firstName} onError={handleErrorImg} /> : nameSign(firstName, lastName)}
+		</StyledAvatarFullSize>
+	) : (
+		<div>
+			<AvatarMUI
+				sx={{
+					width: size,
+					height: size,
+					fontSize: `calc(${size} / 2)`,
+					backgroundColor: color,
+					fontFamily: 'Segoe UI',
+					zIndex: '1',
+				}}
+				src={src}
+				className={className}
+				{...props}
+			>
+				{!src && nameSign(firstName, lastName)}
+			</AvatarMUI>
+			{isOnline !== undefined && (
+				<div
+					title={isOnline ? 'В сети' : 'Не в сети'}
+					className="avatar--user-status"
+					style={{
+						position: 'absolute',
+						width: `calc(${size} / 4)`,
+						height: `calc(${size} / 4)`,
+						margin: '-27px 0 0 50px',
+						borderRadius: '50%',
+						border: `4px solid ${Colors.WHITE}`,
+						backgroundColor: isOnline ? Colors.GREEN_ONLINE : Colors.GREY_OFFLINE,
+						zIndex: '1',
+					}}
+				/>
+			)}
+		</div>
 	)
 }
 

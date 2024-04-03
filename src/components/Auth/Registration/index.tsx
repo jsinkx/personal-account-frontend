@@ -43,7 +43,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 	const [error, setError] = useState<null | string>(null)
 	const [currentStep, setCurrentStep] = useState(1)
 	const [agreeIsChecked, setAgreeIsChecked] = useState(false)
-	const [saveUserIsChecked, setSaveUserIsChecked] = useState(false)
+	const [dontSaveUser, setDontSaveUser] = useState(false)
 
 	const isLastStep = currentStep === MAX_STEPS
 
@@ -107,9 +107,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 			const data = await dispatch(fetchAuthRegistration(registrationBody)).unwrap()
 
 			if ('token' in data)
-				saveUserIsChecked
-					? localStorage.setItem('token', data.token)
-					: sessionStorage.setItem('token', data.token)
+				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
 			navigate(Paths.profile.dynamic(data.id))
 		} catch (_err) {
@@ -169,8 +167,8 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 							disabled={status === Status.LOADING}
 						/>
 						<AuthSaveUser
-							saveUserIsChecked={saveUserIsChecked}
-							setSaveUserIsChecked={setSaveUserIsChecked}
+							saveUserIsChecked={dontSaveUser}
+							setSaveUserIsChecked={setDontSaveUser}
 							disabled={status === Status.LOADING}
 						/>
 					</div>

@@ -83,6 +83,15 @@ const StyledAuth = styled.div`
 		text-align: left;
 		user-select: none;
 
+		.auth--forgot-password {
+			margin-bottom: 10px;
+			color: ${Colors.BLUE_WISH};
+
+			&:hover {
+				opacity: 0.55;
+			}
+		}
+
 		.auth--is-agree,
 		.auth--is-save-user {
 			display: flex;

@@ -1,7 +1,10 @@
 import React from 'react'
 
+import Footer from '../../components/Footer'
 import Header from '../../components/Header'
 import Helmet from '../../components/Helmet'
+
+import StyledMainLayout from './styles'
 
 type MainLayoutProps = {
 	title: string
@@ -19,13 +22,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 	children,
 }) => {
 	return (
-		<>
+		<StyledMainLayout>
 			<Helmet title={title} description={description} keywords={keywords} image={image} />
 			<Header />
-			{/* TODO: aside with hide button for authed user */}
-			{/* TODO: create footer */}
 			<main>{children}</main>
-		</>
+			<Footer />
+		</StyledMainLayout>
 	)
 }
 

@@ -1,6 +1,13 @@
+import { MenuItem } from '@mui/material'
+
 import styled from 'styled-components'
 
 import Colors from '../../shared/colors'
+
+export const StyledMenuItem = styled(MenuItem)`
+	font-weight: 400 !important;
+	font-family: 'Segoe UI' !important;
+`
 
 const StyledHeader = styled.header`
 	padding: 15px;
@@ -12,6 +19,7 @@ const StyledHeader = styled.header`
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 	position: sticky;
 	top: 0;
+	z-index: 9;
 
 	.header__logo {
 		margin-left: 60px;
@@ -24,14 +32,15 @@ const StyledHeader = styled.header`
 			margin: 0;
 			padding: 0;
 			display: flex;
+			align-items: center;
 			list-style: none;
 			box-sizing: border-box;
+			font-family: 'Segoe UI';
 
 			li {
 				margin-left: 40px;
 				font-size: 1.2em;
-				font-weight: bold;
-				font-family: Roboto;
+				font-weight: 500;
 				text-transform: uppercase;
 			}
 
@@ -39,6 +48,38 @@ const StyledHeader = styled.header`
 				padding: 0;
 				color: ${Colors.RED};
 				text-transform: uppercase;
+			}
+		}
+
+		.header__notifications {
+			margin-left: 0;
+		}
+
+		.header__avatar__menu {
+			margin-left: 20px;
+			font-weight: normal;
+
+			.header__avatar__menu__button {
+				cursor: pointer;
+			}
+		}
+	}
+
+	.menu-notifications {
+		width: 300px;
+		display: flex;
+		justify-content: center;
+
+		ul {
+			margin: 0;
+
+			li {
+				width: 100%;
+				border-top: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
+				border-bottom: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
+
+				p {
+				}
 			}
 		}
 	}
@@ -60,7 +101,6 @@ const StyledHeader = styled.header`
 			margin-left: 2 0px;
 		}
 
-		/* TODO: Burger menu */
 		nav {
 			ul {
 				li {

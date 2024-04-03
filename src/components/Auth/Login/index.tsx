@@ -16,6 +16,7 @@ import useAppDispatch from '../../../hooks/useAppDispatch'
 import useAppSelector from '../../../hooks/useAppSelector'
 
 import Button from '../../Button'
+import { CustomLink } from '../../CustomLink'
 import Error from '../../Error'
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
@@ -36,12 +37,12 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 	const status = useAppSelector(selectAuthStatus)
 
 	const [error, setError] = useState<null | string>(null)
-	const [saveUserIsChecked, setSaveUserIsChecked] = useState(false)
+	const [dontSaveUser, setDontSaveUser] = useState(false)
 
 	const {
 		register,
 		handleSubmit: handleDirtySubmit,
-		formState: { errors, isValid },
+		formState: { isValid },
 	} = useForm<FormLoginValues>({
 		mode: 'onChange',
 		defaultValues: {
@@ -63,9 +64,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 			const data = await dispatch(fetchAuthLogin(loginBody)).unwrap()
 
 			if ('token' in data)
-				saveUserIsChecked
-					? localStorage.setItem('token', data.token)
-					: sessionStorage.setItem('token', data.token)
+				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
 			navigate(Paths.profile.dynamic(data.id))
 		} catch (_err) {
@@ -77,7 +76,8 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 
 	const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault()
-		!errors && handleDirtySubmit(onSubmit)()
+
+		handleDirtySubmit(onSubmit)()
 	}
 
 	return (
@@ -96,14 +96,17 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 					{...register('password', { required: true })}
 					type="password"
 					placeholder="Пароль"
-					autoComplete="new-password"
+					autoComplete="password"
 					height="45px"
 				/>
-				{error !== null && <Error className="login--error">{error}</Error>}
+				{error !== null && <Error className="auth--error">{error}</Error>}
 				<div className="auth__parameters">
+					<CustomLink to={Paths.forgotPassword} className="auth--forgot-password">
+						Забыли пароль ?
+					</CustomLink>
 					<AuthSaveUser
-						saveUserIsChecked={saveUserIsChecked}
-						setSaveUserIsChecked={setSaveUserIsChecked}
+						saveUserIsChecked={dontSaveUser}
+						setSaveUserIsChecked={setDontSaveUser}
 						disabled={status === Status.LOADING}
 					/>
 				</div>
