@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 import StyledButton, { ButtonVariant } from './styles'
 

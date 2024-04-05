@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 const StyledError = styled.div`
 	padding: 5px 10px;

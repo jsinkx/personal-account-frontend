@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonProps } from '../Button'
+import { ButtonProps } from '@components/Button'
 
 import StyledIconButton from './styles'
 

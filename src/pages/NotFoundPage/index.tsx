@@ -1,15 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { NOT_FOUND_PHRASES } from '../../shared/bag-of-phrases'
-import { CDN_STATIC_IMG } from '../../shared/constants'
-import Paths from '../../shared/paths'
+import { NOT_FOUND_PHRASES } from '@shared/bag-of-phrases'
+import { CLOUD_STATIC_IMG } from '@shared/constants'
+import Paths from '@shared/paths'
 
-import getRandomInt from '../../utils/random-int'
+import getRandomInt from '@utils/random-int'
 
-import CleanLayout from '../../layouts/CleanLayout'
+import CleanLayout from '@layouts/CleanLayout'
 
-import Button from '../../components/Button'
+import Button from '@components/Button'
 
 import StyledNotFoundPage, { StyledCustomNavLink } from './styles'
 
@@ -24,7 +24,7 @@ const NotFoundPage: React.FC = () => {
 			description="Страница не найдена, проверьте корректность введенного URL."
 		>
 			<StyledNotFoundPage>
-				<img src={`${CDN_STATIC_IMG}/isometric-404.webp`} alt="404" />
+				<img src={`${CLOUD_STATIC_IMG}/isometric-404.webp`} alt="404" />
 				<h1>{NOT_FOUND_PHRASES[getRandomInt(0, NOT_FOUND_PHRASES.length - 1)]}</h1>
 
 				<p>

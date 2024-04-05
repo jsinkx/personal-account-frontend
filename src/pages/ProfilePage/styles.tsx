@@ -1,9 +1,6 @@
-/* eslint-disable import/order */
-
-/* eslint-disable import/no-unresolved */
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 type StyledProfileProps = {
 	$color: string

@@ -1,4 +1,4 @@
-import Status from '../../../shared/status'
+import Status from '@shared/status'
 
 export type UserGroup = {
 	id: number

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 const GlobalStyleTags = createGlobalStyle`
 

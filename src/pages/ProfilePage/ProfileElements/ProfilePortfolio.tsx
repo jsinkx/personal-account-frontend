@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
-import { ThemeProvider } from '@mui/material'
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
+import { Box, Tab, Tabs, ThemeProvider } from '@mui/material'
 import createTheme from '@mui/material/styles/createTheme'
 
-import Paths from '../../shared/paths'
+import Paths from '../../../shared/paths'
 
 type ProfilePortfolioProps = {
 	color: string

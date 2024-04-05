@@ -1,8 +1,8 @@
 import React from 'react'
 import { Helmet as ReactHelmet } from 'react-helmet-async'
 
-import DEFAULT_KEYWORDS from '../../shared/app-keywords'
-import { CLIENT_URL, ICON_LOGO_URL } from '../../shared/constants'
+import DEFAULT_KEYWORDS from '@shared/app-keywords'
+import { CLIENT_URL, ICON_LOGO_URL } from '@shared/constants'
 
 type MainLayoutProps = {
 	title?: string

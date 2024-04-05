@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import type { AppDispatch } from '../redux/types'
+import type { AppDispatch } from '@redux/types'
 
 const useAppDispatch: () => AppDispatch = useDispatch
 

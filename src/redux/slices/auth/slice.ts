@@ -1,6 +1,9 @@
+import { AxiosError } from 'axios'
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { AxiosError } from 'axios'
+import axios from '@shared/axios'
+import Status from '@shared/status'
 
 import {
 	AuthError,
@@ -11,9 +14,6 @@ import {
 	AuthRegistrationResponse,
 	AuthState,
 } from './types'
-
-import axios from '../../../shared/axios'
-import Status from '../../../shared/status'
 
 // Thunks
 

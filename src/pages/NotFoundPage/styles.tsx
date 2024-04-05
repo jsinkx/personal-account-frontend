@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
-import { CustomNavLink } from '../../components/CustomLink'
+import { CustomNavLink } from '@components/CustomLink'
 
 export const StyledCustomNavLink = styled(CustomNavLink)`
 	color: ${Colors.BLUE_WISH};

@@ -5,9 +5,24 @@
 	"settings": {
 		"react": {
 			"version": "detect"
-		}
-	},
-	"ignorePatterns": ["*.config.*", "vite-env.d.ts"],
+		},
+		"import/resolver": {
+			"alias": {
+			  "map": [
+				["@assets", "./src/assets"],
+				["@components", "./src/components"],
+				["@hooks", "./src/hooks"],
+				["@layouts", "./src/layouts"],
+				["@pages", "./src/pages"],
+				["@redux", "./src/redux"],
+				["@shared", "./src/shared"],
+				["@utils", "./src/utils"]
+			  ],
+			  "extensions": [".ts", ".tsx"]
+			}
+		  }
+		},
+	"ignorePatterns": ["*.config.*", "*.d.ts"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true
@@ -33,9 +48,19 @@
 	"plugins": ["import", "react", "prettier"],
 	"root": true,
 	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
 		"@typescript-eslint/no-throw-literal": "off",
+		"@typescript-eslint/no-unused-expressions": "off",
+		"@typescript-eslint/naming-convention": "off",
+		"@typescript-eslint/no-unused-vars": "warn",
+		"no-unused-vars": "off",
 		"arrow-parens": "off",
 		"arrow-body-style": "off",
 		"function-paren-newline": "off",
@@ -49,6 +74,7 @@
 		"linebreak-style": "off",
 		"require-jsdoc": "off",
 		"import/no-named-as-default": 0,
+		"import/prefer-default-export": 0,
 		"no-console": "off",
 		"no-plusplus": "off",
 		"no-tabs": "off",
@@ -56,7 +82,6 @@
 		"no-empty": 0,
 		"no-param-reassign": "off",
 		"no-underscore-dangle": "off",
-		"no-unused-vars": "warn",
 		"no-useless-escape": 1,
 		"no-fallthrough": 1,
 		"no-extra-boolean-cast": 1,
@@ -64,7 +89,6 @@
 		"no-case-declarations": "off",
 		"no-restricted-globals": "off",
 		"no-control-regex": "off",
-		"@typescript-eslint/no-unused-expressions": "off",
 		"react/no-deprecated": 0,
 		"react/no-unescaped-entities": "warn",
 		"react/no-string-refs": "warn",
@@ -89,12 +113,7 @@
 				"unnamedComponents": "arrow-function"
 			}
 		],
-		"prettier/prettier": [
-			"error",
-			{
-				"endOfLine": "auto"
-			}
-		],
+		
 		"jsx-a11y/click-events-have-key-events": "off",
 		"jsx-a11y/no-static-element-interactions": "off",
 		"jsx-a11y/anchor-is-valid": [

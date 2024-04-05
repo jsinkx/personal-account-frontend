@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 export const StyledBubblesBackground = styled.div`
 	@keyframes move {

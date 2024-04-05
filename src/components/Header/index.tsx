@@ -1,25 +1,26 @@
-import { block } from 'million/react'
 import React from 'react'
 
-import Paths from '../../shared/paths'
+import { block } from 'million/react'
 
-import { selectAuthData } from '../../redux/slices/auth/selectors'
+import Paths from '@shared/paths'
 
-import useAppSelector from '../../hooks/useAppSelector'
+import { selectAuthData } from '@redux/slices/auth/selectors'
 
-import { CustomNavLink } from '../CustomLink'
-import Logo from '../Logo'
+import useAppSelector from '@hooks/useAppSelector'
 
-import AvatarMenu from './AvatarMenu'
-import Notifications from './Notifications'
+import { CustomNavLink } from '@components/CustomLink'
+import Logo from '@components/Logo'
+
+import HeaderAvatarMenu from './HeaderAvatarMenu'
+import HeaderNotifications from './HeaderNotifications'
 import StyledHeader from './styles'
 
 type HeaderProps = React.ComponentPropsWithoutRef<'header'>
 
 const Header: React.FC<HeaderProps> = block(({ ...props }) => {
-	const profile = useAppSelector(selectAuthData)
+	const authData = useAppSelector(selectAuthData)
 
-	const isAuth = !!profile
+	const isAuth = !!authData
 
 	return (
 		<StyledHeader {...props}>
@@ -33,15 +34,16 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 					{isAuth ? (
 						<>
 							<li className="header__notifications">
-								<Notifications />
+								<HeaderNotifications />
 							</li>
 							<li className="header__avatar__menu">
-								<AvatarMenu
-									id={profile.id}
-									avatar={profile.avatar}
-									color={profile.background_color}
-									firstName={profile.first_name}
-									lastName={profile.last_name}
+								<HeaderAvatarMenu
+									id={authData.id}
+									login={authData.login}
+									avatar={authData.avatar}
+									color={authData.background_color}
+									firstName={authData.first_name}
+									lastName={authData.last_name}
 								/>
 							</li>
 						</>

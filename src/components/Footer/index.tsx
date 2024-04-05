@@ -1,11 +1,11 @@
-import { For, block } from 'million/react'
 import React from 'react'
 
+import { For, block } from 'million/react'
 import moment from 'moment'
 
-import Paths from '../../shared/paths'
+import Paths from '@shared/paths'
 
-import { CustomLink } from '../CustomLink'
+import { CustomLink } from '@components/CustomLink'
 
 import StyledFooter from './styles'
 

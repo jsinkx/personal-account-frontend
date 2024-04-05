@@ -1,8 +1,8 @@
-import { MenuItem } from '@mui/material'
-
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
+
+import { MenuItem } from '@mui/material'
 
 export const StyledMenuItem = styled(MenuItem)`
 	font-weight: 400 !important;

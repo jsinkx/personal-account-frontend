@@ -10,7 +10,7 @@ const Paths = {
 	forgotPassword: '/forgot-password',
 	profile: {
 		static: '/profile/:id',
-		dynamic(id: number) {
+		dynamic(id: number | string) {
 			return `/profile/${id}`
 		},
 		children: {

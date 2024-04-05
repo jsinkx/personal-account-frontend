@@ -1,19 +1,19 @@
 import React from 'react'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
-import IconButton from '../IconButton'
-import EyeCloseIcon from '../Icons/EyeCloseIcon'
-import EyeOpenIcon from '../Icons/EyeOpenIcon'
+import IconButton from '@components/IconButton'
+import EyeCloseIcon from '@components/Icons/EyeCloseIcon'
+import EyeOpenIcon from '@components/Icons/EyeOpenIcon'
 
-type ShowPasswordButtonProps = {
+type InputShowPasswordButtonProps = {
 	height: string
 	isShowPassword: boolean
 	handleClickShowPassword: React.MouseEventHandler<HTMLButtonElement>
 }
 const EYE_ICON_COLOR = Colors.BLACK
 
-const ShowPasswordButton: React.FC<ShowPasswordButtonProps> = ({
+const InputShowPasswordButton: React.FC<InputShowPasswordButtonProps> = ({
 	height,
 	isShowPassword,
 	handleClickShowPassword,
@@ -31,4 +31,4 @@ const ShowPasswordButton: React.FC<ShowPasswordButtonProps> = ({
 	)
 }
 
-export default React.memo(ShowPasswordButton)
+export default React.memo(InputShowPasswordButton)

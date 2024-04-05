@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import AvatarMUI from '@mui/material/Avatar'
+import Colors from '@shared/colors'
 
-import Colors from '../../shared/colors'
+import { Avatar as AvatarMUI } from '@mui/material'
 
 import StyledAvatarFullSize from './styles'
 
@@ -49,8 +49,6 @@ const Avatar: React.FC<AvatarProps> = ({
 					height: size,
 					fontSize: `calc(${size} / 2)`,
 					backgroundColor: color,
-					fontFamily: `'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-					sans-serif;`,
 					zIndex: '1',
 				}}
 				src={src}

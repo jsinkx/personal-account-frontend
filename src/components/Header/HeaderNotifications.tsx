@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined'
 import { Badge, IconButton, Menu, MenuItem } from '@mui/material'
 
-type NotificationsProps = {}
+type HeaderNotificationsProps = {}
 
-const Notifications: React.FC<NotificationsProps> = () => {
+const HeaderNotifications: React.FC<HeaderNotificationsProps> = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -38,4 +38,4 @@ const Notifications: React.FC<NotificationsProps> = () => {
 	)
 }
 
-export default Notifications
+export default HeaderNotifications

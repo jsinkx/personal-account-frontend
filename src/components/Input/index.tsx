@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import ShowPasswordButton from './ShowPasswordButton'
+import InputShowPasswordButton from './InputShowPasswordButton'
 import StyledInputWrapper from './styles'
 
 type InputProps = {
@@ -33,7 +33,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 				*/}
 				<input type={!isShowPassword ? type : 'text'} disabled={disabled} ref={ref} {...props} />
 				{type === 'password' && (
-					<ShowPasswordButton
+					<InputShowPasswordButton
 						height={height}
 						isShowPassword={isShowPassword}
 						handleClickShowPassword={handleClickShowPassword}

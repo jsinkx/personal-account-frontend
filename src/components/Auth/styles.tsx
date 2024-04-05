@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
-import Error from '../Error'
-import Input from '../Input'
+import Error from '@components/Error'
+import Input from '@components/Input'
 
 export const StyledInput = styled(Input)`
 	margin-bottom: 20px;
@@ -37,7 +37,7 @@ const StyledAuth = styled.div`
 	box-sizing: border-box;
 
 	form {
-		width: 300px;
+		width: 310px;
 	}
 
 	.auth__navigation {
@@ -92,17 +92,18 @@ const StyledAuth = styled.div`
 			}
 		}
 
+		.auth__MUI-checkbox {
+			margin-left: 10px;
+			margin-right: 3px;
+			padding: 0;
+		}
+
 		.auth--is-agree,
 		.auth--is-save-user {
 			display: flex;
 			text-align: left;
 			margin-bottom: 10px;
 			user-select: none;
-
-			input {
-				margin-right: 5px;
-				cursor: pointer;
-			}
 		}
 
 		.auth--is-save-user {
@@ -120,7 +121,6 @@ const StyledAuth = styled.div`
 	}
 
 	.auth__login__availability-message {
-		margin-left: 5px;
 		margin-bottom: 2px;
 		text-align: left;
 		overflow: hidden;

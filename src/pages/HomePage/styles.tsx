@@ -1,9 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import styled, { createGlobalStyle } from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
-import Button from '../../components/Button'
+import Button from '@components/Button'
 
 type StyledProps = {
 	$isAuth: boolean
@@ -17,76 +16,82 @@ export const StyledButton = styled(Button)`
 	font-size: 1.2em;
 `
 
+export const StyledSlide = styled.div<StyledProps>`
+	${({ $isAuth }) => !$isAuth && 'height: 100vh;'}
+	padding-top: 80px;
+	scroll-snap-align: start;
+`
+
 export const StyledHomePage = styled.div<StyledProps>`
 	margin: 0;
 	box-sizing: border-box;
 	scroll-snap-type: y mandatory;
-	${({ $isAuth }) => !$isAuth && 'overflow-y: scroll;'}
-	${({ $isAuth }) => !$isAuth && 'height: 100vh;'}
+	${({ $isAuth }) =>
+		!$isAuth &&
+		`
+		height: 100vh;
+		overflow-y: scroll;
+	`}
 
-	.slider-container__element {
-		${({ $isAuth }) => !$isAuth && 'height: 100vh;'}
-		padding-top: 80px;
-		scroll-snap-align: start;
-	}
-
-	.slider-container__element--one {
-	}
-
-	.slider-container__element--two {
-		h2 {
-			font-size: 2em;
-			text-align: center;
-			user-select: none;
+	.slider-container {
+		.slider-container__element--one {
 		}
 
-		.navigation__services {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-			margin-top: 5vh;
-
-			a {
-				color: inherit;
-				text-decoration: inherit;
-			}
-
-			.disabled {
-				cursor: default;
-				pointer-events: none;
-
-				.navigation__services__service__icon {
-					opacity: 0.5;
-				}
-
-				p {
-					color: ${Colors.INACTIVE_GREY_FONT};
-				}
-			}
-
-			.navigation__services__service {
-				margin-inline: 30px;
-				margin-bottom: 50px;
+		.slider-container__element--two {
+			h2 {
+				font-size: 2em;
+				text-align: center;
 				user-select: none;
+			}
 
-				.navigation__services__service__icon {
-					margin: 0 auto;
-					border-radius: 50%;
-					cursor: pointer;
+			.navigation__services {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				margin-top: 5vh;
+
+				a {
+					color: inherit;
+					text-decoration: inherit;
 				}
 
-				p {
-					margin: 5px auto;
-					font-size: 1em;
-					text-align: center;
+				.disabled {
+					cursor: default;
+					pointer-events: none;
+
+					.navigation__services__service__icon {
+						opacity: 0.5;
+					}
+
+					p {
+						color: ${Colors.INACTIVE_GREY_FONT};
+					}
+				}
+
+				.navigation__services__service {
+					margin-inline: 30px;
+					margin-bottom: 50px;
+					user-select: none;
+
+					.navigation__services__service__icon {
+						margin: 0 auto;
+						border-radius: 50%;
+						cursor: pointer;
+					}
+
+					p {
+						margin: 5px auto;
+						font-size: 1em;
+						text-align: center;
+					}
 				}
 			}
 		}
 	}
 
 	.block__greetings-info,
-	.block__navigation-between-services {
+	.block__navigation-services {
 	}
 
 	.block__greetings-info {

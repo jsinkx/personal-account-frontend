@@ -1,8 +1,6 @@
-import React from 'react'
-
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 type StyledInputWrapperProps = {
 	$inputHeight: string
@@ -62,4 +60,4 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 	}
 `
 
-export default React.memo(StyledInputWrapper)
+export default StyledInputWrapper

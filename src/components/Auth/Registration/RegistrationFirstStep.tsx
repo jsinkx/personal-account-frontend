@@ -1,4 +1,3 @@
-import { block } from 'million/react'
 import React, { useCallback, useState } from 'react'
 import type {
 	FieldErrors,
@@ -9,21 +8,21 @@ import type {
 } from 'react-hook-form'
 
 import { AxiosError } from 'axios'
+import { block } from 'million/react'
 import { throttle } from 'throttle-debounce'
 
-import { FormRegistrationValues } from './types'
-
-import axios from '../../../shared/axios'
+import axios from '@shared/axios'
 import {
 	EMAIL_UNCORRECTED_MESSAGE,
 	LOGIN_BAD_PATTERN_MESSAGE,
 	PASSWORDS_DOESNT_MATCH_MESSAGE,
 	PASSWORD_BAD_PATTERN_MESSAGE,
 	PASSWORD_CONFIRMATION_MISSED_MESSAGE,
-} from '../../../shared/messages/registration-messages'
-import { EMAIL_PATTERN, LOGIN_PATTERN, PASSWORD_PATTERN } from '../../../shared/regex-patterns'
+} from '@shared/messages/registration-messages'
+import { EMAIL_PATTERN, LOGIN_PATTERN, PASSWORD_PATTERN } from '@shared/regex-patterns'
 
 import { StyledErrorInStep, StyledInput } from '../styles'
+import { FormRegistrationValues } from './types'
 
 type RegistrationFirstStepProps = {
 	register: UseFormRegister<FormRegistrationValues>

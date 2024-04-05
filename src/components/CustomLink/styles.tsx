@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 export const StyledCustomNavLink = styled(NavLink)`
 	color: ${Colors.INACTIVE_GREY_FONT};

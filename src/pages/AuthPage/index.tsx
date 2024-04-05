@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import Paths from '../../shared/paths'
+import Paths from '@shared/paths'
 
-import { selectAuthData } from '../../redux/slices/auth/selectors'
+import { selectAuthData } from '@redux/slices/auth/selectors'
 
-import useAppSelector from '../../hooks/useAppSelector'
+import useAppSelector from '@hooks/useAppSelector'
 
-import CleanLayout from '../../layouts/CleanLayout'
+import CleanLayout from '@layouts/CleanLayout'
 
-import Login from '../../components/Auth/Login'
-import Registration from '../../components/Auth/Registration'
-import { CustomNavLink } from '../../components/CustomLink'
-import Logo from '../../components/Logo'
+import Login from '@components/Auth/Login'
+import Registration from '@components/Auth/Registration'
+import { CustomNavLink } from '@components/CustomLink'
+import Logo from '@components/Logo'
 
-import BubblesBackground from './BubblesBackground'
+import BubblesBackground from './AuthPageBubblesBackground'
 import StyledAuthPage from './styles'
 
 const RegistrationPage: React.FC = () => {

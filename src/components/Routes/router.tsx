@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { Router } from '@remix-run/router'
 
-import Paths from '../../shared/paths'
+import Paths from '@shared/paths'
 
 // Lazy pages
 

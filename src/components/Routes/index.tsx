@@ -1,7 +1,7 @@
 import React from 'react'
 import { RouterProvider } from 'react-router-dom'
 
-import LoadingPage from '../../pages/LoadingPage'
+import LoadingPage from '@pages/LoadingPage'
 
 import router from './router'
 

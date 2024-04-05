@@ -1,17 +1,17 @@
-import { block } from 'million/react'
 import React from 'react'
 import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 
-import { FormRegistrationValues } from './types'
+import { block } from 'million/react'
 
 import {
 	FIRST_NAME_BAD_PATTERN_MESSAGE,
 	LAST_NAME_BAD_PATTERN_MESSAGE,
 	PATRONYMIC_BAD_PATTERN_MESSAGE,
-} from '../../../shared/messages/registration-messages'
-import { NAME_PATTERN } from '../../../shared/regex-patterns'
+} from '@shared/messages/registration-messages'
+import { NAME_PATTERN } from '@shared/regex-patterns'
 
 import { StyledErrorInStep, StyledInput } from '../styles'
+import { FormRegistrationValues } from './types'
 
 type RegistrationSecondStepProps = {
 	register: UseFormRegister<FormRegistrationValues>
