@@ -8,8 +8,7 @@ const LoadingPage: React.FC = () => {
 	return (
 		/* Layout no needed */
 		<StyledLoadingPage>
-			<h1> Загружаем страницу... </h1>
-			<Loading />
+			<Loading className="loader" />
 		</StyledLoadingPage>
 	)
 }

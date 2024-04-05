@@ -22,8 +22,8 @@ const App: React.FC = () => {
 	return (
 		<div className="app">
 			<HelmetProvider>
-				<GlobalStyles />
 				<AppProviders>
+					<GlobalStyles />
 					<Routes />
 				</AppProviders>
 			</HelmetProvider>

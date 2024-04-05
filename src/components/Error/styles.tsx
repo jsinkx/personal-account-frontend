@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 
-import Colors from '@shared/colors'
-
 const StyledError = styled.div`
 	padding: 5px 10px;
-	color: ${Colors.BLACK};
+	color: ${({ theme }) => theme.text.defaultFontColor};
 	text-align: left;
-	background-color: ${Colors.SUPER_LIGHT_ERROR_RED_BACKGROUND};
-	border: 1px solid ${Colors.LIGHT_ERROR_RED_BORDER};
+	background-color: ${({ theme }) => theme.element.errorBackgroundColor};
+	border: 1px solid ${({ theme }) => theme.text.errorFontColor};
 	border-radius: 5px;
 	box-sizing: border-box;
 
 	&::selection {
-		color: ${Colors.BLACK};
-		background-color: ${Colors.LIGHT_ERROR_RED_BORDER};
+		color: ${({ theme }) => theme.selection.errorFontColor};
+		background-color: ${({ theme }) => theme.selection.errorBackgroundColor};
 	}
 `
 

@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import Colors from '@shared/colors'
-
 const StyledFooter = styled.footer`
 	width: 100%;
 	min-height: 55px;
@@ -10,16 +8,14 @@ const StyledFooter = styled.footer`
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: ${Colors.WHITE};
-	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+	background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
+	box-shadow: 0 -1px 0 ${({ theme }) => theme.element.defaultBoxShadow};
 	box-sizing: border-box;
-	font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
 	user-select: none;
 	flex: 0 0 auto;
 
 	p {
-		color: ${Colors.INACTIVE_GREY_FONT};
+		color: ${({ theme }) => theme.text.inactiveFontColor};
 		font-weight: 500;
 	}
 

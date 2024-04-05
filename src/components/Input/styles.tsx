@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import Colors from '@shared/colors'
-
 type StyledInputWrapperProps = {
 	$inputHeight: string
 	$inputWidth: string
@@ -14,7 +12,7 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 	width: ${({ $inputWidth }) => $inputWidth};
 	height: ${({ $inputHeight }) => $inputHeight};
 	padding: 5px 10px;
-	border: 1px solid ${Colors.INACTIVE_GREY_FONT};
+	border: 1px solid ${({ theme }) => theme.element.inactiveBorderColor};
 	border-radius: 5px;
 	box-sizing: border-box;
 	background: transparent;
@@ -32,7 +30,7 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 		width: 100%;
 		height: 100%;
 		font-size: 1em;
-		color: ${Colors.BLACK};
+		color: ${({ theme }) => theme.text.defaultFontColor};
 		border: none;
 		margin: 0;
 		padding: 0;
@@ -47,16 +45,16 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 		}
 
 		&:-webkit-autofill {
-			-webkit-text-fill-color: ${Colors.BLACK};
-			color: ${Colors.BLACK};
-			box-shadow: 0 0 0px 1000px ${Colors.WHITE} inset;
+			-webkit-text-fill-color: ${({ theme }) => theme.text.defaultFontColor};
+			color: ${({ theme }) => theme.text.defaultFontColor};
+			box-shadow: 0 0 0px 1000px ${({ theme }) => theme.element.defaultBackgroundColor} inset;
 			font-size: 1em;
 		}
 	}
 
 	::selection {
-		color: ${Colors.WHITE};
-		background-color: ${Colors.BLUE_WISH};
+		color: ${({ theme }) => theme.selection.defaultFontColor};
+		background-color: ${({ theme }) => theme.selection.defaultBackgroundColor};
 	}
 `
 

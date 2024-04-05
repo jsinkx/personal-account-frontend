@@ -1,9 +1,7 @@
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 
-import themeMUI from '@shared/themes/theme-MUI'
-
-import { ThemeProvider } from '@mui/material'
+import ThemesProvider from '@components/Themes/ThemesProvider'
 
 type AppProvidersProps = {
 	children: React.ReactNode
@@ -12,7 +10,7 @@ type AppProvidersProps = {
 const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
 	return (
 		<HelmetProvider>
-			<ThemeProvider theme={themeMUI}>{children}</ThemeProvider>
+			<ThemesProvider>{children}</ThemesProvider>
 		</HelmetProvider>
 	)
 }

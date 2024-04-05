@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
-import { Box, Tab, Tabs, ThemeProvider } from '@mui/material'
-import createTheme from '@mui/material/styles/createTheme'
+import { Box, Tab, Tabs } from '@mui/material'
 
 import Paths from '../../../shared/paths'
 
-type ProfilePortfolioProps = {
-	color: string
-}
+type ProfilePortfolioProps = {}
 
 const NAVIGATION_ELEMENTS = [
 	{
@@ -25,7 +22,7 @@ const NAVIGATION_ELEMENTS = [
 	},
 ]
 
-const ProfilePortfolio: React.FC<ProfilePortfolioProps> = ({ color }) => {
+const ProfilePortfolio: React.FC<ProfilePortfolioProps> = () => {
 	const navigate = useNavigate()
 
 	const location = useLocation()
@@ -37,41 +34,30 @@ const ProfilePortfolio: React.FC<ProfilePortfolioProps> = ({ color }) => {
 		setCurrentTab(newValue)
 	}
 
-	const theme = createTheme({
-		palette: {
-			primary: {
-				main: color,
-			},
-		},
-	})
-
 	useEffect(() => {
 		pathArray[3] && setCurrentTab(pathArray[3])
 	}, [pathArray])
 
 	return (
 		<div>
-			<ThemeProvider theme={theme}>
-				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-					<Tabs value={currentTab} onChange={handleChange}>
-						{NAVIGATION_ELEMENTS.map((item, index) => (
-							<Tab
-								key={item.path}
-								onClick={() => navigate(item.path)}
-								label={item.title}
-								value={item.path}
-								sx={{
-									borderRadius: index === 0 ? '25px' : '0',
-									borderTopRightRadius: 0,
-									borderBottomRightRadius: 0,
-									borderBottomLeftRadius: 0,
-								}}
-							/>
-						))}
-					</Tabs>
-				</Box>
-			</ThemeProvider>
-
+			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+				<Tabs value={currentTab} onChange={handleChange}>
+					{NAVIGATION_ELEMENTS.map((item, index) => (
+						<Tab
+							key={item.path}
+							onClick={() => navigate(item.path)}
+							label={item.title}
+							value={item.path}
+							sx={{
+								borderRadius: index === 0 ? '25px' : '0',
+								borderTopRightRadius: 0,
+								borderBottomRightRadius: 0,
+								borderBottomLeftRadius: 0,
+							}}
+						/>
+					))}
+				</Tabs>
+			</Box>
 			<div className="profile__content__main-box">
 				<Outlet />
 			</div>

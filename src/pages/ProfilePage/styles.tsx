@@ -26,14 +26,15 @@ const StyledProfile = styled.div<StyledProfileProps>`
 				min-width: 260px;
 				max-width: 260px;
 				min-height: 370px;
+				max-height: 700px;
 				margin-top: -110px;
 				margin-left: 80px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				background-color: ${Colors.WHITE};
+				background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
 				border-radius: 25px;
-				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
+				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
 				.profile-card__avatar,
 				.profile-card__avatar img {
@@ -82,7 +83,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 					.profile-card__info__description {
 						max-width: 229px;
 						margin-top: 15px;
-						color: #6e7082;
+						color: ${({ theme }) => theme.text.secondaryFontColor};
 						max-height: 90px;
 						overflow-y: hidden;
 						user-select: none;
@@ -130,14 +131,14 @@ const StyledProfile = styled.div<StyledProfileProps>`
 
 			.profile__content {
 				width: 1200px;
-				min-height: 370px;
+				min-height: 400px;
 				margin-top: -110px;
 				margin-left: 120px;
 				margin-right: 100px;
 				padding-bottom: 20px;
-				background-color: ${Colors.WHITE};
+				background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
 				border-radius: 25px;
-				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
+				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
 				.profile__content__main-box {
 					margin-top: 30px;

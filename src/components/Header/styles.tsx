@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 
-import Colors from '@shared/colors'
-
 import { MenuItem } from '@mui/material'
 
 export const StyledMenuItem = styled(MenuItem)`
 	font-weight: 400 !important;
-	font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif !important;
 `
 
 const StyledHeader = styled.header`
@@ -15,9 +11,9 @@ const StyledHeader = styled.header`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: ${Colors.WHITE};
+	background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
 	box-sizing: border-box;
-	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+	box-shadow: 0 1px 0 ${({ theme }) => theme.element.defaultBoxShadow};
 	position: sticky;
 	top: 0;
 	z-index: 9;
@@ -36,19 +32,11 @@ const StyledHeader = styled.header`
 			align-items: center;
 			list-style: none;
 			box-sizing: border-box;
-			font-family: 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-				sans-serif;
 
 			li {
 				margin-left: 40px;
 				font-size: 1.2em;
 				font-weight: 500;
-				text-transform: uppercase;
-			}
-
-			.header__navigation__logout {
-				padding: 0;
-				color: ${Colors.RED};
 				text-transform: uppercase;
 			}
 		}
@@ -63,25 +51,6 @@ const StyledHeader = styled.header`
 
 			.header__avatar__menu__button {
 				cursor: pointer;
-			}
-		}
-	}
-
-	.menu-notifications {
-		width: 300px;
-		display: flex;
-		justify-content: center;
-
-		ul {
-			margin: 0;
-
-			li {
-				width: 100%;
-				border-top: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
-				border-bottom: 1px solid ${Colors.INACTIVE_LIGHT_GREY_BORDER};
-
-				p {
-				}
 			}
 		}
 	}

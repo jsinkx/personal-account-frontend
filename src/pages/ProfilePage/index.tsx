@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import moment from 'moment'
 
+import Colors from '@shared/colors'
 import Status from '@shared/status'
 
 import { selectAuthData, selectAuthStatus } from '@redux/slices/auth/selectors'
@@ -15,17 +16,35 @@ import LoadingPage from '@pages/LoadingPage'
 
 import Error from '@components/Error'
 
+import { ThemeProvider, createTheme, useTheme } from '@mui/material'
+
 import ProfileCard from './ProfileElements/ProfileCard'
 import ProfilePortfolio from './ProfileElements/ProfilePortfolio'
 import StyledProfile from './styles'
 
 const IS_ONLINE = true
+const MAIN_LOCATION = 'Россия, Москва'
 
 const Profile: React.FC = () => {
 	const { id } = useParams()
+	const currentThemeMUI = useTheme()
 
 	const authData = useAppSelector(selectAuthData)
 	const status = useAppSelector(selectAuthStatus)
+
+	console.log(currentThemeMUI)
+
+	const theme = createTheme({
+		palette: {
+			...currentThemeMUI.palette,
+			primary: {
+				main: authData?.background_color || Colors.BLUE_WISH,
+			},
+		},
+		typography: {
+			...currentThemeMUI.typography,
+		},
+	})
 
 	// Also we need to fetch profile by param id with service hook
 
@@ -41,26 +60,30 @@ const Profile: React.FC = () => {
 				description={`Личный профиль пользователя ${authData.first_name} ${authData.last_name}`}
 			>
 				<StyledProfile $color={authData.background_color}>
-					<section>
-						<div className="profile__background"> </div>
-						<div className="profile">
-							<ProfileCard
-								isOnline={IS_ONLINE}
-								avatar={authData.avatar}
-								firstName={authData.first_name}
-								lastName={authData.last_name}
-								color={authData.background_color}
-								login={authData.login}
-								description={authData.description}
-								lastOnlineDate={moment().toString()}
-								email={authData.email}
-								createdAt={authData.created_at}
-							/>
-							<section className="profile__content">
-								<ProfilePortfolio color={authData.background_color} />
-							</section>
-						</div>
-					</section>
+					<ThemeProvider theme={theme}>
+						<section>
+							<div className="profile__background"> </div>
+							<div className="profile">
+								<ProfileCard
+									isOnline={IS_ONLINE}
+									avatar={authData.avatar}
+									firstName={authData.first_name}
+									lastName={authData.last_name}
+									color={authData.background_color}
+									login={authData.login}
+									description={authData.description}
+									mainLocation={MAIN_LOCATION}
+									lastOnlineDate={moment().toString()}
+									birthday={authData.birthday}
+									email={authData.email}
+									createdAt={authData.created_at}
+								/>
+								<section className="profile__content">
+									<ProfilePortfolio />
+								</section>
+							</div>
+						</section>
+					</ThemeProvider>
 				</StyledProfile>
 			</MainLayout>
 		)

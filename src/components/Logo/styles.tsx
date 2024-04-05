@@ -1,18 +1,16 @@
 import styled from 'styled-components'
 
-import Colors from '@shared/colors'
-
 const StyledLogo = styled.div`
 	display: flex;
 	align-items: center;
 	user-select: none;
-	color: black;
+	color: ${({ theme }) => theme.text.defaultFontColor};
 	transition: all 0.3s ease;
 
 	&:hover,
 	:active,
 	:focus {
-		color: ${Colors.BLUE_WISH};
+		color: ${({ theme }) => theme.text.primaryFontColor};
 	}
 
 	.header__logo--logo-name {
@@ -24,7 +22,7 @@ const StyledLogo = styled.div`
 
 	.header__logo-text--version {
 		margin-left: 10px;
-		color: ${Colors.INACTIVE_GREY_FONT};
+		color: ${({ theme }) => theme.text.inactiveFontColor};
 		font-size: 1.2em;
 		font-family: Consolas;
 	}

@@ -10,6 +10,7 @@ import useAppSelector from '@hooks/useAppSelector'
 
 import { CustomNavLink } from '@components/CustomLink'
 import Logo from '@components/Logo'
+import ThemeSwitcher from '@components/Themes/ThemesSwitcher'
 
 import HeaderAvatarMenu from './HeaderAvatarMenu'
 import HeaderNotifications from './HeaderNotifications'
@@ -28,9 +29,11 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 				<Logo />
 			</CustomNavLink>
 			{/* TODO: add checkbox in settings to turn on/off display version */}
-			{/* TODO: create theme switcher */}
 			<nav>
 				<ul>
+					<li>
+						<ThemeSwitcher />
+					</li>
 					{isAuth ? (
 						<>
 							<li className="header__notifications">

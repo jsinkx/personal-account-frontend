@@ -13,7 +13,7 @@ const StyledAvatarFullSize = styled.div<StyledAvatarFullSizeProps>`
 	text-align: center;
 	align-items: center;
 	font-size: ${({ $size }) => `calc(${$size} / 2)`};
-	color: white;
+	color: ${({ theme }) => theme.text.defaultFontColor};
 	background-color: ${({ $color }) => $color};
 	user-select: none;
 

@@ -1,7 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
-import Colors from '@shared/colors'
-
 import Button from '@components/Button'
 
 type StyledProps = {
@@ -60,12 +58,8 @@ export const StyledHomePage = styled.div<StyledProps>`
 					cursor: default;
 					pointer-events: none;
 
-					.navigation__services__service__icon {
-						opacity: 0.5;
-					}
-
 					p {
-						color: ${Colors.INACTIVE_GREY_FONT};
+						color: ${({ theme }) => theme.text.inactiveFontColor};
 					}
 				}
 
@@ -90,8 +84,20 @@ export const StyledHomePage = styled.div<StyledProps>`
 		}
 	}
 
-	.block__greetings-info,
-	.block__navigation-services {
+	.defaultBackgroundColor {
+	}
+
+	.block__navigation--services {
+		h2 {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+
+			span {
+				margin-bottom: 5px;
+			}
+		}
 	}
 
 	.block__greetings-info {
@@ -121,19 +127,19 @@ export const StyledHomePage = styled.div<StyledProps>`
 			}
 
 			h4 {
-				color: ${Colors.INACTIVE_GREY_FONT};
+				color: ${({ theme }) => theme.text.inactiveFontColor};
 				font-size: 1.9em;
 				font-weight: normal;
 			}
 
 			h3 {
-				color: ${Colors.BLACK};
+				color: ${({ theme }) => theme.text.defaultFontColor};
 				font-size: 2.2em;
 				font-weight: bold;
 			}
 
 			h2 {
-				color: ${Colors.BLUE_WISH};
+				color: ${({ theme }) => theme.text.primaryFontColor};
 				font-size: 2.9em;
 				font-weight: bold;
 			}
@@ -142,7 +148,7 @@ export const StyledHomePage = styled.div<StyledProps>`
 				width: 570px;
 				margin-bottom: 25px;
 				font-size: 1.3em;
-				color: ${Colors.INACTIVE_GREY_FONT};
+				color: ${({ theme }) => theme.text.inactiveFontColor};
 			}
 
 			img {

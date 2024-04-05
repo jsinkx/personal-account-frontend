@@ -7,7 +7,9 @@ import Avatar from '@components/Avatar'
 import EmailIcon from '@components/Icons/EmailIcon'
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined'
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined'
 import { Divider, Snackbar } from '@mui/material'
 
@@ -20,8 +22,9 @@ type ProfileCardProps = {
 	color: string
 	login: string
 	description: string
+	mainLocation?: string
 	email: string
-	// birthday: string
+	birthday?: string
 	createdAt: string
 }
 
@@ -36,7 +39,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	color,
 	login,
 	description,
+	mainLocation,
 	email,
+	birthday,
 	createdAt,
 }) => {
 	const [isOpenSnackbarCopy, setIsOpenSnackbarCopy] = useState(false)
@@ -78,6 +83,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 						/>
 						<span>{login}</span>
 					</li>
+					{mainLocation && (
+						<li>
+							<LocationOnOutlinedIcon
+								fontSize="small"
+								className="profile-card__info__connections__connect--icon"
+								sx={{
+									color,
+								}}
+							/>
+							<span>{mainLocation}</span>
+						</li>
+					)}
 					<li className="profile-card__info__connections__connect__email">
 						<EmailIcon color={color} className="profile-card__info__connections__connect__email" />
 						<span title="Скопировать" onClick={handleClickCopyEmail}>
@@ -92,6 +109,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 							/>
 						</span>
 					</li>
+					{birthday && (
+						<li>
+							<CakeOutlinedIcon
+								fontSize="small"
+								className="profile-card__connections__connect--icon"
+								sx={{
+									color,
+								}}
+							/>
+							<span>{moment(birthday).format('DD.MM.YYYY')}</span>
+						</li>
+					)}
 					<li>
 						<SensorDoorOutlinedIcon
 							fontSize="small"
