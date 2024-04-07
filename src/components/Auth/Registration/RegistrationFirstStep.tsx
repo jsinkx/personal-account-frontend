@@ -85,7 +85,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					})}
 					placeholder="Логин"
 					autoComplete="login"
-					height="45px"
 					className="auth__login__input"
 				/>
 
@@ -102,7 +101,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="email"
 					placeholder="Email"
 					autoComplete="email"
-					height="45px"
 					className="auth__email__input"
 				/>
 				{errors.password?.message && <StyledErrorInStep> {errors.password.message} </StyledErrorInStep>}
@@ -118,7 +116,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="password"
 					placeholder="Пароль"
 					autoComplete="new-password"
-					height="45px"
 				/>
 				{errors.passwordConfirm?.message && (
 					<StyledErrorInStep> {errors.passwordConfirm.message} </StyledErrorInStep>
@@ -132,7 +129,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="password"
 					placeholder="Подведите пароль"
 					autoComplete="new-password"
-					height="45px"
 				/>
 			</>
 		)

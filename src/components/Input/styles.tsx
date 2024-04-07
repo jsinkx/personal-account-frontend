@@ -40,7 +40,7 @@ const StyledInputWrapper = styled.div<StyledInputWrapperProps>`
 		outline: none;
 
 		&::placeholder {
-			color: #71767b;
+			color: ${({ theme }) => theme.components.input.placeholderColor};
 			user-select: none;
 		}
 

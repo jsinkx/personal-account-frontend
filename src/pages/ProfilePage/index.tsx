@@ -1,9 +1,10 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 
 import moment from 'moment'
 
 import Colors from '@shared/colors'
+import Paths from '@shared/paths'
 import Status from '@shared/status'
 
 import { selectAuthData, selectAuthStatus } from '@redux/slices/auth/selectors'
@@ -48,6 +49,7 @@ const Profile: React.FC = () => {
 
 	// Also we need to fetch profile by param id with service hook
 
+	if (status === Status.LOADING) return <LoadingPage />
 	if (status === Status.ERROR) return <Error> Указанный профиль не найден!</Error>
 	if (status === Status.LOADED && authData) {
 		// @ts-ignore
@@ -89,7 +91,7 @@ const Profile: React.FC = () => {
 		)
 	}
 
-	return <LoadingPage />
+	return <Navigate to={Paths.home} />
 }
 
 export default Profile

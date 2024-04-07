@@ -13,6 +13,7 @@ import Login from '@components/Auth/Login'
 import Registration from '@components/Auth/Registration'
 import { CustomNavLink } from '@components/CustomLink'
 import Logo from '@components/Logo'
+import ThemeSwitcher from '@components/Themes/ThemesSwitcher'
 
 import BubblesBackground from './AuthPageBubblesBackground'
 import StyledAuthPage from './styles'
@@ -43,9 +44,12 @@ const RegistrationPage: React.FC = () => {
 			<StyledAuthPage>
 				<BubblesBackground />
 				<section>
-					<CustomNavLink className="auth__section__logo" to={Paths.home}>
-						<Logo />
-					</CustomNavLink>
+					<div className="auth__section__header">
+						<CustomNavLink className="auth__section__header__logo" to={Paths.home}>
+							<Logo />
+						</CustomNavLink>
+						<ThemeSwitcher />
+					</div>
 					{isLoginPage ? <Login /> : <Registration />}
 				</section>
 			</StyledAuthPage>

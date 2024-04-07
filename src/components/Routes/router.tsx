@@ -79,6 +79,10 @@ const router: Router = createBrowserRouter([
 		errorElement: <NotFoundPage />,
 		children: [
 			{
+				path: Paths.profile.children.default,
+				element: <h1> Обо мне</h1>,
+			},
+			{
 				path: Paths.profile.children.aboutMe,
 				element: <h1> Обо мне</h1>,
 			},

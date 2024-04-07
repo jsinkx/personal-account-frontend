@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Colors from '@shared/colors'
+import { useTheme } from 'styled-components'
 
 import IconButton from '@components/IconButton'
 import EyeCloseIcon from '@components/Icons/EyeCloseIcon'
@@ -11,14 +11,17 @@ type InputShowPasswordButtonProps = {
 	isShowPassword: boolean
 	handleClickShowPassword: React.MouseEventHandler<HTMLButtonElement>
 }
-const EYE_ICON_COLOR = Colors.BLACK
 
 const InputShowPasswordButton: React.FC<InputShowPasswordButtonProps> = ({
 	height,
 	isShowPassword,
 	handleClickShowPassword,
 }) => {
+	const theme = useTheme()
+
 	const EYE_ICON_SIZE = `calc(${height}/1.55)`
+
+	const EYE_ICON_COLOR = theme.icon.defaultColor
 
 	return (
 		<IconButton size={EYE_ICON_SIZE} onClick={handleClickShowPassword}>

@@ -36,13 +36,32 @@ const ThemeStyledComponentsLight = {
         'Fira Sans', 'Droid Sans', 'Helvetica Neue'`,
 	},
 
+	icon: {
+		defaultColor: Colors.BLACK,
+	},
+
 	selection: {
-		defaultFontColor: Colors.BLACK,
+		defaultFontColor: Colors.WHITE,
 		defaultBackgroundColor: Colors.BLUE_WISH,
 
 		errorFontColor: Colors.BLACK,
 		errorBackgroundColor: Colors.LIGHT_ERROR_RED_BORDER,
 	},
-} as const
+
+	scrollbar: {
+		defaultTrackColor: Colors.WHITE,
+		defaultThumbColor: Colors.BLUE_WISH,
+	},
+
+	components: {
+		auth: {
+			backgroundColor: 'rgba(255, 255, 255, 0.8)',
+		},
+
+		input: {
+			placeholderColor: '#71767b',
+		},
+	},
+}
 
 export default ThemeStyledComponentsLight

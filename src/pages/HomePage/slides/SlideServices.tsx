@@ -18,7 +18,7 @@ const SlideServices: React.FC<SlideServicesProps> = ({ isAuth, ...props }) => {
 			<nav className="block__navigation--services">
 				<h2>
 					<AppsOutlinedIcon fontSize="large" color="primary" />
-					<span>Сервисы</span>
+					Сервисы
 				</h2>
 				<section className="navigation__services">
 					{NAVIGATION_SERVICES.map((service) => (

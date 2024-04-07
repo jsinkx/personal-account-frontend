@@ -3,7 +3,7 @@ import { version } from '../../package.json'
 // API
 
 export const API_URL = import.meta.env.VITE_API_URL
-export const CLOUD_URL = import.meta.env.VITE_CDN_URL
+export const CLOUD_URL = import.meta.env.VITE_CLOUD_URL
 
 export const CLOUD_STATIC_IMG = `${CLOUD_URL}/assets/static/images`
 export const ICON_LOGO_URL = `${CLOUD_STATIC_IMG}/wish-edu-blue-round-box-logo.webp`

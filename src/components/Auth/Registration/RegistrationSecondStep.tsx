@@ -35,7 +35,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Имя"
 					autoComplete="firstName"
-					height="45px"
 				/>
 
 				{errors.lastName?.message && <StyledErrorInStep> {errors.lastName.message} </StyledErrorInStep>}
@@ -50,7 +49,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Фамилия"
 					autoComplete="lastName"
-					height="45px"
 				/>
 				{errors.patronymic?.message && <StyledErrorInStep> {errors.patronymic.message} </StyledErrorInStep>}
 				<StyledInput
@@ -63,7 +61,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Отчество"
 					autoComplete="patronymic"
-					height="45px"
 				/>
 			</>
 		)

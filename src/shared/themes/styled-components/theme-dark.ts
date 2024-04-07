@@ -1,8 +1,9 @@
 import Colors from '@shared/colors'
 
 import ThemesStyledComponents from './theme-styled-components'
+import ThemeStyledComponents from './types'
 
-const ThemeStyledComponentsDark = {
+const ThemeStyledComponentsDark: ThemeStyledComponents = {
 	paletteName: ThemesStyledComponents.DARK,
 
 	app: {
@@ -37,6 +38,10 @@ const ThemeStyledComponentsDark = {
         'Fira Sans', 'Droid Sans', 'Helvetica Neue'`,
 	},
 
+	icon: {
+		defaultColor: Colors.WHITE,
+	},
+
 	selection: {
 		defaultFontColor: Colors.WHITE,
 		defaultBackgroundColor: Colors.BLUE_WISH,
@@ -44,6 +49,21 @@ const ThemeStyledComponentsDark = {
 		errorFontColor: Colors.BLACK,
 		errorBackgroundColor: Colors.LIGHT_ERROR_RED_BORDER,
 	},
-} as const
+
+	scrollbar: {
+		defaultTrackColor: Colors.GREY_BACKGROUND_COLOR,
+		defaultThumbColor: Colors.BLUE_WISH,
+	},
+
+	components: {
+		auth: {
+			backgroundColor: 'rgba(39, 39, 39, 0.6)',
+		},
+
+		input: {
+			placeholderColor: Colors.INACTIVE_GREY_FONT,
+		},
+	},
+}
 
 export default ThemeStyledComponentsDark

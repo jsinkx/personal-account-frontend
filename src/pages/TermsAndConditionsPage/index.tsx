@@ -5,8 +5,6 @@ import MainLayout from '@layouts/MainLayout'
 import StyledTermsAndConditionsPage from './styles'
 
 const TermsAndConditionsPage: React.FC = () => {
-	// TODO: Create normal terms and conditions with MD and get from backend
-
 	return (
 		<MainLayout
 			title="Пользовательское соглашение"

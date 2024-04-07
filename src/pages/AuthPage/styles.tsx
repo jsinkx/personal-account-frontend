@@ -175,10 +175,19 @@ const StyledAuthPage = styled.main`
 		flex-direction: column;
 		margin: 18vh auto;
 
-		.auth__section__logo {
-			display: inline-block;
-			margin: 0 auto;
-			margin-bottom: 20px;
+		.auth__section__header {
+			margin-bottom: 15px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@media (max-width: 428px) {
+				flex-direction: column;
+			}
+
+			.auth__section__header__logo {
+				margin: 0 auto;
+			}
 		}
 	}
 `

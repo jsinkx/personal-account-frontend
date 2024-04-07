@@ -7,16 +7,28 @@ html {
 	color: ${({ theme }) => theme.app.defaultFontColor};
 	background-color: ${({ theme }) => theme.app.defaultBackgroundColor};
 
+	::selection {
+			color: ${({ theme }) => theme.selection.defaultFontColor};
+			background-color:  ${({ theme }) => theme.selection.defaultBackgroundColor};
+		}
+
+		::-webkit-scrollbar {
+			width: 5px;
+		}
+		
+		::-webkit-scrollbar-track {
+			background: ${({ theme }) => theme.scrollbar.defaultTrackColor}; 
+		}
+		
+		::-webkit-scrollbar-thumb {
+			background: ${({ theme }) => theme.scrollbar.defaultThumbColor}; 
+		}
+
 	body {
 		margin: 0;
 		font-family: ${({ theme }) => theme.text.defaultFontFamily};
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-
-		::selection {
-			color: ${({ theme }) => theme.selection.defaultFontColor};
-			background-color:  ${({ theme }) => theme.selection.defaultBackgroundColor};
-		}
 
 		a,
 		a:hover,

@@ -17,11 +17,10 @@ import useAppSelector from '@hooks/useAppSelector'
 
 import Button from '@components/Button'
 import { CustomLink } from '@components/CustomLink'
-import Error from '@components/Error'
 
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
-import StyledAuth, { StyledInput } from '../styles'
+import StyledAuth, { StyledErrorInStep, StyledInput } from '../styles'
 
 type LoginProps = {} & React.ComponentPropsWithoutRef<'div'>
 
@@ -91,16 +90,14 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 					})}
 					placeholder="Логин или почта"
 					autoComplete="login"
-					height="45px"
 				/>
 				<StyledInput
 					{...register('password', { required: true })}
 					type="password"
 					placeholder="Пароль"
 					autoComplete="password"
-					height="45px"
 				/>
-				{error !== null && <Error className="auth--error">{error}</Error>}
+				{error !== null && <StyledErrorInStep className="auth--error">{error}</StyledErrorInStep>}
 				<div className="auth__parameters">
 					<CustomLink to={Paths.forgotPassword} className="auth--forgot-password">
 						Забыли пароль ?

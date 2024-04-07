@@ -18,12 +18,11 @@ import useAppDispatch from '@hooks/useAppDispatch'
 import useAppSelector from '@hooks/useAppSelector'
 
 import Button from '@components/Button'
-import Error from '@components/Error'
 
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
 import AuthServiceAgree from '../AuthServiceAgree'
-import StyledAuth, { StyledStep } from '../styles'
+import StyledAuth, { StyledErrorInStep, StyledStep } from '../styles'
 import FirstStepRegistration from './RegistrationFirstStep'
 import SecondStepRegistration from './RegistrationSecondStep'
 import RegistrationStepInfo from './RegistrationStepInfo'
@@ -176,7 +175,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 					</div>
 				)}
 
-				{error !== null && <Error className="auth--error">{error}</Error>}
+				{error !== null && <StyledErrorInStep>{error}</StyledErrorInStep>}
 				<Button
 					onClick={!isLastStep ? handleClickNextStep : undefined}
 					disabled={isDisabledButton}

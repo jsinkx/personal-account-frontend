@@ -93,10 +93,6 @@ export const StyledHomePage = styled.div<StyledProps>`
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-
-			span {
-				margin-bottom: 5px;
-			}
 		}
 	}
 
