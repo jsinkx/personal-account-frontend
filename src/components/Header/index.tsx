@@ -41,7 +41,6 @@ const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 							</li>
 							<li className="header__avatar__menu">
 								<HeaderAvatarMenu
-									id={authData.id}
 									login={authData.login}
 									avatar={authData.avatar}
 									color={authData.background_color}
