@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import Paths from '../../shared/paths'
+import Paths from '@shared/paths'
 
-import { selectAuthData } from '../../redux/slices/auth/selectors'
+import { selectAuthData } from '@redux/slices/auth/selectors'
 
-import useAppSelector from '../../hooks/useAppSelector'
+import useAppSelector from '@hooks/useAppSelector'
 
-import CleanLayout from '../../layouts/CleanLayout'
+import CleanLayout from '@layouts/CleanLayout'
 
-import Login from '../../components/Auth/Login'
-import Registration from '../../components/Auth/Registration'
-import { CustomNavLink } from '../../components/CustomLink'
-import Logo from '../../components/Logo'
+import Login from '@components/Auth/Login'
+import Registration from '@components/Auth/Registration'
+import { CustomNavLink } from '@components/CustomLink'
+import Logo from '@components/Logo'
+import ThemeSwitcher from '@components/Themes/ThemesSwitcher'
 
-import BubblesBackground from './BubblesBackground'
+import BubblesBackground from './AuthPageBubblesBackground'
 import StyledAuthPage from './styles'
 
 const RegistrationPage: React.FC = () => {
@@ -43,9 +44,12 @@ const RegistrationPage: React.FC = () => {
 			<StyledAuthPage>
 				<BubblesBackground />
 				<section>
-					<CustomNavLink className="auth__section__logo" to={Paths.home}>
-						<Logo />
-					</CustomNavLink>
+					<div className="auth__section__header">
+						<CustomNavLink className="auth__section__header__logo" to={Paths.home}>
+							<Logo />
+						</CustomNavLink>
+						<ThemeSwitcher />
+					</div>
 					{isLoginPage ? <Login /> : <Registration />}
 				</section>
 			</StyledAuthPage>

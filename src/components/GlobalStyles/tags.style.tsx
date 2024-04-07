@@ -1,25 +1,34 @@
 import { createGlobalStyle } from 'styled-components'
 
-import Colors from '../../shared/colors'
-
 const GlobalStyleTags = createGlobalStyle`
 
 html {
 	height: 100%;
-	color: ${Colors.BLACK};
-	background-color: ${Colors.WHITE_BACKGROUND_COLOR};
+	color: ${({ theme }) => theme.app.defaultFontColor};
+	background-color: ${({ theme }) => theme.app.defaultBackgroundColor};
+
+	::selection {
+			color: ${({ theme }) => theme.selection.defaultFontColor};
+			background-color:  ${({ theme }) => theme.selection.defaultBackgroundColor};
+		}
+
+		::-webkit-scrollbar {
+			width: 5px;
+		}
+		
+		::-webkit-scrollbar-track {
+			background: ${({ theme }) => theme.scrollbar.defaultTrackColor}; 
+		}
+		
+		::-webkit-scrollbar-thumb {
+			background: ${({ theme }) => theme.scrollbar.defaultThumbColor}; 
+		}
 
 	body {
 		margin: 0;
-		font-family: -Regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
-			'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+		font-family: ${({ theme }) => theme.text.defaultFontFamily};
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-
-		::selection {
-			color: ${Colors.WHITE};
-			background-color: ${Colors.BLUE_WISH};
-		}
 
 		a,
 		a:hover,

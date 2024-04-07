@@ -2,7 +2,7 @@ import React from 'react'
 
 import { StyledBubblesBackground } from './styles'
 
-const BubblesBackground: React.FC = () => {
+const AuthPageBubblesBackground: React.FC = () => {
 	return (
 		<StyledBubblesBackground>
 			<span />
@@ -24,4 +24,4 @@ const BubblesBackground: React.FC = () => {
 	)
 }
 
-export default BubblesBackground
+export default AuthPageBubblesBackground

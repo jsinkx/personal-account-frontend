@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-import detectBrowserInfo from '../utils/detect-browser-info'
+import { API_URL } from '@shared/constants'
 
-import { API_URL } from './constants'
+import detectBrowserInfo from '@utils/detect-browser-info'
 
 const instance = axios.create({ baseURL: API_URL })
 

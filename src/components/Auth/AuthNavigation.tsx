@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Paths from '../../shared/paths'
+import Paths from '@shared/paths'
 
-import Button from '../Button'
+import Button from '@components/Button'
 
 type AuthNavigationProps = {
 	isLogin?: boolean

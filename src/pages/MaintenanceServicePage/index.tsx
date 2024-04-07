@@ -1,12 +1,12 @@
 import React from 'react'
 
-import getRandomInt from '../../utils/random-int'
+import getRandomInt from '@utils/random-int'
 
-import CleanLayout from '../../layouts/CleanLayout'
+import CleanLayout from '@layouts/CleanLayout'
 
-import maintenanceServicePic1 from '../../assets/images/maintenance-service-pic-1.webp'
-import maintenanceServicePic2 from '../../assets/images/maintenance-service-pic-2.webp'
-import maintenanceServicePic3 from '../../assets/images/maintenance-service-pic-3.webp'
+import maintenanceServicePic1 from '@assets/images/maintenance-service-pic-1.webp'
+import maintenanceServicePic2 from '@assets/images/maintenance-service-pic-2.webp'
+import maintenanceServicePic3 from '@assets/images/maintenance-service-pic-3.webp'
 
 import StyledNotFoundPage from './styles'
 

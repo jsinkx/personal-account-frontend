@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
-import Сonsolas from '../../assets/fonts/Consolas/Consolas.woff2'
-import Helvetica from '../../assets/fonts/Helvetica/helvetica_regular.woff2'
-import Roboto from '../../assets/fonts/Roboto/Roboto-Black.woff2'
+import Сonsolas from '@assets/fonts/Consolas/Consolas.woff2'
+import Helvetica from '@assets/fonts/Helvetica/helvetica_regular.woff2'
+import Roboto from '@assets/fonts/Roboto/Roboto-Black.woff2'
 
 const GlobalStyleFonts = createGlobalStyle`
 

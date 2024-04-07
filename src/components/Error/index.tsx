@@ -1,11 +1,15 @@
 import React from 'react'
 
-import StyledError from './styles'
+import { Alert, AlertProps } from '@mui/material'
 
-type ErrorProps = {} & React.ComponentPropsWithRef<'div'>
+type ErrorProps = {} & AlertProps
 
 const Error: React.FC<ErrorProps> = ({ children, ...props }) => {
-	return <StyledError {...props}>{children}</StyledError>
+	return (
+		<Alert severity="error" {...props}>
+			{children}
+		</Alert>
+	)
 }
 
 export default Error

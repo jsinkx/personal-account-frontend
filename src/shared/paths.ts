@@ -10,18 +10,19 @@ const Paths = {
 	forgotPassword: '/forgot-password',
 	profile: {
 		static: '/profile/:id',
-		dynamic(id: number) {
+		dynamic(id: number | string) {
 			return `/profile/${id}`
 		},
 		children: {
-			aboutMe: '',
+			default: '',
+			aboutMe: 'about-me',
 			wall: 'wall',
 			portfolio: 'portfolio',
 		},
 	},
 	settings: '/settings',
 	any: '*',
-	maintenanceService: '/maintenance-service', // TODO: take it out in index.html on backend server
+	maintenanceService: '/maintenance-service',
 } as const
 
 export default Paths

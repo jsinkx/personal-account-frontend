@@ -1,67 +1,95 @@
 import React from 'react'
+import { Navigate, useParams } from 'react-router-dom'
 
 import moment from 'moment'
 
-import Status from '../../shared/status'
+import Colors from '@shared/colors'
+import Paths from '@shared/paths'
+import Status from '@shared/status'
 
-import { selectAuthData, selectAuthStatus } from '../../redux/slices/auth/selectors'
+import { selectAuthData, selectAuthStatus } from '@redux/slices/auth/selectors'
 
-import useAppSelector from '../../hooks/useAppSelector'
+import useAppSelector from '@hooks/useAppSelector'
 
-import MainLayout from '../../layouts/MainLayout'
+import MainLayout from '@layouts/MainLayout'
 
-import Error from '../../components/Error'
-import Loading from '../../components/Loading'
+import LoadingPage from '@pages/LoadingPage'
 
-import ProfileCard from './ProfileCard'
-import ProfilePortfolio from './ProfilePortfolio'
+import Error from '@components/Error'
+
+import { ThemeProvider, createTheme, useTheme } from '@mui/material'
+
+import ProfileCard from './ProfileElements/ProfileCard'
+import ProfileContent from './ProfileElements/ProfileContent'
 import StyledProfile from './styles'
 
 const IS_ONLINE = true
+const MAIN_LOCATION = 'Россия, Москва'
 
 const Profile: React.FC = () => {
-	const authData = useAppSelector(selectAuthData) // TODO: request to get info profile by id/login/customId
+	const { id } = useParams()
+	const currentThemeMUI = useTheme()
+
+	const authData = useAppSelector(selectAuthData)
 	const status = useAppSelector(selectAuthStatus)
 
-	if (status === Status.ERROR) return <Error> Указанный профиль не найден!</Error>
-	if (status === Status.LOADING) return <Loading />
-	if (status === Status.LOADED) {
-		const profile = authData!
+	const theme = createTheme({
+		palette: {
+			...currentThemeMUI.palette,
+			primary: {
+				main: authData?.background_color || Colors.BLUE_WISH,
+			},
+		},
+		typography: {
+			...currentThemeMUI.typography,
+		},
+	})
 
-		// If requested user id === current user id, its our profile, can edit
+	// Also we need to fetch profile by param id with service hook
+
+	if (status === Status.LOADING) return <LoadingPage />
+	if (status === Status.ERROR) return <Error> Указанный профиль не найден!</Error>
+	if (status === Status.LOADED && authData) {
+		// @ts-ignore
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const isEditable = String(authData.id) === id
 
 		return (
 			<MainLayout
-				title={`${profile.first_name} ${profile.last_name}`}
-				description={`Личный профиль пользователя ${profile.first_name} ${profile.last_name}`}
+				title={`${authData.first_name} ${authData.last_name}`}
+				description={`Личный профиль пользователя ${authData.first_name} ${authData.last_name}`}
 			>
-				<StyledProfile $color={profile.background_color}>
-					<section>
-						<div className="profile__background"> </div>
-						<div className="profile">
-							<ProfileCard
-								isOnline={IS_ONLINE}
-								avatar={profile.avatar}
-								firstName={profile.first_name}
-								lastName={profile.last_name}
-								color={profile.background_color}
-								login={profile.login}
-								description={profile.description}
-								lastOnlineDate={moment().toString()}
-								email={profile.email}
-								createdAt={profile.created_at}
-							/>
-							<section className="profile__content">
-								<ProfilePortfolio color={profile.background_color} />
-							</section>
-						</div>
-					</section>
+				<StyledProfile $color={authData.background_color}>
+					<ThemeProvider theme={theme}>
+						<section>
+							<div className="profile__background"> </div>
+							<div className="profile">
+								<ProfileCard
+									isOnline={IS_ONLINE}
+									avatar={authData.avatar}
+									firstName={authData.first_name}
+									lastName={authData.last_name}
+									color={authData.background_color}
+									login={authData.login}
+									description={authData.description}
+									mainLocation={MAIN_LOCATION}
+									lastOnlineDate={moment().toString()}
+									birthday={authData.birthday}
+									email={authData.email}
+									createdAt={authData.created_at}
+								/>
+								<section className="profile__content">
+									<ProfileContent />
+								</section>
+							</div>
+						</section>
+					</ThemeProvider>
 				</StyledProfile>
 			</MainLayout>
 		)
 	}
 
-	return <Loading />
+	return <Navigate to={Paths.home} />
 }
 
 export default Profile

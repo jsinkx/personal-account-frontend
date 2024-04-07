@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 
 const StyledLoadingPage = styled.main`
-	text-align: center;
-
-	h1 {
-		margin-top: 22vh;
-		user-select: none;
-	}
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `
 
 export default StyledLoadingPage

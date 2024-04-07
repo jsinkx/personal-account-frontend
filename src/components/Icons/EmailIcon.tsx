@@ -1,8 +1,8 @@
 import React from 'react'
 
-import IconProps from './types'
+import Colors from '@shared/colors'
 
-import Colors from '../../shared/colors'
+import IconProps from './types'
 
 type EmailIconProps = IconProps & React.ComponentPropsWithoutRef<'svg'>
 

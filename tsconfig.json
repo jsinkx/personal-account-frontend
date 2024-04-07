@@ -1,5 +1,16 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"@assets/*": ["./assets/*"],
+			"@components/*": ["./components/*"],
+			"@hooks/*": ["./hooks/*"],
+			"@layouts/*": ["./layouts/*"],
+			"@pages/*": ["./pages/*"],
+			"@redux/*": ["./redux/*"],
+			"@shared/*": ["./shared/*"],
+			"@utils/*": ["./utils/*"]
+		},
 		"target": "ESNext",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"noFallthroughCasesInSwitch": true,
@@ -17,7 +28,6 @@
 		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": false,
 		"esModuleInterop": true,
-		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "esnext",
 		"moduleResolution": "node",
@@ -30,6 +40,7 @@
 		"useUnknownInCatchVariables": true,
 		"exactOptionalPropertyTypes": true,
 		"noUncheckedIndexedAccess": true,
+		"strict": true,
 		"types": ["vite/client", "vite-plugin-svgr/client"]
 	},
 	"include": ["src"]

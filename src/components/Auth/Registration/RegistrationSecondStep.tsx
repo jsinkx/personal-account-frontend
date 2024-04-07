@@ -1,17 +1,17 @@
-import { block } from 'million/react'
 import React from 'react'
 import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 
-import { FormRegistrationValues } from './types'
+import { block } from 'million/react'
 
 import {
 	FIRST_NAME_BAD_PATTERN_MESSAGE,
 	LAST_NAME_BAD_PATTERN_MESSAGE,
 	PATRONYMIC_BAD_PATTERN_MESSAGE,
-} from '../../../shared/messages/registration-messages'
-import { NAME_PATTERN } from '../../../shared/regex-patterns'
+} from '@shared/messages/registration-messages'
+import { NAME_PATTERN } from '@shared/regex-patterns'
 
 import { StyledErrorInStep, StyledInput } from '../styles'
+import { FormRegistrationValues } from './types'
 
 type RegistrationSecondStepProps = {
 	register: UseFormRegister<FormRegistrationValues>
@@ -35,7 +35,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Имя"
 					autoComplete="firstName"
-					height="45px"
 				/>
 
 				{errors.lastName?.message && <StyledErrorInStep> {errors.lastName.message} </StyledErrorInStep>}
@@ -50,7 +49,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Фамилия"
 					autoComplete="lastName"
-					height="45px"
 				/>
 				{errors.patronymic?.message && <StyledErrorInStep> {errors.patronymic.message} </StyledErrorInStep>}
 				<StyledInput
@@ -63,7 +61,6 @@ const RegistrationSecondStep: React.FC<RegistrationSecondStepProps> = block(
 					})}
 					placeholder="Отчество"
 					autoComplete="patronymic"
-					height="45px"
 				/>
 			</>
 		)

@@ -1,21 +1,20 @@
-import reactRefresh from '@vitejs/plugin-react-swc'
-
-// import MillionLint from '@million/lint'
+import million from 'million/compiler'
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import eslint from 'vite-plugin-eslint'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
-import million from 'million/compiler'
+import reactRefresh from '@vitejs/plugin-react-swc'
 
 export default defineConfig({
 	base: './',
 	plugins: [
-		million.vite({}),
-		// MillionLint.vite({ auto: true }),
-		eslint(),
-		reactRefresh(),
-		ViteMinifyPlugin({}),
-		splitVendorChunkPlugin(),
+		tsconfigPaths(), // Load paths (aliases) from tsconfig
+		million.vite({}), // Load million compiler
+		eslint(), // Linting
+		reactRefresh(), // HMR
+		ViteMinifyPlugin({}), // Minify
+		splitVendorChunkPlugin(), // Split vendor chunks
 	],
 	build: {
 		outDir: './build/',

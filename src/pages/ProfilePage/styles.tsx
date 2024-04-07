@@ -1,9 +1,6 @@
-/* eslint-disable import/order */
-
-/* eslint-disable import/no-unresolved */
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
+import Colors from '@shared/colors'
 
 type StyledProfileProps = {
 	$color: string
@@ -29,14 +26,15 @@ const StyledProfile = styled.div<StyledProfileProps>`
 				min-width: 260px;
 				max-width: 260px;
 				min-height: 370px;
+				max-height: 700px;
 				margin-top: -110px;
 				margin-left: 80px;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				background-color: ${Colors.WHITE};
+				background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
 				border-radius: 25px;
-				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
+				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
 				.profile-card__avatar,
 				.profile-card__avatar img {
@@ -55,6 +53,12 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						align-items: center;
 						font-size: 1.3em;
 						font-weight: bold;
+						text-align: left;
+						flex-wrap: wrap;
+
+						span:first-child {
+							margin-right: 4px;
+						}
 
 						.profile-card__info__status {
 							width: 12px;
@@ -85,14 +89,14 @@ const StyledProfile = styled.div<StyledProfileProps>`
 					.profile-card__info__description {
 						max-width: 229px;
 						margin-top: 15px;
-						color: #6e7082;
+						color: ${({ theme }) => theme.text.secondaryFontColor};
 						max-height: 90px;
-						overflow-y: hidden;
+						word-wrap: break-word;
 						user-select: none;
 					}
 
 					.profile-card__info__connections {
-						width: 100%;
+						max-width: 229px;
 						margin: 0;
 						margin-top: 20px;
 						padding: 0;
@@ -112,6 +116,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 								display: flex;
 								justify-content: center;
 								text-align: center;
+								overflow: hidden; // FIX: Long fields will be cut
 							}
 						}
 
@@ -119,11 +124,16 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							display: inline-flex;
 							user-select: none;
 
-							span {
+							.profile-card__info__connections__connect__email--wrap {
+								margin: 0;
 								cursor: pointer;
 
 								&:hover {
 									opacity: 0.6;
+								}
+
+								span {
+									max-width: 193px; // FIX: Long emails will be cut
 								}
 							}
 						}
@@ -133,14 +143,14 @@ const StyledProfile = styled.div<StyledProfileProps>`
 
 			.profile__content {
 				width: 1200px;
-				min-height: 370px;
+				min-height: 400px;
 				margin-top: -110px;
 				margin-left: 120px;
 				margin-right: 100px;
 				padding-bottom: 20px;
-				background-color: ${Colors.WHITE};
+				background-color: ${({ theme }) => theme.element.defaultBackgroundColor};
 				border-radius: 25px;
-				box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
+				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
 				.profile__content__main-box {
 					margin-top: 30px;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { APP_VERSION, ICON_LOGO_URL } from '../../shared/constants'
+import { APP_VERSION, ICON_LOGO_URL } from '@shared/constants'
 
 import StyledLogo from './styles'
 

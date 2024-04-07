@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import AvatarMUI from '@mui/material/Avatar'
+import Colors from '@shared/colors'
 
-import Colors from '../../shared/colors'
+import { Avatar as AvatarMUI } from '@mui/material'
 
 import StyledAvatarFullSize from './styles'
 
@@ -14,6 +14,7 @@ type AvatarProps = {
 	size?: string
 	isOnline?: boolean
 	fullSize?: boolean
+	isDisabled?: boolean
 } & React.ComponentProps<typeof AvatarMUI>
 
 const nameSign = (firstName: string, lastName: string) =>
@@ -29,6 +30,7 @@ const Avatar: React.FC<AvatarProps> = ({
 	fullSize,
 	className = '',
 	style,
+	isDisabled,
 	...props
 }) => {
 	const [isErrorSrc, setIsErrorSrc] = useState(false)
@@ -42,15 +44,23 @@ const Avatar: React.FC<AvatarProps> = ({
 			{!isErrorSrc ? <img src={src} alt={firstName} onError={handleErrorImg} /> : nameSign(firstName, lastName)}
 		</StyledAvatarFullSize>
 	) : (
-		<div>
+		<div
+			style={
+				isDisabled
+					? {
+							cursor: 'default',
+							opacity: '0.44',
+						}
+					: {}
+			}
+		>
 			<AvatarMUI
 				sx={{
 					width: size,
 					height: size,
 					fontSize: `calc(${size} / 2)`,
+					color: Colors.WHITE,
 					backgroundColor: color,
-					fontFamily: `'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-					sans-serif;`,
 					zIndex: '1',
 				}}
 				src={src}

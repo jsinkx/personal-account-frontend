@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
+
 type AuthSaveUserProps = {
 	saveUserIsChecked: boolean
 	setSaveUserIsChecked: React.Dispatch<React.SetStateAction<boolean>>
@@ -9,13 +11,20 @@ type AuthSaveUserProps = {
 const AuthSaveUser: React.FC<AuthSaveUserProps> = ({ saveUserIsChecked, setSaveUserIsChecked, disabled }) => {
 	return (
 		<span className="auth--is-save-user">
-			<input
-				type="checkbox"
-				checked={saveUserIsChecked}
-				onChange={() => setSaveUserIsChecked((p) => !p)}
-				disabled={disabled}
-			/>
-			Не запоминать пользователя ?
+			<FormGroup>
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={saveUserIsChecked}
+							onChange={() => setSaveUserIsChecked((p) => !p)}
+							disabled={disabled}
+							size="small"
+							className="auth__MUI-checkbox"
+						/>
+					}
+					label="Не запоминать пользователя ?"
+				/>
+			</FormGroup>
 		</span>
 	)
 }

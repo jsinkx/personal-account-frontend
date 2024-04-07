@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { LOGIN_MISSED_VALUE_MESSAGE } from '../../../shared/messages/login-messages'
-import { UNKNOWN_ERROR_MESSAGE } from '../../../shared/messages/main-messages'
-import Paths from '../../../shared/paths'
-import Status from '../../../shared/status'
+import { LOGIN_MISSED_VALUE_MESSAGE } from '@shared/messages/login-messages'
+import { UNKNOWN_ERROR_MESSAGE } from '@shared/messages/main-messages'
+import Paths from '@shared/paths'
+import Status from '@shared/status'
 
-import isErrorWithMessage from '../../../utils/is-error-with-message'
+import isErrorWithMessage from '@utils/is-error-with-message'
 
-import { selectAuthStatus } from '../../../redux/slices/auth/selectors'
-import { fetchAuthLogin } from '../../../redux/slices/auth/slice'
+import { selectAuthStatus } from '@redux/slices/auth/selectors'
+import { fetchAuthLogin } from '@redux/slices/auth/slice'
 
-import useAppDispatch from '../../../hooks/useAppDispatch'
-import useAppSelector from '../../../hooks/useAppSelector'
+import useAppDispatch from '@hooks/useAppDispatch'
+import useAppSelector from '@hooks/useAppSelector'
 
-import Button from '../../Button'
-import { CustomLink } from '../../CustomLink'
-import Error from '../../Error'
+import Button from '@components/Button'
+import { CustomLink } from '@components/CustomLink'
+
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
-import StyledAuth, { StyledInput } from '../styles'
+import StyledAuth, { StyledErrorInStep, StyledInput } from '../styles'
 
 type LoginProps = {} & React.ComponentPropsWithoutRef<'div'>
 
@@ -66,7 +66,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 			if ('token' in data)
 				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
-			navigate(Paths.profile.dynamic(data.id))
+			navigate(Paths.profile.dynamic(data.login))
 		} catch (_err) {
 			const err = isErrorWithMessage(_err) ? _err.errorMessage : UNKNOWN_ERROR_MESSAGE
 
@@ -90,16 +90,14 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 					})}
 					placeholder="Логин или почта"
 					autoComplete="login"
-					height="45px"
 				/>
 				<StyledInput
 					{...register('password', { required: true })}
 					type="password"
 					placeholder="Пароль"
 					autoComplete="password"
-					height="45px"
 				/>
-				{error !== null && <Error className="auth--error">{error}</Error>}
+				{error !== null && <StyledErrorInStep className="auth--error">{error}</StyledErrorInStep>}
 				<div className="auth__parameters">
 					<CustomLink to={Paths.forgotPassword} className="auth--forgot-password">
 						Забыли пароль ?

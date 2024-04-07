@@ -2,10 +2,8 @@ import { Link, NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
-
 export const StyledCustomNavLink = styled(NavLink)`
-	color: ${Colors.INACTIVE_GREY_FONT};
+	color: ${({ theme }) => theme.text.inactiveFontColor};
 	text-decoration: none;
 	transition: all 0.3s ease;
 	user-select: none;
@@ -14,12 +12,12 @@ export const StyledCustomNavLink = styled(NavLink)`
 	&:active,
 	&:focus,
 	&.active {
-		color: ${Colors.BLUE_WISH};
+		color: ${({ theme }) => theme.text.primaryFontColor};
 	}
 `
 
 export const StyledCustomLink = styled(Link)`
-	color: ${Colors.INACTIVE_GREY_FONT};
+	color: ${({ theme }) => theme.text.inactiveFontColor};
 	text-decoration: none;
 	transition: all 0.3s ease;
 	user-select: none;
@@ -28,6 +26,6 @@ export const StyledCustomLink = styled(Link)`
 	&:active,
 	&:focus,
 	&.active {
-		color: ${Colors.BLUE_WISH};
+		color: ${({ theme }) => theme.text.primaryFontColor};
 	}
 `

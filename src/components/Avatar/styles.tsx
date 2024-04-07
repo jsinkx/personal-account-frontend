@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Colors from '@shared/colors'
+
 type StyledAvatarFullSizeProps = {
 	$size: string
 	$color: string
@@ -13,7 +15,7 @@ const StyledAvatarFullSize = styled.div<StyledAvatarFullSizeProps>`
 	text-align: center;
 	align-items: center;
 	font-size: ${({ $size }) => `calc(${$size} / 2)`};
-	color: white;
+	color: ${Colors.WHITE};
 	background-color: ${({ $color }) => $color};
 	user-select: none;
 

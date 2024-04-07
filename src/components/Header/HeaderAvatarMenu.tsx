@@ -2,30 +2,29 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import Paths from '@shared/paths'
+
+import { logout } from '@redux/slices/auth/slice'
+
+import Avatar from '@components/Avatar'
+
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import Logout from '@mui/icons-material/Logout'
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import Settings from '@mui/icons-material/Settings'
-import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon } from '@mui/material'
-import Menu from '@mui/material/Menu/Menu'
-
-import Paths from '../../shared/paths'
-
-import { logout } from '../../redux/slices/auth/slice'
-
-import Avatar from '../Avatar'
+import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon, Menu } from '@mui/material'
 
 import { StyledMenuItem } from './styles'
 
-type AvatarMenuProps = {
-	id: number
+type HeaderAvatarMenuProps = {
+	login: string
 	avatar: string
 	color: string
 	firstName: string
 	lastName: string
 }
 
-const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, lastName }) => {
+const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, color, firstName, lastName }) => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -48,19 +47,19 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 	const handleClickProfile = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(id))
+		navigate(Paths.profile.dynamic(login))
 	}
 
 	const handleClickEditProfile = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(id))
+		navigate(Paths.profile.dynamic(login))
 	}
 
 	const handleClickSettings = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(id))
+		navigate(Paths.profile.dynamic(login))
 	}
 
 	const handleLogout = () => {
@@ -144,4 +143,4 @@ const AvatarMenu: React.FC<AvatarMenuProps> = ({ id, avatar, color, firstName, l
 	)
 }
 
-export default AvatarMenu
+export default HeaderAvatarMenu

@@ -1,34 +1,32 @@
-// eslint-disable-next-line import/order
-import isValidFields from '../../../utils/react-hook-form/is-valid-fields'
-import { block } from 'million/react'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import type { FirstStepKeys, FormRegistrationValues, SecondStepKeys } from './types'
+import { block } from 'million/react'
 
-import { UNKNOWN_ERROR_MESSAGE } from '../../../shared/messages/main-messages'
-import Paths from '../../../shared/paths'
-import Status from '../../../shared/status'
+import { UNKNOWN_ERROR_MESSAGE } from '@shared/messages/main-messages'
+import Paths from '@shared/paths'
+import Status from '@shared/status'
 
-import isErrorWithMessage from '../../../utils/is-error-with-message'
+import isErrorWithMessage from '@utils/is-error-with-message'
+import isValidFields from '@utils/react-hook-form/is-valid-fields'
 
-import { selectAuthStatus } from '../../../redux/slices/auth/selectors'
-import { fetchAuthRegistration } from '../../../redux/slices/auth/slice'
+import { selectAuthStatus } from '@redux/slices/auth/selectors'
+import { fetchAuthRegistration } from '@redux/slices/auth/slice'
 
-import useAppDispatch from '../../../hooks/useAppDispatch'
-import useAppSelector from '../../../hooks/useAppSelector'
+import useAppDispatch from '@hooks/useAppDispatch'
+import useAppSelector from '@hooks/useAppSelector'
 
-import Button from '../../Button'
-import Error from '../../Error'
+import Button from '@components/Button'
+
 import AuthNavigation from '../AuthNavigation'
 import AuthSaveUser from '../AuthSaveUser'
 import AuthServiceAgree from '../AuthServiceAgree'
-import StyledAuth, { StyledStep } from '../styles'
-
+import StyledAuth, { StyledErrorInStep, StyledStep } from '../styles'
 import FirstStepRegistration from './RegistrationFirstStep'
 import SecondStepRegistration from './RegistrationSecondStep'
-import StepInfo from './StepInfo'
+import RegistrationStepInfo from './RegistrationStepInfo'
+import type { FirstStepKeys, FormRegistrationValues, SecondStepKeys } from './types'
 
 type RegistrationProps = React.ComponentPropsWithoutRef<'div'>
 
@@ -51,7 +49,6 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 		register,
 		watch,
 		getValues,
-		// getFieldState,
 		trigger,
 		handleSubmit: handleDirtySubmit,
 		formState: { isValid, errors },
@@ -109,7 +106,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 			if ('token' in data)
 				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
-			navigate(Paths.profile.dynamic(data.id))
+			navigate(Paths.profile.dynamic(data.login))
 		} catch (_err) {
 			const err = isErrorWithMessage(_err) ? _err.errorMessage : UNKNOWN_ERROR_MESSAGE
 
@@ -141,7 +138,11 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 			<AuthNavigation />
 			<form onSubmit={handleSubmit}>
 				{/* On unmount we lose our register, so we need to use display hidden */}
-				<StepInfo maxSteps={MAX_STEPS} currentStep={currentStep} handleClickStepBack={handleClickStepBack} />
+				<RegistrationStepInfo
+					maxSteps={MAX_STEPS}
+					currentStep={currentStep}
+					handleClickStepBack={handleClickStepBack}
+				/>
 				<StyledStep $isActive={currentStep === 1}>
 					<FirstStepRegistration
 						watch={watch}
@@ -174,7 +175,7 @@ const Registration: React.FC<RegistrationProps> = block(({ ...props }) => {
 					</div>
 				)}
 
-				{error !== null && <Error className="auth--error">{error}</Error>}
+				{error !== null && <StyledErrorInStep>{error}</StyledErrorInStep>}
 				<Button
 					onClick={!isLastStep ? handleClickNextStep : undefined}
 					disabled={isDisabledButton}

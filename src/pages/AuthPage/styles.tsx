@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
-
 export const StyledBubblesBackground = styled.div`
 	@keyframes move {
 		100% {
@@ -14,7 +12,7 @@ export const StyledBubblesBackground = styled.div`
 	height: 100vh;
 	top: 0;
 	left: 0;
-	background: ${Colors.WHITE};
+	background: ${({ theme }) => theme.element.defaultBackgroundColor};
 	overflow: hidden;
 	z-index: -1;
 
@@ -31,7 +29,7 @@ export const StyledBubblesBackground = styled.div`
 	}
 
 	span:nth-child(0) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 97%;
 		left: 66%;
 		animation-duration: 167s;
@@ -40,7 +38,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 3.1899258588191515vmin currentColor;
 	}
 	span:nth-child(1) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 13%;
 		left: 18%;
 		animation-duration: 233s;
@@ -49,7 +47,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.8598768597180237vmin currentColor;
 	}
 	span:nth-child(2) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 38%;
 		left: 2%;
 		animation-duration: 114s;
@@ -58,7 +56,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.615807816003684vmin currentColor;
 	}
 	span:nth-child(3) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 27%;
 		left: 56%;
 		animation-duration: 447s;
@@ -67,7 +65,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.8649858333286824vmin currentColor;
 	}
 	span:nth-child(4) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 95%;
 		left: 21%;
 		animation-duration: 14s;
@@ -76,7 +74,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 2.3427598580156133vmin currentColor;
 	}
 	span:nth-child(5) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 97%;
 		left: 38%;
 		animation-duration: 201s;
@@ -85,7 +83,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 3.0236170648592493vmin currentColor;
 	}
 	span:nth-child(6) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 85%;
 		left: 28%;
 		animation-duration: 376s;
@@ -94,7 +92,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.368264638846416vmin currentColor;
 	}
 	span:nth-child(7) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 17%;
 		left: 54%;
 		animation-duration: 44s;
@@ -103,7 +101,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.6467454914039177vmin currentColor;
 	}
 	span:nth-child(8) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 8%;
 		left: 92%;
 		animation-duration: 331s;
@@ -112,7 +110,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 3.0862857414884437vmin currentColor;
 	}
 	span:nth-child(9) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 18%;
 		left: 61%;
 		animation-duration: 236s;
@@ -121,7 +119,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 2.6709989289915166vmin currentColor;
 	}
 	span:nth-child(10) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 71%;
 		left: 43%;
 		animation-duration: 112s;
@@ -130,7 +128,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 2.6713415123749424vmin currentColor;
 	}
 	span:nth-child(11) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 92%;
 		left: 87%;
 		animation-duration: 93s;
@@ -139,7 +137,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: 18vmin 0 2.480623085786971vmin currentColor;
 	}
 	span:nth-child(12) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 27%;
 		left: 97%;
 		animation-duration: 199s;
@@ -148,7 +146,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 2.7126843642064133vmin currentColor;
 	}
 	span:nth-child(13) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 55%;
 		left: 26%;
 		animation-duration: 66s;
@@ -157,7 +155,7 @@ export const StyledBubblesBackground = styled.div`
 		box-shadow: -18vmin 0 2.544569024608289vmin currentColor;
 	}
 	span:nth-child(14) {
-		color: #005cc9;
+		color: ${({ theme }) => theme.element.primaryBackgroundColor};
 		top: 30%;
 		left: 2%;
 		animation-duration: 314s;
@@ -177,10 +175,19 @@ const StyledAuthPage = styled.main`
 		flex-direction: column;
 		margin: 18vh auto;
 
-		.auth__section__logo {
-			display: inline-block;
-			margin: 0 auto;
-			margin-bottom: 20px;
+		.auth__section__header {
+			margin-bottom: 15px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@media (max-width: 428px) {
+				flex-direction: column;
+			}
+
+			.auth__section__header__logo {
+				margin: 0 auto;
+			}
 		}
 	}
 `

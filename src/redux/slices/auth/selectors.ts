@@ -1,4 +1,4 @@
-import type { RootState } from '../../types'
+import type { RootState } from '@redux/types'
 
 export const selectAuthStatus = (state: RootState) => state.auth.status
 

@@ -1,4 +1,3 @@
-import { block } from 'million/react'
 import React, { useCallback, useState } from 'react'
 import type {
 	FieldErrors,
@@ -9,21 +8,21 @@ import type {
 } from 'react-hook-form'
 
 import { AxiosError } from 'axios'
+import { block } from 'million/react'
 import { throttle } from 'throttle-debounce'
 
-import { FormRegistrationValues } from './types'
-
-import axios from '../../../shared/axios'
+import axios from '@shared/axios'
 import {
 	EMAIL_UNCORRECTED_MESSAGE,
 	LOGIN_BAD_PATTERN_MESSAGE,
 	PASSWORDS_DOESNT_MATCH_MESSAGE,
 	PASSWORD_BAD_PATTERN_MESSAGE,
 	PASSWORD_CONFIRMATION_MISSED_MESSAGE,
-} from '../../../shared/messages/registration-messages'
-import { EMAIL_PATTERN, LOGIN_PATTERN, PASSWORD_PATTERN } from '../../../shared/regex-patterns'
+} from '@shared/messages/registration-messages'
+import { EMAIL_PATTERN, LOGIN_PATTERN, PASSWORD_PATTERN } from '@shared/regex-patterns'
 
 import { StyledErrorInStep, StyledInput } from '../styles'
+import { FormRegistrationValues } from './types'
 
 type RegistrationFirstStepProps = {
 	register: UseFormRegister<FormRegistrationValues>
@@ -86,7 +85,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					})}
 					placeholder="Логин"
 					autoComplete="login"
-					height="45px"
 					className="auth__login__input"
 				/>
 
@@ -103,7 +101,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="email"
 					placeholder="Email"
 					autoComplete="email"
-					height="45px"
 					className="auth__email__input"
 				/>
 				{errors.password?.message && <StyledErrorInStep> {errors.password.message} </StyledErrorInStep>}
@@ -119,7 +116,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="password"
 					placeholder="Пароль"
 					autoComplete="new-password"
-					height="45px"
 				/>
 				{errors.passwordConfirm?.message && (
 					<StyledErrorInStep> {errors.passwordConfirm.message} </StyledErrorInStep>
@@ -133,7 +129,6 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 					type="password"
 					placeholder="Подведите пароль"
 					autoComplete="new-password"
-					height="45px"
 				/>
 			</>
 		)

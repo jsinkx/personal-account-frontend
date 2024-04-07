@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-import Colors from '../../shared/colors'
-
-import Error from '../Error'
-import Input from '../Input'
+import Error from '@components/Error'
+import Input from '@components/Input'
 
 export const StyledInput = styled(Input)`
+	width: 100%;
+	height: 45px;
 	margin-bottom: 20px;
 `
 
@@ -18,26 +18,24 @@ export const StyledStep = styled.div<StyledStepProps>`
 `
 
 export const StyledErrorInStep = styled(Error)`
-	margin-bottom: -2px;
-	border-bottom: none;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
+	margin-bottom: 5px;
+	text-align: left;
 `
 
 const StyledAuth = styled.div`
-	width: 400px;
+	max-width: 400px;
 	display: flex;
 	padding-block: 30px;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: ${({ theme }) => theme.components.auth.backgroundColor};
 	border-radius: 10px;
 	box-sizing: border-box;
 
 	form {
-		width: 300px;
+		width: 82%;
 	}
 
 	.auth__navigation {
@@ -85,23 +83,30 @@ const StyledAuth = styled.div`
 
 		.auth--forgot-password {
 			margin-bottom: 10px;
-			color: ${Colors.BLUE_WISH};
+			color: ${({ theme }) => theme.text.primaryFontColor};
 
 			&:hover {
 				opacity: 0.55;
 			}
 		}
 
+		.auth__MUI-checkbox {
+			margin-left: 10px;
+			margin-right: 3px;
+			padding: 0;
+		}
+
 		.auth--is-agree,
 		.auth--is-save-user {
+			margin-bottom: 10px;
 			display: flex;
 			text-align: left;
-			margin-bottom: 10px;
 			user-select: none;
 
-			input {
-				margin-right: 5px;
-				cursor: pointer;
+			@media (max-width: 432px) {
+				span {
+					font-size: 0.9em;
+				}
 			}
 		}
 
@@ -111,7 +116,7 @@ const StyledAuth = styled.div`
 
 		.auth--is-agree__navlink {
 			margin-left: 5px;
-			color: ${Colors.BLUE_WISH};
+			color: ${({ theme }) => theme.text.primaryFontColor};
 
 			&:hover {
 				opacity: 0.55;
@@ -120,18 +125,12 @@ const StyledAuth = styled.div`
 	}
 
 	.auth__login__availability-message {
-		margin-left: 5px;
 		margin-bottom: 2px;
 		text-align: left;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		user-select: none;
-	}
-
-	.auth--error {
-		width: 100%;
-		margin-bottom: 10px;
 	}
 `
 
