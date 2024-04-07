@@ -37,7 +37,7 @@ const SlideGreetings: React.FC<SlideGreetingsProps> = ({ isAuth, ...props }) => 
 					</StyledButton>
 				</section>
 				<section>
-					<img src={`${CLOUD_STATIC_IMG}/greetings-pic.webp`} alt="🔗" />
+					<img src={`${CLOUD_STATIC_IMG}/illustrations/home/isometric-media.webp`} alt="🔗" />
 				</section>
 			</div>
 		</StyledSlide>

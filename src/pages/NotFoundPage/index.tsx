@@ -24,7 +24,7 @@ const NotFoundPage: React.FC = () => {
 			description="Страница не найдена, проверьте корректность введенного URL."
 		>
 			<StyledNotFoundPage>
-				<img src={`${CLOUD_STATIC_IMG}/isometric-404.webp`} alt="404" />
+				<img src={`${CLOUD_STATIC_IMG}/illustrations/not-found/isometric-404.webp`} alt="404" />
 				<h1>{NOT_FOUND_PHRASES[getRandomInt(0, NOT_FOUND_PHRASES.length - 1)]}</h1>
 
 				<p>

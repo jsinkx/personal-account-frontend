@@ -1,0 +1,1 @@
+@doskey pn=pnpm $*

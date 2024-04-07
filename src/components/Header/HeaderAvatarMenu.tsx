@@ -17,7 +17,6 @@ import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon, Menu } from '
 import { StyledMenuItem } from './styles'
 
 type HeaderAvatarMenuProps = {
-	id: number
 	login: string
 	avatar: string
 	color: string
@@ -25,14 +24,7 @@ type HeaderAvatarMenuProps = {
 	lastName: string
 }
 
-const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({
-	id,
-	login,
-	avatar,
-	color,
-	firstName,
-	lastName,
-}) => {
+const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, color, firstName, lastName }) => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -61,13 +53,13 @@ const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({
 	const handleClickEditProfile = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(id))
+		navigate(Paths.profile.dynamic(login))
 	}
 
 	const handleClickSettings = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(id))
+		navigate(Paths.profile.dynamic(login))
 	}
 
 	const handleLogout = () => {

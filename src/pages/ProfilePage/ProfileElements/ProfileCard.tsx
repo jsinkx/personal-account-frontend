@@ -64,7 +64,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 			/>
 			<section className="profile-card__info">
 				<h3 className="profile-card__info_name">
-					{lastName} {firstName}
+					<span>{lastName}</span>
+					<span>{firstName}</span>
 					{isOnline && <div className="profile-card__info__status" title="В сети" />}
 				</h3>
 				<p className="profile-card__info__description">{description}</p>
@@ -97,8 +98,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 					)}
 					<li className="profile-card__info__connections__connect__email">
 						<EmailIcon color={color} className="profile-card__info__connections__connect__email" />
-						<span title="Скопировать" onClick={handleClickCopyEmail}>
-							{email}
+						<span className="profile-card__info__connections__connect__email--wrap" onClick={handleClickCopyEmail}>
+							<span title="Скопировать">{email}</span>
 							<FileCopyOutlinedIcon
 								sx={{
 									height: '15px',

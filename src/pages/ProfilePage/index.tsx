@@ -20,7 +20,7 @@ import Error from '@components/Error'
 import { ThemeProvider, createTheme, useTheme } from '@mui/material'
 
 import ProfileCard from './ProfileElements/ProfileCard'
-import ProfilePortfolio from './ProfileElements/ProfilePortfolio'
+import ProfileContent from './ProfileElements/ProfileContent'
 import StyledProfile from './styles'
 
 const IS_ONLINE = true
@@ -32,8 +32,6 @@ const Profile: React.FC = () => {
 
 	const authData = useAppSelector(selectAuthData)
 	const status = useAppSelector(selectAuthStatus)
-
-	console.log(currentThemeMUI)
 
 	const theme = createTheme({
 		palette: {
@@ -81,7 +79,7 @@ const Profile: React.FC = () => {
 									createdAt={authData.created_at}
 								/>
 								<section className="profile__content">
-									<ProfilePortfolio />
+									<ProfileContent />
 								</section>
 							</div>
 						</section>

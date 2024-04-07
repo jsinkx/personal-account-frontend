@@ -31,12 +31,12 @@ const AuthServiceAgree: React.FC<AuthServiceAgreeProps> = ({
 						/>
 					}
 					label={
-						<>
+						<span>
 							Согласны с
 							<CustomLink to={Paths.termsAndConditions} target="_blank" className="auth--is-agree__navlink">
 								правилами и условиями
 							</CustomLink>
-						</>
+						</span>
 					}
 				/>
 			</FormGroup>

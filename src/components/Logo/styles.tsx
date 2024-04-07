@@ -25,6 +25,10 @@ const StyledLogo = styled.div`
 		color: ${({ theme }) => theme.text.inactiveFontColor};
 		font-size: 1.2em;
 		font-family: Consolas;
+
+		@media (max-width: 340px) {
+			display: none;
+		}
 	}
 
 	img {

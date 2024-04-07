@@ -33,6 +33,8 @@ const HeaderNotifications: React.FC<HeaderNotificationsProps> = () => {
 				onClose={handleClose}
 			>
 				<MenuItem> Тестовое оповещение </MenuItem>
+				<MenuItem> Тестовое оповещение </MenuItem>
+				<MenuItem> Тестовое оповещение </MenuItem>
 			</Menu>
 		</>
 	)

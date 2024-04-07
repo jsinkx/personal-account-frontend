@@ -53,6 +53,12 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						align-items: center;
 						font-size: 1.3em;
 						font-weight: bold;
+						text-align: left;
+						flex-wrap: wrap;
+
+						span:first-child {
+							margin-right: 4px;
+						}
 
 						.profile-card__info__status {
 							width: 12px;
@@ -85,12 +91,12 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						margin-top: 15px;
 						color: ${({ theme }) => theme.text.secondaryFontColor};
 						max-height: 90px;
-						overflow-y: hidden;
+						word-wrap: break-word;
 						user-select: none;
 					}
 
 					.profile-card__info__connections {
-						width: 100%;
+						max-width: 229px;
 						margin: 0;
 						margin-top: 20px;
 						padding: 0;
@@ -110,6 +116,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 								display: flex;
 								justify-content: center;
 								text-align: center;
+								overflow: hidden; // FIX: Long fields will be cut
 							}
 						}
 
@@ -117,11 +124,16 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							display: inline-flex;
 							user-select: none;
 
-							span {
+							.profile-card__info__connections__connect__email--wrap {
+								margin: 0;
 								cursor: pointer;
 
 								&:hover {
 									opacity: 0.6;
+								}
+
+								span {
+									max-width: 193px; // FIX: Long emails will be cut
 								}
 							}
 						}

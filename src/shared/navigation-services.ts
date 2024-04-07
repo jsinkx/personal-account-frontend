@@ -5,7 +5,7 @@ const NAVIGATION_SERVICES = [
 	{
 		title: 'ВИШ',
 		color: Colors.BLUE_WISH,
-		iconUrl: `${CLOUD_STATIC_IMG}/vish-logo.png`,
+		iconUrl: `${CLOUD_STATIC_IMG}/logo/vish-blue-logo.webp`,
 		url: 'https://wish.rut.digital/',
 		isDisabled: false,
 	},
@@ -19,7 +19,7 @@ const NAVIGATION_SERVICES = [
 	{
 		title: 'МФЦ РУТ МИИТ',
 		color: Colors.CYAN,
-		iconUrl: `${CLOUD_STATIC_IMG}/rut-miit-logo.jpg`,
+		iconUrl: `${CLOUD_STATIC_IMG}/logo/rut-miit-logo.webp`,
 		url: 'https://t.me/miit_mfc_bot',
 		isDisabled: false,
 	},

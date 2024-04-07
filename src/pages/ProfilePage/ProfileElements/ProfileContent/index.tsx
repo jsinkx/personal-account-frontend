@@ -3,9 +3,9 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 import { Box, Tab, Tabs } from '@mui/material'
 
-import Paths from '../../../shared/paths'
+import Paths from '../../../../shared/paths'
 
-type ProfilePortfolioProps = {}
+type ProfileContentProps = {}
 
 const NAVIGATION_ELEMENTS = [
 	{
@@ -22,7 +22,7 @@ const NAVIGATION_ELEMENTS = [
 	},
 ]
 
-const ProfilePortfolio: React.FC<ProfilePortfolioProps> = () => {
+const ProfileContent: React.FC<ProfileContentProps> = () => {
 	const navigate = useNavigate()
 
 	const location = useLocation()
@@ -65,4 +65,4 @@ const ProfilePortfolio: React.FC<ProfilePortfolioProps> = () => {
 	)
 }
 
-export default ProfilePortfolio
+export default ProfileContent

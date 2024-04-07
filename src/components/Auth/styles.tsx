@@ -35,7 +35,7 @@ const StyledAuth = styled.div`
 	box-sizing: border-box;
 
 	form {
-		width: 79%;
+		width: 82%;
 	}
 
 	.auth__navigation {
@@ -98,10 +98,16 @@ const StyledAuth = styled.div`
 
 		.auth--is-agree,
 		.auth--is-save-user {
+			margin-bottom: 10px;
 			display: flex;
 			text-align: left;
-			margin-bottom: 10px;
 			user-select: none;
+
+			@media (max-width: 432px) {
+				span {
+					font-size: 0.9em;
+				}
+			}
 		}
 
 		.auth--is-save-user {

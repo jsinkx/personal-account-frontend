@@ -66,7 +66,7 @@ const Login: React.FC<LoginProps> = ({ ...props }) => {
 			if ('token' in data)
 				!dontSaveUser ? localStorage.setItem('token', data.token) : sessionStorage.setItem('token', data.token)
 
-			navigate(Paths.profile.dynamic(data.id))
+			navigate(Paths.profile.dynamic(data.login))
 		} catch (_err) {
 			const err = isErrorWithMessage(_err) ? _err.errorMessage : UNKNOWN_ERROR_MESSAGE
 
