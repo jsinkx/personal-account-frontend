@@ -41,7 +41,11 @@ const Avatar: React.FC<AvatarProps> = ({
 
 	return fullSize ? (
 		<StyledAvatarFullSize $size={size} $color={color} className={className} style={style}>
-			{!isErrorSrc ? <img src={src} alt={firstName} onError={handleErrorImg} /> : nameSign(firstName, lastName)}
+			{!isErrorSrc && src ? (
+				<img src={src} alt={firstName} onError={handleErrorImg} />
+			) : (
+				nameSign(firstName, lastName)
+			)}
 		</StyledAvatarFullSize>
 	) : (
 		<div
@@ -61,6 +65,7 @@ const Avatar: React.FC<AvatarProps> = ({
 					fontSize: `calc(${size} / 2)`,
 					color: Colors.WHITE,
 					backgroundColor: color,
+					border: '1px solid none',
 					zIndex: '1',
 				}}
 				src={src}

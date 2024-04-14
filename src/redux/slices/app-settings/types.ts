@@ -2,4 +2,5 @@ import ThemesStyledComponents from '@shared/themes/styled-components/theme-style
 
 export type AppSettingsState = {
 	theme: ThemesStyledComponents
+	isDisplayVersion: boolean
 }
