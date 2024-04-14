@@ -127,10 +127,15 @@ const StyledAuth = styled.div`
 	.auth__login__availability-message {
 		margin-bottom: 2px;
 		text-align: left;
+		color: ${({ theme }) => theme.text.errorFontColor};
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		user-select: none;
+	}
+
+	.auth__login__availability-message--success {
+		color: ${({ theme }) => theme.text.successFontColor};
 	}
 `
 

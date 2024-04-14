@@ -4,9 +4,9 @@ import { API_URL } from '@shared/constants'
 
 import detectBrowserInfo from '@utils/detect-browser-info'
 
-const instance = axios.create({ baseURL: API_URL })
+const axiosInstance = axios.create({ baseURL: API_URL })
 
-instance.interceptors.request.use((config) => {
+axiosInstance.interceptors.request.use((config) => {
 	const token = window.localStorage.getItem('token') || window.sessionStorage.getItem('token')
 	const { browserName, fullVersion } = detectBrowserInfo()
 
@@ -16,4 +16,4 @@ instance.interceptors.request.use((config) => {
 	return config
 })
 
-export default instance
+export default axiosInstance

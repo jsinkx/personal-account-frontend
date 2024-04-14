@@ -32,7 +32,9 @@ const ThemeStyledComponentsDark: ThemeStyledComponents = {
 		inactiveFontColor: Colors.INACTIVE_LIGHT_GREY_BORDER,
 		secondFontColor: Colors.SECOND_GREY_FONT,
 
-		errorFontColor: Colors.LIGHT_ERROR_RED_BORDER,
+		errorFontColor: Colors.RED,
+
+		successFontColor: Colors.GREEN_ONLINE,
 
 		defaultFontFamily: `-Regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif, 'Oxygen', 'Ubuntu', 'Cantarell',
         'Fira Sans', 'Droid Sans', 'Helvetica Neue'`,

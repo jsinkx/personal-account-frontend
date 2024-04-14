@@ -4,6 +4,7 @@ import { block } from 'million/react'
 
 import Paths from '@shared/paths'
 
+import { selectAppSettings } from '@redux/slices/app-settings/selectors'
 import { selectAuthData } from '@redux/slices/auth/selectors'
 
 import useAppSelector from '@hooks/useAppSelector'
@@ -21,14 +22,15 @@ type HeaderProps = React.ComponentPropsWithoutRef<'header'>
 const Header: React.FC<HeaderProps> = block(({ ...props }) => {
 	const authData = useAppSelector(selectAuthData)
 
+	const { isDisplayVersion } = useAppSelector(selectAppSettings)
+
 	const isAuth = !!authData
 
 	return (
 		<StyledHeader {...props}>
 			<CustomNavLink className="header__logo" to={Paths.home}>
-				<Logo />
+				<Logo displayVersion={isDisplayVersion} />
 			</CustomNavLink>
-			{/* TODO: add checkbox in settings to turn on/off display version */}
 			<nav>
 				<ul>
 					<li>

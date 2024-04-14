@@ -11,7 +11,7 @@ import { AxiosError } from 'axios'
 import { block } from 'million/react'
 import { throttle } from 'throttle-debounce'
 
-import axios from '@shared/axios'
+import axiosInstance from '@shared/axios'
 import {
 	EMAIL_UNCORRECTED_MESSAGE,
 	LOGIN_BAD_PATTERN_MESSAGE,
@@ -38,6 +38,7 @@ const THROTTLE_LOGIN_CHECK_TIME = 2 * 1000
 const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 	({ register, watch, getFieldState, getValues, errors, handleCheckValidity }) => {
 		const [loginAvailabilityMessage, setLoginAvailabilityMessage] = useState('')
+		const [isLoginAvailable, setIsLoginAvailable] = useState(true)
 
 		const passwordMatchValidation = (value: string) =>
 			value === watch('password') || PASSWORDS_DOESNT_MATCH_MESSAGE
@@ -49,9 +50,10 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 
 				if (isValidLogin) {
 					try {
-						const { data } = await axios(`/account/login/check?login=${getValues('login')}`)
+						const { data } = await axiosInstance(`/account/login/check?login=${getValues('login')}`)
 
-						console.log(data) // Backend is fucking piece of shit, always returns 500 error with any result, WTF
+						setLoginAvailabilityMessage(data.message)
+						setIsLoginAvailable(data.is_login_available)
 					} catch (err) {
 						setLoginAvailabilityMessage((err as AxiosError<{ message: string }>).response?.data?.message as string)
 					}
@@ -71,7 +73,11 @@ const RegistrationFirstStep: React.FC<RegistrationFirstStepProps> = block(
 		return (
 			<>
 				{loginAvailabilityMessage && (
-					<div className="auth__login__availability-message"> {loginAvailabilityMessage} </div>
+					<div
+						className={`auth__login__availability-message ${isLoginAvailable && 'auth__login__availability-message--success'}`}
+					>
+						{loginAvailabilityMessage}
+					</div>
 				)}
 				{errors.login?.message && <StyledErrorInStep> {errors.login.message} </StyledErrorInStep>}
 				<StyledInput

@@ -51,6 +51,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 		setIsOpenSnackbarCopy(true)
 	}
 
+	// TODO: Add tooltips for overflowed text elements in description
+
 	return (
 		<div className="profile-card">
 			<Avatar
@@ -63,12 +65,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 				className="profile-card__avatar"
 			/>
 			<section className="profile-card__info">
-				<h3 className="profile-card__info_name">
-					<span>{lastName}</span>
+				<div className="profile-card__info__name">
 					<span>{firstName}</span>
+					<span>{lastName}</span>
 					{isOnline && <div className="profile-card__info__status" title="В сети" />}
-				</h3>
-				<p className="profile-card__info__description">{description}</p>
+				</div>
+				{description && <p className="profile-card__info__description">{description}</p>}
 				<Divider flexItem />
 				{!isOnline && (
 					<p className="profile-card__info__last-online">Был в сети {moment(lastOnlineDate).fromNow()}</p>
