@@ -56,7 +56,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	// TODO: Add tooltips for overflowed text elements in description
 
 	console.log('is editable', isEditable) // FIX
-
+        
 	return (
 		<div className="profile-card">
 			<Avatar
