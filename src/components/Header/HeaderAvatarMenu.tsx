@@ -10,7 +10,6 @@ import Avatar from '@components/Avatar'
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import Logout from '@mui/icons-material/Logout'
-import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
 import Settings from '@mui/icons-material/Settings'
 import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon, Menu } from '@mui/material'
 
@@ -50,16 +49,10 @@ const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, colo
 		navigate(Paths.profile.dynamic(login))
 	}
 
-	const handleClickEditProfile = () => {
-		handleClose()
-
-		navigate(Paths.profile.dynamic(login))
-	}
-
 	const handleClickSettings = () => {
 		handleClose()
 
-		navigate(Paths.profile.dynamic(login))
+		navigate(Paths.settings.static)
 	}
 
 	const handleLogout = () => {
@@ -102,12 +95,6 @@ const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, colo
 						<AccountCircleOutlinedIcon fontSize="small" />
 					</ListItemIcon>
 					Профиль
-				</StyledMenuItem>
-				<StyledMenuItem onClick={handleClickEditProfile}>
-					<ListItemIcon>
-						<ModeEditOutlinedIcon fontSize="small" />
-					</ListItemIcon>
-					Редактировать
 				</StyledMenuItem>
 				<StyledMenuItem onClick={handleClickSettings}>
 					<ListItemIcon>

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://cdn.althgamer.ru/assets/static/images/logo/wish-edu-blue-white-logo.webp" alt="WISH EDU" width="100"/>
+<img src="https://cloud.althgamer.ru/assets/static/images/logo/wish-edu-blue-white-logo.webp" alt="WISH EDU" width="100"/>
 
 # WISH EDU personal account
 

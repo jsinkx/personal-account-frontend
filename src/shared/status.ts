@@ -1,8 +1,8 @@
 enum Status {
-	LOADING = 'loading',
-	LOADED = 'loaded',
-	ERROR = 'error',
-	INIT = 'init',
+	LOADING = 'LOADING',
+	LOADED = 'LOADED',
+	ERROR = 'ERROR',
+	INIT = 'INIT',
 }
 
 export default Status

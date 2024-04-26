@@ -20,7 +20,17 @@ const Paths = {
 			portfolio: 'portfolio',
 		},
 	},
-	settings: '/settings',
+	settings: {
+		static: '/settings',
+		children: {
+			default: '',
+			account: 'account',
+			password: 'password',
+			app: 'app',
+			notifications: 'notifications',
+			help: 'help',
+		},
+	},
 	any: '*',
 	maintenanceService: '/maintenance-service',
 } as const

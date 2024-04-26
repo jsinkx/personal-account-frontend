@@ -15,6 +15,7 @@ import useAppSelector from '@hooks/useAppSelector'
 import MainLayout from '@layouts/MainLayout'
 
 import LoadingPage from '@pages/LoadingPage'
+import NotFoundPage from '@pages/NotFoundPage'
 
 import Error from '@components/Error'
 
@@ -74,13 +75,21 @@ const Profile: React.FC = () => {
 		if (!(authData && (id === String(authData.id) || id === authData.login))) {
 			getUserById()
 		}
+
+		if (id === authData?.login || id === authData?.id) {
+			setUser(authData)
+		}
 	}, [authData, authData?.id, authData?.login, id])
 
 	if (status === Status.LOADING || isLoading) return <LoadingPage />
-	if (status === Status.ERROR || isError) return <Error> Указанный профиль не найден!</Error>
+	if (status === Status.ERROR || isError)
+		return (
+			<MainLayout title="Профиль не найден" description="Профиль не найден">
+				<Error> Указанный профиль не найден!</Error>
+			</MainLayout>
+		)
+
 	if ((status === Status.LOADED && authData) || (user && !isLoading)) {
-		// @ts-ignore
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const isEditable = String(authData?.id) === id
 
 		const profile = (user || authData)!
@@ -106,8 +115,9 @@ const Profile: React.FC = () => {
 									mainLocation={MAIN_LOCATION}
 									lastOnlineDate={moment().toString()}
 									birthday={profile.birthday}
-									email={`${profile.email}sadasdasdasdasdasdasd`}
+									email={profile.email}
 									createdAt={profile.created_at}
+									isEditable={isEditable}
 								/>
 								<section className="profile__content">
 									<ProfileContent />
@@ -120,7 +130,7 @@ const Profile: React.FC = () => {
 		)
 	}
 
-	return <LoadingPage />
+	return <NotFoundPage />
 }
 
 export default Profile
