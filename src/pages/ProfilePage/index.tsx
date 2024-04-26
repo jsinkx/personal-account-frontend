@@ -44,7 +44,7 @@ const Profile: React.FC = () => {
 		palette: {
 			...currentThemeMUI.palette,
 			primary: {
-				main: authData?.background_color || Colors.BLUE_WISH,
+				main: user?.background_color || authData?.background_color || Colors.BLUE_WISH,
 			},
 		},
 		typography: {
@@ -106,7 +106,7 @@ const Profile: React.FC = () => {
 									mainLocation={MAIN_LOCATION}
 									lastOnlineDate={moment().toString()}
 									birthday={profile.birthday}
-									email={profile.email}
+									email={`${profile.email}sadasdasdasdasdasdasd`}
 									createdAt={profile.created_at}
 								/>
 								<section className="profile__content">
