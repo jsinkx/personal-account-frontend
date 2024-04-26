@@ -16,6 +16,8 @@ const MaintenanceServicePage = React.lazy(
 
 const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '@pages/HomePage'))
 
+// Profile
+
 const ProfilePage = React.lazy(() => import(/* webpackChunkName: "ProfilePage" */ '@pages/ProfilePage'))
 
 const ProfileAboutMe = React.lazy(
@@ -37,6 +39,35 @@ const ProfilePortfolio = React.lazy(
 		import(
 			/* webpackChunkName: "ProfilePortfolio" */ '@pages/ProfilePage/ProfileElements/ProfileContent/ProfilePortfolio'
 		),
+)
+
+// Settings
+
+const SettingsPage = React.lazy(() => import(/* webpackChunkName: "SettingsPage" */ '@pages/SettingsPage'))
+
+const SettingsAccount = React.lazy(
+	() =>
+		import(/* webpackChunkName: "SettingsAccount" */ '@pages/SettingsPage/SettingsElements/SettingsAccount'),
+)
+
+const SettingsPassword = React.lazy(
+	() =>
+		import(/* webpackChunkName: "SettingsPassword" */ '@pages/SettingsPage/SettingsElements/SettingsPassword'),
+)
+
+const SettingsApp = React.lazy(
+	() => import(/* webpackChunkName: "SettingsApp" */ '@pages/SettingsPage/SettingsElements/SettingsApp'),
+)
+
+const SettingsNotifications = React.lazy(
+	() =>
+		import(
+			/* webpackChunkName: "SettingsNotifications" */ '@pages/SettingsPage/SettingsElements/SettingsNotifications'
+		),
+)
+
+const SettingsHelp = React.lazy(
+	() => import(/* webpackChunkName: "SettingsHelp" */ '@pages/SettingsPage/SettingsElements/SettingsHelp'),
 )
 
 const AuthPage = React.lazy(() => import(/* webpackChunkName: "AuthPage" */ '@pages/AuthPage'))
@@ -126,9 +157,60 @@ const router: Router = createBrowserRouter([
 					},
 				],
 			},
+			// Settings
 			{
-				path: Paths.settings,
-				element: <ProfilePage />,
+				path: Paths.settings.static,
+				element: <SettingsPage />,
+				children: [
+					{
+						path: Paths.settings.children.default,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsAccount />
+							</React.Suspense>
+						),
+					},
+					{
+						path: Paths.settings.children.account,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsAccount />
+							</React.Suspense>
+						),
+					},
+					{
+						path: Paths.settings.children.notifications,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsNotifications />
+							</React.Suspense>
+						),
+					},
+					{
+						path: Paths.settings.children.password,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsPassword />
+							</React.Suspense>
+						),
+					},
+					{
+						path: Paths.settings.children.app,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsApp />
+							</React.Suspense>
+						),
+					},
+					{
+						path: Paths.settings.children.help,
+						element: (
+							<React.Suspense fallback={null}>
+								<SettingsHelp />
+							</React.Suspense>
+						),
+					},
+				],
 			},
 		],
 	},
