@@ -40,7 +40,15 @@ const Avatar: React.FC<AvatarProps> = ({
 	}
 
 	return fullSize ? (
-		<StyledAvatarFullSize $size={size} $color={color} className={className} style={style}>
+		<StyledAvatarFullSize
+			$size={size}
+			$color={color}
+			className={className}
+			style={{
+				border: !isErrorSrc && src ? 'inherit' : `1px solid ${color}`,
+				...style,
+			}}
+		>
 			{!isErrorSrc && src ? (
 				<img src={src} alt={firstName} onError={handleErrorImg} />
 			) : (

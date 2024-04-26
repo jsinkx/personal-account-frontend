@@ -16,6 +16,8 @@ const MaintenanceServicePage = React.lazy(
 
 const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '@pages/HomePage'))
 
+const UsersPage = React.lazy(() => import(/* webpackChunkName: "UsersPage" */ '@pages/UsersPage'))
+
 // Profile
 
 const ProfilePage = React.lazy(() => import(/* webpackChunkName: "ProfilePage" */ '@pages/ProfilePage'))
@@ -92,6 +94,10 @@ const router: Router = createBrowserRouter([
 			{
 				path: Paths.contacts,
 				element: <NotFoundPage />,
+			},
+			{
+				path: Paths.users,
+				element: <UsersPage />,
 			},
 			{
 				path: Paths.termsAndConditions,

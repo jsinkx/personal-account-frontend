@@ -10,6 +10,7 @@ import Avatar from '@components/Avatar'
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import Logout from '@mui/icons-material/Logout'
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined'
 import Settings from '@mui/icons-material/Settings'
 import { Button, Dialog, DialogActions, DialogTitle, ListItemIcon, Menu } from '@mui/material'
 
@@ -47,6 +48,12 @@ const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, colo
 		handleClose()
 
 		navigate(Paths.profile.dynamic(login))
+	}
+
+	const handleClickUserProfile = () => {
+		handleClose()
+
+		navigate(Paths.users)
 	}
 
 	const handleClickSettings = () => {
@@ -95,6 +102,12 @@ const HeaderAvatarMenu: React.FC<HeaderAvatarMenuProps> = ({ login, avatar, colo
 						<AccountCircleOutlinedIcon fontSize="small" />
 					</ListItemIcon>
 					Профиль
+				</StyledMenuItem>
+				<StyledMenuItem onClick={handleClickUserProfile}>
+					<ListItemIcon>
+						<PeopleAltOutlinedIcon fontSize="small" />
+					</ListItemIcon>
+					Пользователи
 				</StyledMenuItem>
 				<StyledMenuItem onClick={handleClickSettings}>
 					<ListItemIcon>
