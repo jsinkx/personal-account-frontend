@@ -7,6 +7,10 @@ type StyledProfileProps = {
 }
 
 const StyledProfile = styled.div<StyledProfileProps>`
+	::selection {
+		background-color: ${({ $color }) => $color};
+	}
+
 	section {
 		margin: 0 auto;
 		display: flex;
@@ -111,7 +115,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							span {
 								height: 20px;
 								margin-left: 5px;
-								display: block;
+								display: flex; // or set block for ellipsis text overflow
 								overflow: hidden;
 								white-space: nowrap;
 								text-overflow: ellipsis;
