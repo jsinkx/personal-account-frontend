@@ -1,11 +1,14 @@
 node_modules
+
 npm-debug.log
-build
 .DS_Store
 debug
+
 package-lock.json
 .vscode
 .env
 .env.example
 .eslintrc
+
 build
+dist
