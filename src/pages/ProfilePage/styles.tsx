@@ -7,6 +7,10 @@ type StyledProfileProps = {
 }
 
 const StyledProfile = styled.div<StyledProfileProps>`
+	::selection {
+		background-color: ${({ $color }) => $color};
+	}
+
 	section {
 		margin: 0 auto;
 		display: flex;
@@ -44,10 +48,11 @@ const StyledProfile = styled.div<StyledProfileProps>`
 				}
 
 				.profile-card__info {
+					width: 229px;
 					margin: 20px;
 					margin-top: 0;
 
-					h3 {
+					.profile-card__info__name {
 						margin-bottom: 0;
 						display: flex;
 						align-items: center;
@@ -87,8 +92,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 					}
 
 					.profile-card__info__description {
-						max-width: 229px;
-						margin-top: 15px;
+						margin: 10px 0;
 						color: ${({ theme }) => theme.text.secondaryFontColor};
 						max-height: 90px;
 						word-wrap: break-word;
@@ -96,7 +100,6 @@ const StyledProfile = styled.div<StyledProfileProps>`
 					}
 
 					.profile-card__info__connections {
-						max-width: 229px;
 						margin: 0;
 						margin-top: 20px;
 						padding: 0;
@@ -106,17 +109,16 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							margin-bottom: 20px;
 							display: flex;
 							align-items: center;
-							text-align: center;
 							list-style: none;
 							font-size: 0.95em;
 
 							span {
 								height: 20px;
 								margin-left: 5px;
-								display: flex;
-								justify-content: center;
-								text-align: center;
-								overflow: hidden; // FIX: Long fields will be cut
+								display: flex; // or set block for ellipsis text overflow
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
 							}
 						}
 

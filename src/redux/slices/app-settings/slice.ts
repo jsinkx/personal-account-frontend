@@ -6,6 +6,7 @@ import { AppSettingsState } from './types'
 
 const initialState: AppSettingsState = {
 	theme: ThemesStyledComponents.LIGHT,
+	isDisplayVersion: true,
 }
 
 const appSettingsSlice = createSlice({
@@ -16,9 +17,12 @@ const appSettingsSlice = createSlice({
 			state.theme =
 				state.theme === ThemesStyledComponents.LIGHT ? ThemesStyledComponents.DARK : ThemesStyledComponents.LIGHT
 		},
+		switchIsDisplayVersion: (state) => {
+			state.isDisplayVersion = !state.isDisplayVersion
+		},
 	},
 })
 
-export const { switchTheme } = appSettingsSlice.actions
+export const { switchTheme, switchIsDisplayVersion } = appSettingsSlice.actions
 
 export const appSettingsReducer = appSettingsSlice.reducer

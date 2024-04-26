@@ -1,13 +1,14 @@
-import React from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import moment from 'moment'
 
+import axiosInstance from '@shared/axios'
 import Colors from '@shared/colors'
-import Paths from '@shared/paths'
 import Status from '@shared/status'
 
 import { selectAuthData, selectAuthStatus } from '@redux/slices/auth/selectors'
+import { User } from '@redux/slices/auth/types'
 
 import useAppSelector from '@hooks/useAppSelector'
 
@@ -30,14 +31,20 @@ const Profile: React.FC = () => {
 	const { id } = useParams()
 	const currentThemeMUI = useTheme()
 
+	// Current user
 	const authData = useAppSelector(selectAuthData)
 	const status = useAppSelector(selectAuthStatus)
+
+	// Searching user
+	const [isLoading, setIsLoading] = useState(false)
+	const [isError, setIsError] = useState(false)
+	const [user, setUser] = useState<User | null>(null)
 
 	const theme = createTheme({
 		palette: {
 			...currentThemeMUI.palette,
 			primary: {
-				main: authData?.background_color || Colors.BLUE_WISH,
+				main: user?.background_color || authData?.background_color || Colors.BLUE_WISH,
 			},
 		},
 		typography: {
@@ -45,38 +52,62 @@ const Profile: React.FC = () => {
 		},
 	})
 
-	// Also we need to fetch profile by param id with service hook
+	useEffect(() => {
+		const getUserById = async () => {
+			try {
+				setIsLoading(true)
 
-	if (status === Status.LOADING) return <LoadingPage />
-	if (status === Status.ERROR) return <Error> Указанный профиль не найден!</Error>
-	if (status === Status.LOADED && authData) {
+				const { data } = await axiosInstance(`/info/users/search-${id}`)
+
+				setUser(data)
+			} catch (err) {
+				setIsError(true)
+
+				console.error('Error', err)
+			}
+
+			setIsLoading(false)
+		}
+
+		// If searching profile page is current user profile, we don't need to fetch it again
+		// id can be string or number, e.g. 1 or "simple_login"
+		if (!(authData && (id === String(authData.id) || id === authData.login))) {
+			getUserById()
+		}
+	}, [authData, authData?.id, authData?.login, id])
+
+	if (status === Status.LOADING || isLoading) return <LoadingPage />
+	if (status === Status.ERROR || isError) return <Error> Указанный профиль не найден!</Error>
+	if ((status === Status.LOADED && authData) || (user && !isLoading)) {
 		// @ts-ignore
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const isEditable = String(authData.id) === id
+		const isEditable = String(authData?.id) === id
+
+		const profile = (user || authData)!
 
 		return (
 			<MainLayout
-				title={`${authData.first_name} ${authData.last_name}`}
-				description={`Личный профиль пользователя ${authData.first_name} ${authData.last_name}`}
+				title={`${profile.first_name} ${profile.last_name}`}
+				description={`Личный профиль пользователя ${profile.first_name} ${profile.last_name}`}
 			>
-				<StyledProfile $color={authData.background_color}>
+				<StyledProfile $color={profile.background_color}>
 					<ThemeProvider theme={theme}>
 						<section>
 							<div className="profile__background"> </div>
 							<div className="profile">
 								<ProfileCard
 									isOnline={IS_ONLINE}
-									avatar={authData.avatar}
-									firstName={authData.first_name}
-									lastName={authData.last_name}
-									color={authData.background_color}
-									login={authData.login}
-									description={authData.description}
+									avatar={profile.avatar}
+									firstName={profile.first_name}
+									lastName={profile.last_name}
+									color={profile.background_color}
+									login={profile.login}
+									description={profile.description}
 									mainLocation={MAIN_LOCATION}
 									lastOnlineDate={moment().toString()}
-									birthday={authData.birthday}
-									email={authData.email}
-									createdAt={authData.created_at}
+									birthday={profile.birthday}
+									email={`${profile.email}sadasdasdasdasdasdasd`}
+									createdAt={profile.created_at}
 								/>
 								<section className="profile__content">
 									<ProfileContent />
@@ -89,7 +120,7 @@ const Profile: React.FC = () => {
 		)
 	}
 
-	return <Navigate to={Paths.home} />
+	return <LoadingPage />
 }
 
 export default Profile
