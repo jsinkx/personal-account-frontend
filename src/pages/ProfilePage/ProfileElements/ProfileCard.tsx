@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import 'moment/dist/locale/ru'
 
+import { UserGroup } from '@redux/slices/auth/types'
+
 import Avatar from '@components/Avatar'
 import EmailIcon from '@components/Icons/EmailIcon'
 
@@ -11,6 +13,7 @@ import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined'
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import SensorDoorOutlinedIcon from '@mui/icons-material/SensorDoorOutlined'
+import WorkspacesOutlinedIcon from '@mui/icons-material/WorkspacesOutlined'
 import { Divider, Snackbar } from '@mui/material'
 
 type ProfileCardProps = {
@@ -27,6 +30,7 @@ type ProfileCardProps = {
 	birthday?: string
 	createdAt: string
 	isEditable?: boolean
+	groups?: UserGroup[]
 }
 
 moment.locale('ru')
@@ -45,6 +49,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	birthday,
 	createdAt,
 	isEditable,
+	groups = [],
 }) => {
 	const [isOpenSnackbarCopy, setIsOpenSnackbarCopy] = useState(false)
 
@@ -54,6 +59,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	}
 
 	// TODO: Add tooltips for overflowed text elements in description
+
+	const mainGroup = groups?.[0]?.name // FIX
 
 	console.log('is editable', isEditable) // FIX
         
@@ -116,6 +123,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 							/>
 						</span>
 					</li>
+					{mainGroup && (
+						<li>
+							<WorkspacesOutlinedIcon
+								fontSize="small"
+								className="profile-card__connections__connect--icon"
+								sx={{
+									color,
+								}}
+							/>
+							<span>{mainGroup}</span>
+						</li>
+					)}
 					{birthday && (
 						<li>
 							<CakeOutlinedIcon

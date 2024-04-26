@@ -17,7 +17,6 @@ const StyledAvatarFullSize = styled.div<StyledAvatarFullSizeProps>`
 	font-size: ${({ $size }) => `calc(${$size} / 2)`};
 	color: ${Colors.WHITE};
 	background-color: ${({ $color }) => $color};
-	border: 1px solid ${({ $color }) => $color};
 	user-select: none;
 	/* box-sizing: border-box; */ // Gives bug border, don't use it
 

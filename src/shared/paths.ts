@@ -8,6 +8,7 @@ const Paths = {
 	registration: '/registration',
 	login: '/login',
 	forgotPassword: '/forgot-password',
+	users: '/users',
 	profile: {
 		static: '/profile/:id',
 		dynamic(id: number | string) {

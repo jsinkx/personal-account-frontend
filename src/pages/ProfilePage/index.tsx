@@ -118,6 +118,7 @@ const Profile: React.FC = () => {
 									email={profile.email}
 									createdAt={profile.created_at}
 									isEditable={isEditable}
+									groups={profile.groups}
 								/>
 								<section className="profile__content">
 									<ProfileContent />
