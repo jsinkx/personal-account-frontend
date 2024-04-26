@@ -63,7 +63,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 	const mainGroup = groups?.[0]?.name // FIX
 
 	console.log('is editable', isEditable) // FIX
-        
+
 	return (
 		<div className="profile-card">
 			<Avatar
