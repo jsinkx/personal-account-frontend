@@ -41,11 +41,13 @@ Integration of the config from `.env` into javascript variables and all constant
 
 ## Production mode
 
+<strong> Warning: don't forget to create `.env` </strong>
+
 Just need to run docker image
 
 ```sh
 docker build -t pa-frontend-build .
-docker run --name pa-fr-build --restart=always -p 3000:3000 -d pa-frontend-build
+docker run --name pa-frontend-build --restart=always -p 80:80 pa-frontend-build -d
 ```
 
 or
