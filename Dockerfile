@@ -1,12 +1,14 @@
-FROM node:alpine
-
-EXPOSE 3000
-WORKDIR /usr/src/app-pa-frontend
-COPY package.json pnpm-lock.yaml ./
-
-RUN npm install -g pnpm && pnpm install
+# Prepare build image
+FROM alpine AS builder
+WORKDIR /personal-account-frontend
 COPY . .
-RUN pnpm build
-CMD ["pnpm", "serve"]
+RUN apk add --update npm
+RUN npm install -g pnpm
+RUN pnpm install
+RUN pnpm run build
 
-
+# Build production image
+FROM nginx:alpine AS runner
+EXPOSE 80
+COPY --from=builder /personal-account-frontend/dist /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]

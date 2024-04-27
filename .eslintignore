@@ -1,14 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build 
+dist
+build
+dist-ssr
+*.local
+
+# Libs
 node_modules
 
-npm-debug.log
-.DS_Store
-debug
-
-package-lock.json
-.vscode
+# Secret
 .env
 .env.example
-.eslintrc
 
-build
-dist
+# Editor & other
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+debug
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.prettierrc
+.bashrc
+*.bat
+Dockerfile*
+
+# Ignore configs
+.gitignore
+.dockerignore
+.prettierignore
+.eslintrcignore
