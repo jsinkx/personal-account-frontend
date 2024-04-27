@@ -13,7 +13,7 @@ jobs:
      run: pnpm install
    - name: Lint
      run: pnpm run lint
- build:
+ build-as-test:
   runs-on: ubuntu-latest
   steps:
    - name: Checkout
