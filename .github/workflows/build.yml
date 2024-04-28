@@ -39,5 +39,7 @@ jobs:
   steps:
    - name: Pull image from docker hub
      run: docker pull jsink/personal-account-frontend:latest
-   - name: Run Docker container
-     run: docker run --name pa-frontend-build --restart=always -d -p 80:80 pa-frontend-build
+   - name: Rename pulled docker image
+     run: docker image tag jsink/personal-account-frontend:latest wish-edu-pa-frontend
+   - name: Run docker container
+     run: docker run --name wish-edu-pa-frontend -d -p 81:80 wish-edu-pa-frontend
