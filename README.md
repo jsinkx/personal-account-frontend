@@ -41,16 +41,27 @@ Integration of the config from `.env` into javascript variables and all constant
 
 ## Production mode
 
-<strong> Warning: don't forget to create `.env` </strong>
+### By docker
 
-Just need to run docker image
+Way without create `.env`
+
+```sh
+docker build --build-arg GENERATE_SOURCEMAP=false --build-arg VITE_API_URL=VITE_API_URL --build-arg VITE_CLOUD_URL=VITE_CLOUD_URL --build-arg VITE_IS_BETA=VITE_IS_BETA -t pa-frontend-build  .
+```
+
+<strong> Warning: don't forget to create `.env` </strong>
 
 ```sh
 docker build -t pa-frontend-build .
+```
+
+Run build container
+
+```sh
 docker run --name pa-frontend-build --restart=always -d -p 80:80 pa-frontend-build
 ```
 
-or
+### By package manage (don't recommended)
 
 _Check installation part_
 
