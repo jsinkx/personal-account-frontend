@@ -14,12 +14,13 @@ jobs:
       envkey_VITE_API_URL: ${{ secrets.VITE_API_URL }}
       envkey_VITE_CLOUD_URL: ${{ secrets.VITE_CLOUD_URL }}
       envkey_VITE_IS_BETA: ${{ secrets.VITE_IS_BETA }}
-      directory: ../../
       file_name: .env
       fail_on_empty: false
       sort_keys: false
    - name: Set up QEMU
      uses: docker/setup-qemu-action@v2
+   - run: cat .env
+   - run: ls -a
    - name: Log in to Docker Hub
      uses: docker/login-action@v3
      with:
