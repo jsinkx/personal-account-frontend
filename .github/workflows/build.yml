@@ -27,6 +27,6 @@ jobs:
   runs-on: self-hosted
   steps:
    - name: Pull image from docker hub
-     uses: docker pull jsink/personal-account-frontend:latest
+     run: docker pull jsink/personal-account-frontend:latest
    - name: Run Docker container
-     uses: docker run --name pa-frontend-build --restart=always -d -p 80:80 pa-frontend-build
+     run: docker run --name pa-frontend-build --restart=always -d -p 80:80 pa-frontend-build
