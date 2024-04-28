@@ -47,7 +47,7 @@ Just need to run docker image
 
 ```sh
 docker build -t pa-frontend-build .
-docker run --name pa-frontend-build --restart=always -p 80:80 pa-frontend-build -d
+docker run --name pa-frontend-build --restart=always -d -p 80:80 pa-frontend-build
 ```
 
 or
