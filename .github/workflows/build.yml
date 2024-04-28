@@ -14,7 +14,7 @@ jobs:
       envkey_VITE_API_URL: ${{ secrets.VITE_API_URL }}
       envkey_VITE_CLOUD_URL: ${{ secrets.VITE_CLOUD_URL }}
       envkey_VITE_IS_BETA: ${{ secrets.VITE_IS_BETA }}
-      directory: ./
+      directory: ../../
       file_name: .env
       fail_on_empty: false
       sort_keys: false
@@ -37,6 +37,8 @@ jobs:
   needs: build
   runs-on: self-hosted
   steps:
+   - run: docker stop /wish-edu-pa-frontend
+   - run: docker rm /wish-edu-pa-frontend
    - name: Pull image from docker hub
      run: docker pull jsink/personal-account-frontend:latest
    - name: Rename pulled docker image
