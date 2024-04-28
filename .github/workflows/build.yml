@@ -30,6 +30,11 @@ jobs:
    - name: Set up Docker Buildx
      uses: docker/setup-buildx-action@v2
    - run: ls
+   - name: Create .env file
+     run:
+      echo "GENERATE_SOURCEMAP=${{ secrets.GENERATE_SOURCEMAP }}" >> .env && echo "VITE_API_URL=${{
+      secrets.VITE_API_URL }}" >> .env && echo "VITE_CLOUD_URL=${{ secrets.VITE_CLOUD_URL }}" >> .env && echo
+      "VITE_IS_BETA=true" >> .env
    - name: Build and push
      uses: docker/build-push-action@v3
      with:
