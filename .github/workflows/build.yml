@@ -23,10 +23,10 @@ jobs:
       push: true
       tags: jsink/personal-account-frontend:latest
       build-args: |
-       GENERATE_SOURCEMAP=${{ secrets.GENERATE_SOURCEMAP }},
-       VITE_API_URL=${{ secrets.VITE_API_URL }},
-       VITE_CLOUD_URL=${{ secrets.VITE_IS_BETA }},
-       VITE_IS_BETA=${{ secrets.GENERATE_SOURCEMAP }},
+       GENERATE_SOURCEMAP=${{ secrets.GENERATE_SOURCEMAP }}
+       VITE_API_URL=${{ secrets.VITE_API_URL }}
+       VITE_CLOUD_URL=${{ secrets.VITE_CLOUD_URL }}
+       VITE_IS_BETA=${{ secrets.VITE_IS_BETA }}
 
  deploy:
   needs: build
@@ -39,4 +39,4 @@ jobs:
       docker pull jsink/personal-account-frontend:latest && docker image tag
       jsink/personal-account-frontend:latest wish-edu-pa-frontend
    - name: Run docker container
-     run: docker run --name wish-edu-pa-frontend -d -p ${{ secrets.PROD_RUNNING_PORT}}:80 wish-edu-pa-frontend
+     run: docker run --name wish-edu-pa-frontend -d -p ${{ secrets.PROD_RUNNING_PORT }}:80 wish-edu-pa-frontend
