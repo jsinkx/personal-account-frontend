@@ -23,7 +23,7 @@ export default defineConfig({
 		splitVendorChunkPlugin(), // Split vendor chunks
 	],
 	build: {
-		outDir: '/dist',
+		outDir: './dist',
 		sourcemap: false,
 		chunkSizeWarningLimit: 1600,
 	},
