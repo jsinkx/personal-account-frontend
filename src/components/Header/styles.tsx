@@ -49,7 +49,7 @@ const StyledHeader = styled.header`
 			margin-left: 20px;
 			font-weight: normal;
 
-			.header__avatar__menu__button {
+			&__button {
 				cursor: pointer;
 			}
 		}
@@ -57,11 +57,11 @@ const StyledHeader = styled.header`
 
 	@media (max-width: 860px) {
 		.header__logo {
-			.header__logo--logo-name {
+			&--logo-name {
 				display: none;
 			}
 
-			.header__logo-text--version {
+			&-text--version {
 				display: none;
 			}
 		}

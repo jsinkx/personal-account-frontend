@@ -13,11 +13,11 @@ const AuthNavigation: React.FC<AuthNavigationProps> = ({ isLogin }) => {
 	const navigate = useNavigate()
 
 	return (
-		<nav className="auth__navigation">
+		<nav className="navigation">
 			<Button
 				disabled={!!isLogin}
 				variant={isLogin ? 'contained' : 'text'}
-				className="auth__navigation__button"
+				className="navigation__button"
 				onClick={() => navigate(Paths.login)}
 			>
 				Войти
@@ -25,7 +25,7 @@ const AuthNavigation: React.FC<AuthNavigationProps> = ({ isLogin }) => {
 			<Button
 				disabled={!isLogin}
 				variant={!isLogin ? 'contained' : 'text'}
-				className="auth__navigation__button"
+				className="navigation__button"
 				onClick={() => navigate(Paths.registration)}
 			>
 				Регистрация

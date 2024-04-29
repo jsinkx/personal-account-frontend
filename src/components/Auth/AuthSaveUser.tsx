@@ -10,7 +10,7 @@ type AuthSaveUserProps = {
 
 const AuthSaveUser: React.FC<AuthSaveUserProps> = ({ saveUserIsChecked, setSaveUserIsChecked, disabled }) => {
 	return (
-		<span className="auth--is-save-user">
+		<span className="is-save-user">
 			<FormGroup>
 				<FormControlLabel
 					control={
@@ -19,7 +19,7 @@ const AuthSaveUser: React.FC<AuthSaveUserProps> = ({ saveUserIsChecked, setSaveU
 							onChange={() => setSaveUserIsChecked((p) => !p)}
 							disabled={disabled}
 							size="small"
-							className="auth__MUI-checkbox"
+							className="MUI-checkbox"
 						/>
 					}
 					label="Не запоминать пользователя ?"

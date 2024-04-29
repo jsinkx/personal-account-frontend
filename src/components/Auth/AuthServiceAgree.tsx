@@ -18,7 +18,7 @@ const AuthServiceAgree: React.FC<AuthServiceAgreeProps> = ({
 	disabled,
 }) => {
 	return (
-		<span className="auth--is-agree">
+		<span className="is-agree">
 			<FormGroup>
 				<FormControlLabel
 					control={
@@ -27,13 +27,13 @@ const AuthServiceAgree: React.FC<AuthServiceAgreeProps> = ({
 							onChange={() => setAgreeIsChecked((p) => !p)}
 							disabled={disabled}
 							size="small"
-							className="auth__MUI-checkbox"
+							className="MUI-checkbox"
 						/>
 					}
 					label={
 						<span>
 							Согласны с
-							<CustomLink to={Paths.termsAndConditions} target="_blank" className="auth--is-agree__navlink">
+							<CustomLink to={Paths.termsAndConditions} target="_blank" className="is-agree__navlink">
 								правилами и условиями
 							</CustomLink>
 						</span>

@@ -63,12 +63,12 @@ export const StyledHomePage = styled.div<StyledProps>`
 					}
 				}
 
-				.navigation__services__service {
+				&__service {
 					margin-inline: 30px;
 					margin-bottom: 50px;
 					user-select: none;
 
-					.navigation__services__service__icon {
+					&__icon {
 						margin: 0 auto;
 						border-radius: 50%;
 						cursor: pointer;
@@ -82,9 +82,6 @@ export const StyledHomePage = styled.div<StyledProps>`
 				}
 			}
 		}
-	}
-
-	.defaultBackgroundColor {
 	}
 
 	.block__navigation--services {

@@ -38,104 +38,108 @@ const StyledAuth = styled.div`
 		width: 82%;
 	}
 
-	.auth__navigation {
-		margin-top: 10px;
-		margin-bottom: 20px;
-		display: flex;
-
-		.auth__navigation__button {
-			margin-inline: 10px;
-		}
-
-		.auth__navigation__button--active {
-			opacity: 1;
-		}
-	}
-
 	h2 {
 		margin-block: 10px;
 		user-select: none;
 	}
 
-	.auth__step-info {
-		width: 100%;
-		margin-bottom: 15px;
+	.navigation {
+		margin-top: 10px;
+		margin-bottom: 20px;
 		display: flex;
-		align-items: center;
-		font-size: 0.9em;
-		user-select: none;
 
-		.auth__step-info--back-button {
-			margin-left: -5px;
-			margin-right: 5px;
-			padding: 1px;
-			box-sizing: border-box;
+		&__button {
+			margin-inline: 10px;
+
+			&--active {
+				opacity: 1;
+			}
 		}
 	}
 
-	.auth__parameters {
-		margin-bottom: 20px;
-		display: flex;
-		flex-direction: column;
-		justify-content: left;
-		text-align: left;
-		user-select: none;
+	.auth {
+		&__step-info {
+			width: 100%;
+			margin-bottom: 15px;
+			display: flex;
+			align-items: center;
+			font-size: 0.9em;
+			user-select: none;
 
-		.auth--forgot-password {
-			margin-bottom: 10px;
-			color: ${({ theme }) => theme.text.primaryFontColor};
-
-			&:hover {
-				opacity: 0.55;
+			&--back-button {
+				margin-left: -5px;
+				margin-right: 5px;
+				padding: 1px;
+				box-sizing: border-box;
 			}
 		}
 
-		.auth__MUI-checkbox {
-			margin-left: 10px;
-			margin-right: 3px;
-			padding: 0;
-		}
-
-		.auth--is-agree,
-		.auth--is-save-user {
-			margin-bottom: 10px;
+		&__parameters {
+			margin-bottom: 20px;
 			display: flex;
+			flex-direction: column;
+			justify-content: left;
 			text-align: left;
 			user-select: none;
 
-			@media (max-width: 432px) {
-				span {
-					font-size: 0.9em;
+			.MUI-checkbox {
+				margin-left: 10px;
+				margin-right: 3px;
+				padding: 0;
+			}
+
+			.is-agree,
+			.is-save-user {
+				margin-bottom: 10px;
+				display: flex;
+				text-align: left;
+				user-select: none;
+
+				@media (max-width: 432px) {
+					span {
+						font-size: 0.9em;
+					}
 				}
+			}
+
+			.is-agree {
+				&__navlink {
+					margin-left: 5px;
+					color: ${({ theme }) => theme.text.primaryFontColor};
+
+					&:hover {
+						opacity: 0.55;
+					}
+				}
+			}
+
+			.is-save-user {
+				margin-bottom: 0;
 			}
 		}
 
-		.auth--is-save-user {
-			margin-bottom: 0;
-		}
-
-		.auth--is-agree__navlink {
-			margin-left: 5px;
+		&__forgot-password {
+			margin-bottom: 10px;
 			color: ${({ theme }) => theme.text.primaryFontColor};
 
 			&:hover {
 				opacity: 0.55;
 			}
 		}
-	}
 
-	.auth__login__availability-message {
-		margin-bottom: 2px;
-		text-align: left;
-		color: ${({ theme }) => theme.text.errorFontColor};
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		user-select: none;
-	}
+		&__login__availability-message {
+			margin-bottom: 2px;
+			text-align: left;
+			color: ${({ theme }) => theme.text.errorFontColor};
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			user-select: none;
 
-	.auth__login__availability-message--success {
-		color: ${({ theme }) => theme.text.successFontColor};
+			&--success {
+				color: ${({ theme }) => theme.text.successFontColor};
+			}
+		}
 	}
 `
 
