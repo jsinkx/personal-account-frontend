@@ -29,7 +29,7 @@ const NotFoundPage: React.FC = () => {
 
 				<p>
 					Страница не найдена,{' '}
-					<Button variant="text" onClick={handleClickBack} className="button-go-back">
+					<Button variant="text" onClick={handleClickBack} className="button--go-back">
 						вернуться назад
 					</Button>{' '}
 					или <StyledCustomNavLink to={Paths.home}>на главную</StyledCustomNavLink>

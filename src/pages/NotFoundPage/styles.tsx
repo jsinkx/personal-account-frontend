@@ -31,7 +31,7 @@ const StyledNotFoundPage = styled.main`
 		font-size: 1.8em;
 	}
 
-	.button-go-back {
+	.button--go-back {
 		padding: 0;
 		font-weight: normal;
 	}

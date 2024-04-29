@@ -7,11 +7,17 @@ import CleanLayout from '@layouts/CleanLayout'
 import maintenanceServicePic1 from '@assets/images/maintenance-service-pic-1.webp'
 import maintenanceServicePic2 from '@assets/images/maintenance-service-pic-2.webp'
 import maintenanceServicePic3 from '@assets/images/maintenance-service-pic-3.webp'
+import maintenanceServicePic4 from '@assets/images/maintenance-service-pic-4.webp'
 
 import StyledNotFoundPage from './styles'
 
 const MaintenanceServicePage: React.FC = () => {
-	const IMAGES_URL = [maintenanceServicePic1, maintenanceServicePic2, maintenanceServicePic3]
+	const IMAGES_URL = [
+		maintenanceServicePic1,
+		maintenanceServicePic2,
+		maintenanceServicePic3,
+		maintenanceServicePic4,
+	]
 
 	return (
 		<CleanLayout title="Тех.обслуживание" description="Мы устраняем все проблемы и делаем наши сервисы лучше">
