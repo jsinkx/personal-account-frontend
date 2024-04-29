@@ -1,15 +1,16 @@
 {
 	"compilerOptions": {
-		"baseUrl": "./src",
+		"baseUrl": ".",
 		"paths": {
-			"@assets/*": ["./assets/*"],
-			"@components/*": ["./components/*"],
-			"@hooks/*": ["./hooks/*"],
-			"@layouts/*": ["./layouts/*"],
-			"@pages/*": ["./pages/*"],
-			"@redux/*": ["./redux/*"],
-			"@shared/*": ["./shared/*"],
-			"@utils/*": ["./utils/*"]
+			"@/*": ["src/*"],
+			"@assets/*": ["src/assets/*"],
+			"@components/*": ["src/components/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@layouts/*": ["src/layouts/*"],
+			"@pages/*": ["src/pages/*"],
+			"@redux/*": ["src/redux/*"],
+			"@shared/*": ["src/shared/*"],
+			"@utils/*": ["src/utils/*"]
 		},
 		"target": "ESNext",
 		"lib": ["dom", "dom.iterable", "esnext"],

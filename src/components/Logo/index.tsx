@@ -17,9 +17,9 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
 	return (
 		<StyledLogo>
-			{displayLogoIcon && <img src={ICON_LOGO_URL} alt="W" />}
-			{displayLogoText && <span className="header__logo--logo-name">WISH EDU</span>}
-			{displayVersion && <span className="header__logo-text--version">{APP_VERSION}</span>}
+			{displayLogoIcon && <img src={ICON_LOGO_URL} alt="W" className="logo--image" />}
+			{displayLogoText && <span className="logo--text">WISH EDU</span>}
+			{displayVersion && <span className="version">{APP_VERSION}</span>}
 		</StyledLogo>
 	)
 }

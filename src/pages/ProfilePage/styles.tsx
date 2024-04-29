@@ -40,19 +40,19 @@ const StyledProfile = styled.div<StyledProfileProps>`
 				border-radius: 25px;
 				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
-				.profile-card__avatar,
-				.profile-card__avatar img {
+				&__avatar,
+				&__avatar img {
 					border-top-right-radius: 25px;
 					border-top-left-radius: 25px;
 					pointer-events: none;
 				}
 
-				.profile-card__info {
+				&__info {
 					width: 229px;
 					margin: 20px;
 					margin-top: 0;
 
-					.profile-card__info__name {
+					&__name {
 						margin-bottom: 0;
 						display: flex;
 						align-items: center;
@@ -65,7 +65,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							margin-right: 4px;
 						}
 
-						.profile-card__info__status {
+						&__status {
 							width: 12px;
 							height: 12px;
 							margin-top: 2px;
@@ -75,23 +75,23 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						}
 					}
 
-					.profile-card__info__name {
+					&__name {
 						margin-block: 10px;
 						font-size: 1.1em;
 					}
 
-					.profile-card__info__last-online,
-					.profile-card__info__connections {
+					&__last-online,
+					&__connections {
 						width: 100%;
 						user-select: none;
 					}
 
-					.profile-card__info__last-online {
+					&__last-online {
 						width: 90%;
 						font-size: 0.95em;
 					}
 
-					.profile-card__info__description {
+					&__description {
 						margin: 10px 0;
 						color: ${({ theme }) => theme.text.secondaryFontColor};
 						max-height: 90px;
@@ -99,7 +99,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 						user-select: none;
 					}
 
-					.profile-card__info__connections {
+					&__connections {
 						margin: 0;
 						margin-top: 20px;
 						padding: 0;
@@ -122,11 +122,11 @@ const StyledProfile = styled.div<StyledProfileProps>`
 							}
 						}
 
-						.profile-card__info__connections__connect__email {
+						&__connections__connect__email {
 							display: inline-flex;
 							user-select: none;
 
-							.profile-card__info__connections__connect__email--wrap {
+							&--wrap {
 								margin: 0;
 								cursor: pointer;
 
@@ -154,7 +154,7 @@ const StyledProfile = styled.div<StyledProfileProps>`
 				border-radius: 25px;
 				box-shadow: 0px 0px 30px 0px ${({ theme }) => theme.element.elementBoxShadow};
 
-				.profile__content__main-box {
+				&__main-box {
 					margin-top: 30px;
 					margin-left: 30px;
 				}

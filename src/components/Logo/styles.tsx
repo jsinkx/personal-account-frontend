@@ -13,14 +13,20 @@ const StyledLogo = styled.div`
 		color: ${({ theme }) => theme.text.primaryFontColor};
 	}
 
-	.header__logo--logo-name {
+	.logo--image {
+		width: 60px;
+		height: 60px;
+		user-select: none;
+	}
+
+	.logo--text {
 		margin-left: 10px;
 		font-size: 2em;
 		font-family: Roboto;
 		font-weight: bold;
 	}
 
-	.header__logo-text--version {
+	.version {
 		margin-left: 10px;
 		color: ${({ theme }) => theme.text.inactiveFontColor};
 		font-size: 1.2em;
@@ -29,12 +35,6 @@ const StyledLogo = styled.div`
 		@media (max-width: 340px) {
 			display: none;
 		}
-	}
-
-	img {
-		width: 60px;
-		height: 60px;
-		user-select: none;
 	}
 `
 

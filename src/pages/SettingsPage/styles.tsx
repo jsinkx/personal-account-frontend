@@ -39,14 +39,14 @@ const StyledSettingsPage = styled.div`
 			user-select: none;
 		}
 
-		.settings__content__group__name,
-		.settings__content__group__account,
-		.settings__content__group__other {
+		&__group__name,
+		&__group__account,
+		&__group__other {
 			margin-bottom: 40px;
 			display: flex;
 		}
 
-		.settings__content__group__other {
+		&__group__other {
 			flex-direction: column;
 		}
 	}
